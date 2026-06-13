@@ -154,8 +154,6 @@ const UserProfileSettings: React.FC<UserProfileProps> = ({ user, onClose, onUpda
     // System Status State
     const [showStatus, setShowStatus] = useState(false);
     const [sysStatus, setSysStatus] = useState<any>(null);
-    const [showLogs, setShowLogs] = useState(false);
-
     const checkSystemStatus = async () => {
         try {
             const res = await fetch('api/sys_status.php');
@@ -224,25 +222,14 @@ const UserProfileSettings: React.FC<UserProfileProps> = ({ user, onClose, onUpda
                                             </div>
                                         </div>
                                     </div>
-                                    <div>
-                                        <button type="button" onClick={() => setShowLogs(!showLogs)} className="text-xs font-bold text-gray-500 hover:text-gray-900 uppercase tracking-wider flex items-center gap-2">
-                                            <i className={`fas fa-chevron-${showLogs ? 'down' : 'right'}`} /> View Sync Logs (Hidden)
-                                        </button>
-                                        {showLogs && (
-                                            <div className="mt-2 bg-gray-100 rounded-lg p-3 h-48 overflow-y-auto font-mono text-[10px] text-gray-600 border border-gray-200">
-                                                {sysStatus.logs?.length > 0 ? sysStatus.logs.map((log: string, i: number) => (
-                                                    <div key={i} className="border-b border-gray-200 pb-1 mb-1 last:border-0">{log}</div>
-                                                )) : <div className="text-center py-10 text-gray-400">No recent errors logged.</div>}
-                                            </div>
-                                        )}
-                                        {user.role === 'admin' && (
+                                    {user.role === 'admin' && (
                                             <div className="mt-6 pt-6 border-t border-gray-200">
                                                 <h3 className="text-sm font-bold text-red-600 mb-3 flex items-center gap-2"><i className="fas fa-shield-alt" /> Admin Actions</h3>
                                                 <button type="button" onClick={async () => {
                                                     if (!confirm("Are you sure you want to run the weekly refresh for ALL users?")) return;
                                                     setSysStatus(null);
                                                     try {
-                                                        const res = await fetch('cron_weekly_refresh.php?secret=admin_refresh_now');
+                                                        const res = await fetch('cron_weekly_refresh.php', { credentials: 'include' });
                                                         const text = await res.text();
                                                         alert(text);
                                                         checkSystemStatus();

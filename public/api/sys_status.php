@@ -7,7 +7,7 @@ if (session_status() === PHP_SESSION_ACTIVE) {
 }
 
 // api/sys_status.php
-// Returns JSON with connectivity status and recent log entries
+// Returns JSON with connectivity status (admin-only).
 
 header('Content-Type: application/json');
 
@@ -18,7 +18,6 @@ $response = [
         'local_db' => false,
         'remote_db' => false
     ],
-    'logs' => []
 ];
 
 // 1. Check Local DB (Grader)
@@ -36,16 +35,6 @@ try {
     }
 } catch (Exception $e) {
     $response['checks']['remote_db_error'] = $e->getMessage();
-}
-
-// 3. Read Logs
-$logFile = __DIR__ . '/../../sync_error.log'; // Stored one level above public or in root
-if (file_exists($logFile)) {
-    // Read last 50 lines
-    $lines = file($logFile);
-    if ($lines !== false) {
-        $response['logs'] = array_slice($lines, -50);
-    }
 }
 
 // Determine overall status

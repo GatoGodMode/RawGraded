@@ -3,14 +3,6 @@
 ob_start();
 require_once(__DIR__ . '/db.php');
 
-$logFile = __DIR__ . '/debug_merge.log';
-if (!function_exists('debugLog')) {
-    function debugLog($msg) {
-        global $logFile;
-        @file_put_contents($logFile, "[" . date('Y-m-d H:i:s') . "] [CHAIN] " . $msg . "\n", FILE_APPEND);
-    }
-}
-
 header('Content-Type: application/json');
 
 // 1. Auth Check - Ensure user is logged in
@@ -23,8 +15,6 @@ $id = $_GET['id'] ?? null;
 if (!$id) {
     sendResponse(['error' => 'Missing certificate ID'], 400);
 }
-
-debugLog("Chain Fetch Requested for ID: $id (User: $userId, Admin: $isAdmin)");
 
 // 3. Chain Traversal Logic
 $chain = [];
@@ -43,19 +33,16 @@ while ($currentId && !in_array($currentId, $visitedIds)) {
     $stmt->bind_param("ssi", $currentId, $userId, $valAdmin);
     
     if (!$stmt->execute()) {
-        debugLog("DB Execute Error: " . $conn->error);
         break;
     }
     
     $res = $stmt->get_result();
     if ($res === false) {
-        debugLog("DB Get Result Error: " . $conn->error);
         break;
     }
     $cert = $res->fetch_assoc();
     
     if (!$cert) {
-        debugLog("Cert not found or access denied: $currentId");
         break;
     }
     
@@ -66,8 +53,6 @@ while ($currentId && !in_array($currentId, $visitedIds)) {
 if (empty($chain)) {
     sendResponse(['error' => 'No chain found or access denied.'], 404);
 }
-
-debugLog("Returning chain of " . count($chain) . " certificates.");
 
 // 4. Return Data
 // Note: Frontend usually expects Newest -> Oldest, which this is (traversing parent_id up).

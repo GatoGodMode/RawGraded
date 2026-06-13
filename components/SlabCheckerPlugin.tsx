@@ -217,7 +217,6 @@ const SlabCheckerPlugin: React.FC<SlabCheckerPluginProps> = ({
       }
 
       const bodyStr = JSON.stringify(payload);
-      console.log('[SlabChecker] Save payload size:', (bodyStr.length / 1024).toFixed(1), 'KB');
 
       const res = await fetch('api/plugin_slab_checker.php?action=save', {
         method: 'POST',
@@ -227,7 +226,6 @@ const SlabCheckerPlugin: React.FC<SlabCheckerPluginProps> = ({
       });
 
       const rawText = await res.text();
-      console.log('[SlabChecker] Save response status:', res.status, 'body:', rawText.substring(0, 500));
 
       let data: any = {};
       try { data = JSON.parse(rawText); } catch (e) {
@@ -242,7 +240,6 @@ const SlabCheckerPlugin: React.FC<SlabCheckerPluginProps> = ({
         return;
       }
       
-      console.log('[SlabChecker] Save success! psa_slab_id:', data.psa_slab_id, 'check_id:', data.check_id);
       setSavedSlabId(data.psa_slab_id ?? null);
       onSaved(data.psa_slab_id);
     } catch (err: any) {

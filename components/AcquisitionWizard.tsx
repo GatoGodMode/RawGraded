@@ -97,7 +97,6 @@ const AcquisitionWizard = ({ isOpen, onClose, onApply }: AcquisitionWizardProps)
             }
 
             const data = await res.json();
-            console.log('Presets loaded:', data);
 
             if (data.presets) {
                 setPresets(data.presets);

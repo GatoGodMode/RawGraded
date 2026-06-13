@@ -1,8 +1,0 @@
-﻿  { icon: 'fa-fingerprint', iconColor: 'text-poke-gold', title: 'One Scan. One Immutable Record.', copy: 'Archive your asset to The Secure Digital Vault or Public Ledger. Track acquisition cost, receipts, and provenance lineage over time.' },
-  { icon: 'fa-heart', iconColor: 'text-[#990000]', title: 'For the Discerning Steward', copy: 'Determine which Raw Cards merit institutional submission — and which do not. Retain an immutable ledger with acquisition cost, condition basis, and custody notes.' },
-                    value: 'Immutable Record',
-              Structured intelligence, immutable provenance, and arbitrage data — the institutional standard before any asset changes hands.
-                { n: '03', h: 'The Condition Report Is Issued.', b: 'Subgrades, grader-band projections, condition data, and provenance chain sealed in the Graded Record. Archived to the Secure Digital Vault. Transferable. Immutable. Definitive.' },
-                The Immutable Record. For Every Asset of Consequence.
-                    body: 'Selectively publish Graded Assets to the immutable public archive when verifiability and discoverability serve your interests.'
-              <span>Immutable Condition Report</span>

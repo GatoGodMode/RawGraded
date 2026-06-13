@@ -40,6 +40,12 @@ training/datasets/rawgraded-case-*.json
 !training/datasets/*.example.*
 *.log
 sync_error.log
+debug_*.log
+build_log*.txt
+matches*.txt
+*_backup_*
+setup-pending*.json
+scripts/DEPLOY-FTP.txt
 .tmp-*.png
 _badge_section.tmp
 build/signing.local.json

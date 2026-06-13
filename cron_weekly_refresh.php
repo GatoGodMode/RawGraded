@@ -9,13 +9,10 @@ if (file_exists(__DIR__ . '/api/db.php')) {
     require_once __DIR__ . '/public/api/db.php';
 }
 
-// Security: specific secret or CLI only
+// Security: CLI cron or authenticated admin session only
 $isCli = php_sapi_name() === 'cli';
-$isAuthorizedBrowser = isset($_REQUEST['secret']) && $_REQUEST['secret'] === 'admin_refresh_now';
-
-if (!$isCli && !$isAuthorizedBrowser) {
-    http_response_code(403);
-    die('Access Denied');
+if (!$isCli) {
+    requireAdmin();
 }
 
 echo "Starting Weekly Refresh...\n";

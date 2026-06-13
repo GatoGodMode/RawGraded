@@ -582,25 +582,6 @@ const Certificate: React.FC<CertificateProps> = ({ data, finalGrade, user, onCre
 
                 {/* Action Bar */}
                 <div className="w-full max-w-4xl flex flex-wrap justify-end gap-3 no-print p-2">
-                    {/* Ownership Debug Logging */}
-                    {(() => {
-                        const isOwner = user && data.userId && String(user.id).trim() === String(data.userId).trim();
-                        const isAdmin = user?.role === 'admin';
-                        console.log('ðŸ” Certificate Ownership Check:', {
-                            user_id: user?.id,
-                            user_id_type: typeof user?.id,
-                            certificate_userId: data.userId,
-                            certificate_userId_type: typeof data.userId,
-                            user_id_trimmed: user?.id ? String(user.id).trim() : null,
-                            certificate_userId_trimmed: data.userId ? String(data.userId).trim() : null,
-                            isOwner,
-                            isAdmin,
-                            user_role: user?.role,
-                            shouldShowRestrictedButtons: isOwner || isAdmin,
-                            certificate_id: data.id
-                        });
-                        return null;
-                    })()}
                     {/* Public Actions (Visible to everyone) */}
                     <button
                         onClick={() => {

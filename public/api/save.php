@@ -183,7 +183,6 @@ try {
     $stmt->bind_param($bindTypes, ...$bindParams);
 
     if ($stmt->execute()) {
-        file_put_contents('debug_save.log', date('[Y-m-d H:i:s] ') . "Insert successful for ID: $id\n", FILE_APPEND);
         
         if ($usedPaidCredit && !empty($metaName) && !empty($metaSet)) {
             require_once dirname(__FILE__) . '/market_helper.php';
@@ -197,13 +196,10 @@ try {
         
         // Trigger badge check
         try {
-            file_put_contents('debug_save.log', date('[Y-m-d H:i:s] ') . "Starting badge check...\n", FILE_APPEND);
             require_once('badges_lib.php');
             checkAndAwardBadges($conn, $userId);
-            file_put_contents('debug_save.log', date('[Y-m-d H:i:s] ') . "Badge check complete.\n", FILE_APPEND);
         } catch (Throwable $e) {
-            // Log badge error but don't fail the save
-            file_put_contents('debug_save.log', date('[Y-m-d H:i:s] ') . "BADGE ERROR: " . $e->getMessage() . "\n", FILE_APPEND);
+            // Badge errors must not fail the save
         }
         
         // Return updated credit counts so frontend can stay in sync
@@ -223,15 +219,12 @@ try {
         sendResponse(['success' => true, 'id' => $id, 'credits_remaining' => $creditsRemaining]);
     } else {
         $error = $stmt->error;
-        file_put_contents('debug_save.log', date('[Y-m-d H:i:s] ') . "Save failed: $error\n", FILE_APPEND);
         sendResponse(['error' => 'Save failed: ' . $error], 500);
     }
 
 } catch (Exception $e) { 
-    file_put_contents('debug_save.log', date('[Y-m-d H:i:s] ') . "EXCEPTION: " . $e->getMessage() . "\n", FILE_APPEND);
     sendResponse(['error' => $e->getMessage()], 500); 
 } catch (Throwable $t) {
-    file_put_contents('debug_save.log', date('[Y-m-d H:i:s] ') . "FATAL ERROR: " . $t->getMessage() . "\n", FILE_APPEND);
     sendResponse(['error' => 'Critical error: ' . $t->getMessage()], 500);
 }
 ?>

@@ -260,7 +260,10 @@ This showcase excludes:
 
 - Production `config.php`, `.env*`, signing certs (`.pfx`), SQLite/MySQL dumps
 - Build artifacts (`dist/`, `release-build/`, `node_modules/`)
-- Internal backup folders and dev-only DB probe scripts
+- Dev/diag scripts (`debug_*.php`, `diag_*.php`, `test_*.php`, `verify_*.php`, `check_*.php`)
+- Build/debug logs (`build_log*.txt`, `*.log`, `debug_*.log`)
+- Probe endpoints, schema dumps, and internal deploy notes (`probe.php`, `DEPLOY-FTP.txt`)
+- Backup snapshots (`*_backup_*`, `App_backup_*.tsx`)
 
 Run before every publish:
 

@@ -34,6 +34,18 @@ const forbiddenNamePatterns = [
   /signing\.local\.json$/i,
   /msix-store\.identity\.json$/i,
   /sync_error\.log$/i,
+  /debug_.*\.log$/i,
+  /build_log/i,
+  /^debug_.*\.php$/i,
+  /^diag_.*\.php$/i,
+  /^test_.*\.php$/i,
+  /^verify_.*\.php$/i,
+  /^check_.*\.php$/i,
+  /^probe\.(php|json)$/i,
+  /DEPLOY-FTP\.txt$/i,
+  /_backup_/i,
+  /setup-pending.*\.json$/i,
+  /matches.*\.txt$/i,
   /rawgraded-case-[A-F0-9]+\.json$/i,
 ];
 

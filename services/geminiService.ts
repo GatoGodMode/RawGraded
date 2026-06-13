@@ -110,11 +110,6 @@ const withTimeout = <T>(promise: Promise<T>, ms: number, label: string): Promise
   ]);
 };
 
-/** Phase 2 timing: server log (api/phase2_debug.log when admin) + Admin Debug Console. */
-const debugLog = (payload: Record<string, unknown>) => {
-  fetch('api/phase2_debug.php', { method: 'POST', headers: { 'Content-Type': 'application/json' }, credentials: 'include', body: JSON.stringify(payload) }).catch(() => {});
-  console.log('[DEBUG-PHASE2]', JSON.stringify(payload));
-};
 
 /** Retry generateContent on 503 (overloaded), 429 (rate limit), or timeout; exponential backoff. */
 const generateContentWithRetry = async (
@@ -124,10 +119,6 @@ const generateContentWithRetry = async (
   const timeoutMs = opts.requestTimeoutMs ?? 0;
   let lastError: any;
   for (let attempt = 0; attempt < MAX_RETRIES; attempt++) {
-    // #region agent log
-    const attemptStart = Date.now();
-    debugLog({ location: 'geminiService.ts:generateContentWithRetry', message: 'Gemini attempt start', data: { attempt, partsCount: opts.contents.parts?.length ?? 0 }, timestamp: Date.now(), hypothesisId: 'H2' });
-    // #endregion
     try {
       const call = ai.models.generateContent({
         model: opts.model,
@@ -137,9 +128,6 @@ const generateContentWithRetry = async (
       const response = timeoutMs > 0
         ? await withTimeout(call, timeoutMs, 'Gemini generateContent')
         : await call;
-      // #region agent log
-      debugLog({ location: 'geminiService.ts:generateContentWithRetry', message: 'Gemini attempt success', data: { attempt, elapsedMs: Date.now() - attemptStart }, timestamp: Date.now(), hypothesisId: 'H2' });
-      // #endregion
       return response;
     } catch (err: any) {
       lastError = err;
@@ -150,9 +138,6 @@ const generateContentWithRetry = async (
         msg.includes('503') || msg.includes('overloaded') || msg.includes('resource exhausted') ||
         msg.includes('timed out');
       const delay = RETRY_DELAY_MS * Math.pow(2, attempt);
-      // #region agent log
-      debugLog({ location: 'geminiService.ts:generateContentWithRetry', message: 'Gemini attempt retry', data: { attempt, isRetryable, delayMs: delay, elapsedMs: Date.now() - attemptStart, status, msg: msg.slice(0, 80) }, timestamp: Date.now(), hypothesisId: 'H3' });
-      // #endregion
       if (!isRetryable || attempt === MAX_RETRIES - 1) throw err;
       await new Promise(r => setTimeout(r, delay));
     }
@@ -186,7 +171,6 @@ const getApiKey = async (): Promise<string> => {
   if (!keyFetchAttempted) {
     keyFetchAttempted = true;
     try {
-      console.log("Fetching API key from DB...");
       // 5-second timeout for the settings fetch to prevent hangs
       const controller = new AbortController();
       const timeoutId = setTimeout(() => controller.abort(), 5000);
@@ -201,7 +185,6 @@ const getApiKey = async (): Promise<string> => {
         const data = await response.json();
         const dbKey = data?.data?.gemini_api_key || '';
         if (dbKey) {
-          console.log("API Key fetched successfully from DB.");
           cachedApiKey = dbKey;
           return dbKey;
         }
@@ -211,7 +194,6 @@ const getApiKey = async (): Promise<string> => {
     }
   }
 
-  console.log("Using environment/fallback API key.");
   const envKey = (typeof process !== 'undefined' ? (process.env.GEMINI_API_KEY || process.env.API_KEY) : null) || '';
 
   if (envKey) cachedApiKey = envKey;
@@ -476,7 +458,6 @@ export const identifyCardFromFront = async (
           if (candidates.length > 0) tcgApiData = buildGeminiTcgdexContext(candidates);
         }
       } catch (e) {
-        console.log('TCGdex pre-flight failed:', e);
       }
     }
 
@@ -639,7 +620,6 @@ ${prompts.map((p, idx) => `\n--- CHUNK ${idx + 1} ---\n${p}`).join('\n')}`,
 export const identifyAndInitialGrade = async (frontImage: string, _backImage: string, category?: string, userHint?: string): Promise<GradingResult | null> => {
   const modelId = 'gemini-2.5-flash';
   try {
-    console.log("AI Phase 1: Identifying (front bands only)...");
     const bands = await cropFrontIdentityBands(frontImage);
     return identifyCardFromFront(bands.topBand, bands.bottomBand, category, userHint);
   } catch (error: any) {
@@ -720,7 +700,6 @@ export const identifyCollectOnly = async (
           }
         }
       } catch (e) {
-        console.log("TCGdex API pre-flight failed (continuing without it):", e);
       }
     }
 
@@ -1034,27 +1013,15 @@ export const refineGradingBatchA = async (
   onStatus?: (status: string) => void,
   captureContext?: string
 ): Promise<GradingResult> => {
-  // #region agent log
-  const batchAStart = Date.now();
-  debugLog({ location: 'geminiService.ts:refineGradingBatchA', message: 'Batch A start', data: { batch: 'A' }, timestamp: Date.now(), hypothesisId: 'H5' });
-  // #endregion
-  console.log("[Phase 2A] Starting Batch A (Front Scan)...");
   try {
-    const t0 = Date.now();
     const apiKey = await getApiKey();
-    const getKeyMs = Date.now() - t0;
     const phase2Model = await resolvePhase2Model();
-    // #region agent log
-    debugLog({ location: 'geminiService.ts:refineGradingBatchA', message: 'getApiKey done', data: { getKeyMs }, timestamp: Date.now(), hypothesisId: 'H1' });
-    // #endregion
     const ai = new GoogleGenAI({ apiKey });
-    console.log("[Phase 2A] API Key obtained, GoogleGenAI initialized.");
 
     if (onStatus) onStatus("Forensics: Batch A (Front Scan)...");
 
     const category = (initialResult as any).category || 'Pokemon';
     const ruleset = selectGradingRuleset(initialResult.detectedSet, category);
-    console.log(`[Phase 2A] Selected ruleset: ${ruleset.name}`);
 
     const promptText = buildPhase2Prompt(
       ruleset,
@@ -1069,28 +1036,14 @@ export const refineGradingBatchA = async (
     const frontClean = cleanBase64(frontImage);
     const parts: any[] = [{ text: promptText }, { inlineData: { mimeType: 'image/jpeg', data: frontClean } }];
     videoFrames.forEach(f => parts.push({ inlineData: { mimeType: 'image/jpeg', data: cleanBase64(f) } }));
-    const promptLen = promptText?.length ?? 0;
-    const totalDataLen = parts.reduce((sum, p) => sum + (typeof (p as any).text === 'string' ? (p as any).text.length : ((p as any).inlineData?.data?.length ?? 0)), 0);
-    // #region agent log
-    debugLog({ location: 'geminiService.ts:refineGradingBatchA', message: 'Batch A payload', data: { partsCount: parts.length, promptLen, totalDataLen }, timestamp: Date.now(), hypothesisId: 'H4' });
-    // #endregion
-    console.log(`[Phase 2A] Prepared ${parts.length} parts (1 prompt + ${parts.length - 1} images). Sending to Gemini...`);
 
-    const geminiStart = Date.now();
     const response = await generateContentWithRetry(ai, {
       model: phase2Model,
       contents: { parts },
       config: { responseMimeType: "application/json" },
       requestTimeoutMs: PHASE2_REQUEST_TIMEOUT_MS,
     });
-    const geminiMs = Date.now() - geminiStart;
-    // #region agent log
-    debugLog({ location: 'geminiService.ts:refineGradingBatchA', message: 'Batch A Gemini done', data: { geminiMs, totalBatchAMs: Date.now() - batchAStart }, timestamp: Date.now(), hypothesisId: 'H2' });
-    // #endregion
-    console.log("[Phase 2A] Received response from Gemini.");
-
     const result = JSON.parse(cleanJsonResponse(response.text || '{}'));
-    console.log("[Phase 2A] Parsed JSON result:", result);
 
     const defects = (result.defects || []).map((d: any) => ({
       ...d,
@@ -1105,8 +1058,6 @@ export const refineGradingBatchA = async (
       tcg: result.predictedGrades.tcg || 'LP'
     } : initialResult.predictedGrades;
     
-    console.log("[Phase 2A] Batch A completed successfully.");
-    console.log("[Phase 2A] Predicted grades:", predictedGradesOut);
     
     return {
       ...initialResult,
@@ -1141,27 +1092,15 @@ export const refineGradingBatchB = async (
   onStatus?: (status: string) => void,
   captureContext?: string
 ): Promise<GradingResult> => {
-  // #region agent log
-  const batchBStart = Date.now();
-  debugLog({ location: 'geminiService.ts:refineGradingBatchB', message: 'Batch B start', data: { batch: 'B' }, timestamp: Date.now(), hypothesisId: 'H5' });
-  // #endregion
-  console.log("[Phase 2B] Starting Batch B (Back Scan)...");
   try {
-    const t0 = Date.now();
     const apiKey = await getApiKey();
-    const getKeyMs = Date.now() - t0;
     const phase2Model = await resolvePhase2Model();
-    // #region agent log
-    debugLog({ location: 'geminiService.ts:refineGradingBatchB', message: 'getApiKey done', data: { getKeyMs }, timestamp: Date.now(), hypothesisId: 'H1' });
-    // #endregion
     const ai = new GoogleGenAI({ apiKey });
-    console.log("[Phase 2B] API Key obtained.");
 
     if (onStatus) onStatus("Forensics: Batch B (Back Scan)...");
 
     const category = (previousResult as any).category || 'Pokemon';
     const ruleset = selectGradingRuleset(previousResult.detectedSet, category);
-    console.log(`[Phase 2B] Selected ruleset: ${ruleset.name}`);
 
     const promptText = buildPhase2Prompt(
       ruleset,
@@ -1176,28 +1115,14 @@ export const refineGradingBatchB = async (
     const backClean = cleanBase64(backImage);
     const parts: any[] = [{ text: promptText }, { inlineData: { mimeType: 'image/jpeg', data: backClean } }];
     videoFrames.forEach(f => parts.push({ inlineData: { mimeType: 'image/jpeg', data: cleanBase64(f) } }));
-    const promptLen = promptText?.length ?? 0;
-    const totalDataLen = parts.reduce((sum, p) => sum + (typeof (p as any).text === 'string' ? (p as any).text.length : ((p as any).inlineData?.data?.length ?? 0)), 0);
-    // #region agent log
-    debugLog({ location: 'geminiService.ts:refineGradingBatchB', message: 'Batch B payload', data: { partsCount: parts.length, promptLen, totalDataLen }, timestamp: Date.now(), hypothesisId: 'H4' });
-    // #endregion
-    console.log(`[Phase 2B] Prepared ${parts.length} parts. Sending to Gemini...`);
 
-    const geminiStart = Date.now();
     const response = await generateContentWithRetry(ai, {
       model: phase2Model,
       contents: { parts },
       config: { responseMimeType: "application/json" },
       requestTimeoutMs: PHASE2_REQUEST_TIMEOUT_MS,
     });
-    const geminiMs = Date.now() - geminiStart;
-    // #region agent log
-    debugLog({ location: 'geminiService.ts:refineGradingBatchB', message: 'Batch B Gemini done', data: { geminiMs, totalBatchBMs: Date.now() - batchBStart }, timestamp: Date.now(), hypothesisId: 'H2' });
-    // #endregion
-    console.log("[Phase 2B] Received response from Gemini.");
-
     const result = JSON.parse(cleanJsonResponse(response.text || '{}'));
-    console.log("[Phase 2B] Parsed JSON result:", result);
 
     // Reconcile: average front and back scores for a balanced view.
     // Phase 3 (Surgical Verification) is the true final arbiter that can
