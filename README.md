@@ -143,7 +143,7 @@ Security is layered: **local privacy by default**, **operator-supplied secrets**
 
 | Control | Implementation |
 |---|---|
-| **Config isolation** | [`config.example.php`](public/api/config.example.php) only in repo; real `config.php` gitignored |
+| **Config isolation** | Production `config.php` is gitignored and not published; [`config.example.php`](public/api/config.example.php) is a redacted stub |
 | **Password storage** | `password_hash()` / `password_verify()` — bcrypt for users and admins ([`auth.php`](public/api/auth.php)) |
 | **Session auth** | PHP sessions + `requireAuth()` / `requireAdmin()` on mutating endpoints and secret reads ([`db.php`](public/api/db.php), [`settings.php`](public/api/settings.php)) |
 | **Third-party keys** | Loaded from settings table only ([`settings_util.php`](public/api/settings_util.php)) — no hardcoded fallbacks in plugin or market code |
@@ -237,11 +237,11 @@ Shipped builds and hosted vault run from **rawgraded.com** and private release p
 
 ## Optional PHP API (reference only)
 
-The [`public/api/`](public/api/) tree documents the hosted vault architecture (auth, certificates, credits, Stripe, plugins). **`config.example.php` is a structural reference** — this showcase is not packaged for self-host deploy. Operators running production use private release artifacts.
+The [`public/api/`](public/api/) tree documents the hosted vault architecture (auth, certificates, credits, Stripe, plugins). **`config.example.php` and `sync_db.php` are redacted stubs** — schema DDL and operator config templates are not published in this showcase.
 
-### Operator settings keys (hosted mode)
+### Operator settings keys (hosted mode — production only)
 
-Configure via Admin → Settings or `sync_db.php`:
+Configure via Admin → Settings in deployed environments:
 
 | Setting key | Purpose |
 |---|---|
@@ -260,6 +260,7 @@ Configure via Admin → Settings or `sync_db.php`:
 This showcase excludes:
 
 - Build/deploy toolchain (`package.json`, lockfiles, Vite config, Electron/Capacitor configs, launch scripts, Android project, installer assets)
+- Published schema migrations (`sync_db.php` DDL) and config templates (`config.example.php`)
 - Production `config.php`, `.env*`, signing certs (`.pfx`), SQLite/MySQL dumps
 - Build artifacts (`dist/`, `release-build/`, `node_modules/`)
 - Dev/diag scripts (`debug_*.php`, `diag_*.php`, `test_*.php`, `verify_*.php`, `check_*.php`)

@@ -6,7 +6,7 @@
     <Folder path="components" role="React UI"/>
     <Folder path="services" role="Grading AI gemini ollama math pricing"/>
     <Folder path="public/api" role="Optional hosted PHP vault API reference">
-      <File path="public/api/config.example.php" role="Config shape reference only"/>
+      <File path="public/api/config.example.php" role="Redacted stub — config not published"/>
       <File path="public/api/db.php" role="MySQL connection and openMarketplaceConnection"/>
     </Folder>
     <Folder path="scripts" role="OpSec preflight only">

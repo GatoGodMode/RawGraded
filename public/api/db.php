@@ -91,7 +91,7 @@ $config_path = dirname(__FILE__) . '/config.php';
 
 if (!file_exists($config_path)) {
     header('Content-Type: application/json');
-    echo json_encode(['error' => 'Missing public/api/config.php — copy config.example.php to config.php and configure credentials.']);
+    echo json_encode(['error' => 'Missing public/api/config.php — operator credentials are not shipped in this showcase repository.']);
     exit;
 }
 

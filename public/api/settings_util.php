@@ -1,7 +1,7 @@
 <?php
 /**
  * Read operator secrets from the settings table (supports key/value and legacy setting_key schemas).
- * Never hardcode API keys in source — configure at deploy time via Admin or sync_db.php.
+ * Never hardcode API keys in source — configure at deploy time via Admin in production.
  */
 function readSetting($conn, $key) {
     if (!$conn || $key === '') {

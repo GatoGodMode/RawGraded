@@ -151,9 +151,16 @@ function walk(dir) {
     }
     if (
       rel.replace(/\\/g, '/').includes('scripts/publish-preflight.cjs') ||
-      rel.includes('scripts/scan-win-unpacked-secrets.cjs') ||
-      rel.includes('config.example.php')
+      rel.includes('scripts/scan-win-unpacked-secrets.cjs')
     ) continue;
+    if (rel.replace(/\\/g, '/').endsWith('public/api/sync_db.php') && /CREATE TABLE IF NOT EXISTS/i.test(content)) {
+      violations.push({ rel, reason: 'sync_db.php must remain redacted (no schema DDL)' });
+      continue;
+    }
+    if (rel.replace(/\\/g, '/').endsWith('public/api/config.example.php') && /define\s*\(\s*['"]DB_/i.test(content)) {
+      violations.push({ rel, reason: 'config.example.php must remain redacted (no DB constants)' });
+      continue;
+    }
     if (content.length > 2_000_000) continue;
     for (const pat of forbiddenContentPatterns) {
       if (pat.test(content)) {

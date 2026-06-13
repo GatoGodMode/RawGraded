@@ -4,8 +4,8 @@
   <Var name="VITE_GOOGLE_CLIENT_ID" value="" usedIn="components/AuthModal.tsx,components/UserProfile.tsx" purpose="Google OAuth client ID in production builds"/>
   <Var name="PCGR_TCGPLAYER_EMAIL" value="" usedIn="electron/ipc/tcgplayerCapture.ts" purpose="Optional TCGplayer automation login"/>
   <Var name="PCGR_TCGPLAYER_PASSWORD" value="" usedIn="electron/ipc/tcgplayerCapture.ts" purpose="Optional TCGplayer automation login"/>
-  <Var name="DB_HOST" value="localhost" usedIn="public/api/config.example.php" purpose="Hosted API MySQL host reference"/>
-  <Var name="DB_NAME" value="rawgraded" usedIn="public/api/config.example.php" purpose="Primary grader database reference"/>
-  <Var name="MARKETPLACE_DB_NAME" value="marketplace" usedIn="public/api/config.example.php,public/api/db.php" purpose="Optional marketplace plugin DB"/>
+  <Var name="DB_HOST" value="" usedIn="public/api/db.php" purpose="Hosted API MySQL host — production config.php only"/>
+  <Var name="DB_NAME" value="" usedIn="public/api/db.php" purpose="Primary grader database — production config.php only"/>
+  <Var name="MARKETPLACE_DB_NAME" value="" usedIn="public/api/db.php" purpose="Optional marketplace plugin DB — production config.php only"/>
   <Var name="GITHUB_REPO" value="https://github.com/GatoGodMode/RawGraded" usedIn="README.md" purpose="Public repository"/>
 </VarMap>
