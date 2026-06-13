@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SysMap project="RawGraded" updated="2026-06-10">
   <Structure>
-    <File path="README.md" role="Showcase README with redaction notice"/>
+    <File path="README.md" role="Showcase README: structure, data model, security, grading pipeline, redaction notice"/>
     <File path="Launch-RawGraded.ps1" role="Dev launcher"/>
     <File path="package.json" role="rawgraded npm package"/>
     <Folder path="electron" role="Desktop shell IPC and main process"/>
