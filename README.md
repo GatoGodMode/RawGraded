@@ -59,10 +59,10 @@ flowchart TB
   Browser --> Electron
   Electron --> SQLite
   Electron --> Ollama
-  Browser -.->|HTTPS session auth| PHP
+  Browser -.->|"HTTPS session auth"| PHP
   PHP --> MySQL
   PHP --> Settings
-  Attacker -.x->|No direct DB or settings access| MySQL
+  Attacker -.->|"No direct DB or settings access"| MySQL
 ```
 
 **Assumptions**
@@ -110,7 +110,7 @@ flowchart LR
   Desktop --> Ollama
   Desktop --> BYOK
   Web --> Desktop
-  Desktop -.->|Session auth| PHP
+  Desktop -.->|"Session auth"| PHP
   PHP -.-> MySQL
 ```
 
@@ -214,7 +214,7 @@ flowchart LR
   end
   EnvelopeScan --> ManualForm
   AcqWizard --> ManualForm
-  ManualForm -->|collection.php update_valuation| Certs
+  ManualForm -->|"collection.php update_valuation"| Certs
   Certs --> Ledger
   Certs --> Receipt
   Certs --> ChainAPI
