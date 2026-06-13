@@ -1,0 +1,136 @@
+{
+    "pokemon_tcg_data": {
+        "english_international": [
+            {
+                "package_type": "Standard Booster Pack",
+                "pack_count": 1,
+                "cards_per_pack": 10,
+                "guaranteed_promos": 0,
+                "total_scannable_cards": 10
+            },
+            {
+                "package_type": "Booster Box",
+                "pack_count": 36,
+                "cards_per_pack": 10,
+                "guaranteed_promos": 0,
+                "total_scannable_cards": 360
+            },
+            {
+                "package_type": "Standard Elite Trainer Box (ETB)",
+                "pack_count": 9,
+                "cards_per_pack": 10,
+                "guaranteed_promos": 1,
+                "total_scannable_cards": 91
+            },
+            {
+                "package_type": "Special Set ETB (e.g. 151, Crown Zenith)",
+                "pack_count": 10,
+                "cards_per_pack": 10,
+                "guaranteed_promos": 1,
+                "total_scannable_cards": 101
+            },
+            {
+                "package_type": "Pokémon Center Exclusive ETB",
+                "pack_count": 11,
+                "cards_per_pack": 10,
+                "guaranteed_promos": 2,
+                "total_scannable_cards": 112
+            },
+            {
+                "package_type": "Ultra-Premium Collection (UPC)",
+                "pack_count": 16,
+                "cards_per_pack": 10,
+                "guaranteed_promos": 3,
+                "total_scannable_cards": 163
+            },
+            {
+                "package_type": "Booster Bundle",
+                "pack_count": 6,
+                "cards_per_pack": 10,
+                "guaranteed_promos": 0,
+                "total_scannable_cards": 60
+            },
+            {
+                "package_type": "3-Pack Blister",
+                "pack_count": 3,
+                "cards_per_pack": 10,
+                "guaranteed_promos": 1,
+                "total_scannable_cards": 31
+            },
+            {
+                "package_type": "Checklane Blister",
+                "pack_count": 1,
+                "cards_per_pack": 10,
+                "guaranteed_promos": 1,
+                "total_scannable_cards": 11
+            },
+            {
+                "package_type": "Mini Tin",
+                "pack_count": 2,
+                "cards_per_pack": 10,
+                "guaranteed_promos": 0,
+                "total_scannable_cards": 20
+            },
+            {
+                "package_type": "Poké Ball Tin",
+                "pack_count": 3,
+                "cards_per_pack": 10,
+                "guaranteed_promos": 0,
+                "total_scannable_cards": 30
+            }
+        ],
+        "japanese_ocg": [
+            {
+                "package_type": "Standard Booster Pack",
+                "pack_count": 1,
+                "cards_per_pack": 5,
+                "guaranteed_promos": 0,
+                "total_scannable_cards": 5
+            },
+            {
+                "package_type": "Standard Booster Box",
+                "pack_count": 30,
+                "cards_per_pack": 5,
+                "guaranteed_promos": 0,
+                "total_scannable_cards": 150
+            },
+            {
+                "package_type": "High Class Box (e.g. VSTAR Universe)",
+                "pack_count": 10,
+                "cards_per_pack": 10,
+                "guaranteed_promos": 0,
+                "total_scannable_cards": 100
+            },
+            {
+                "package_type": "Enhanced Expansion Box (e.g. JP 151)",
+                "pack_count": 20,
+                "cards_per_pack": 7,
+                "guaranteed_promos": 0,
+                "total_scannable_cards": 140
+            },
+            {
+                "package_type": "Subset Box (e.g. Battle Region)",
+                "pack_count": 20,
+                "cards_per_pack": 6,
+                "guaranteed_promos": 0,
+                "total_scannable_cards": 120
+            }
+        ],
+        "promotional_specialty": [
+            {
+                "package_type": "Trick or Trade (Halloween)",
+                "pack_count": 1,
+                "cards_per_pack": 3,
+                "guaranteed_promos": 0,
+                "total_scannable_cards": 3
+            },
+            {
+                "package_type": "McDonalds Promo Pack",
+                "pack_count": 1,
+                "cards_per_pack": 4,
+                "guaranteed_promos": 0,
+                "total_scannable_cards": 4
+            }
+        ]
+    }
+}

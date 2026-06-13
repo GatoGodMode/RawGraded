@@ -1,0 +1,28 @@
+# ============================================================
+# RawGraded.com — robots.txt
+# Generated: 2026-03-04
+# ============================================================
+
+User-agent: *
+
+# Allow public pages
+Allow: /$
+Allow: /app.html
+Allow: /archive
+Allow: /graded
+
+# Disallow API, internal routes, and admin areas
+Disallow: /api/
+Disallow: /admin
+Disallow: /account
+Disallow: /collection
+Disallow: /verify
+Disallow: /reset-password
+
+# Disallow debug / utility scripts
+Disallow: /*.php$
+Disallow: /*.sql$
+Disallow: /*.log$
+Disallow: /*.env$
+
+Sitemap: https://rawgraded.com/sitemap.xml

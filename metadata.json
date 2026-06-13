@@ -1,0 +1,8 @@
+{
+  "name": "RAW ENGINE - RawGraded Studio",
+  "description": "Microsoft Windows card grading intelligence app with local AI. RawGraded Studio supports Pokemon and TCG pre-grading, guided video forensics, centering tools, certificates, portfolio tracking, and market signals.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}

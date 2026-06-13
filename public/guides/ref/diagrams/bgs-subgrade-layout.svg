@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 320" role="img" aria-label="BGS subgrade layout diagram">
+  <rect width="640" height="320" fill="#f8f9fa"/>
+  <text x="320" y="28" text-anchor="middle" font-family="Inter,Segoe UI,sans-serif" font-size="16" font-weight="700" fill="#202124">BGS subgrade layout</text>
+  <rect x="140" y="50" width="360" height="140" rx="8" fill="#d4af37" opacity="0.35" stroke="#b38728" stroke-width="3"/>
+  <text x="200" y="95" font-size="13" font-weight="600" fill="#202124">Centering</text>
+  <text x="200" y="125" font-size="13" font-weight="600" fill="#202124">Corners</text>
+  <text x="380" y="95" font-size="13" font-weight="600" fill="#202124">Edges</text>
+  <text x="380" y="125" font-size="13" font-weight="600" fill="#202124">Surface</text>
+  <text x="320" y="165" text-anchor="middle" font-size="22" font-weight="700" fill="#202124">9.5</text>
+  <text x="320" y="220" text-anchor="middle" font-size="13" fill="#5f6368">Four subgrades in official positions  misaligned labels fail this check.</text>
+</svg>

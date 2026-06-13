@@ -1,0 +1,118 @@
+{
+    "pokemon_card_sources": {
+        "official_direct": [
+            {
+                "id": "pc_official",
+                "name": "Pokémon Center",
+                "url": "pokemoncenter.com",
+                "region": "Global"
+            }
+        ],
+        "major_retailers": [
+            {
+                "id": "ret_gamestop",
+                "name": "GameStop",
+                "type": "Specialty Retail",
+                "region": "US/EU"
+            },
+            {
+                "id": "ret_target",
+                "name": "Target",
+                "type": "Big Box",
+                "region": "US"
+            },
+            {
+                "id": "ret_walmart",
+                "name": "Walmart",
+                "type": "Big Box",
+                "region": "US"
+            },
+            {
+                "id": "ret_bestbuy",
+                "name": "Best Buy",
+                "type": "Big Box",
+                "region": "US"
+            },
+            {
+                "id": "ret_amazon",
+                "name": "Amazon",
+                "type": "E-Commerce",
+                "region": "Global"
+            }
+        ],
+        "tcg_marketplaces": [
+            {
+                "id": "mkt_tcgplayer",
+                "name": "TCGplayer",
+                "focus": "Singles & Sealed",
+                "region": "US"
+            },
+            {
+                "id": "mkt_ebay",
+                "name": "eBay",
+                "focus": "Auctions & Buy It Now",
+                "region": "Global"
+            },
+            {
+                "id": "mkt_cardmarket",
+                "name": "Cardmarket",
+                "focus": "Singles & Sealed",
+                "region": "Europe"
+            },
+            {
+                "id": "mkt_mercari",
+                "name": "Mercari",
+                "focus": "Second-hand",
+                "region": "US/JP"
+            },
+            {
+                "id": "mkt_stockx",
+                "name": "StockX",
+                "focus": "Sealed Investment",
+                "region": "Global"
+            }
+        ],
+        "dedicated_hobby_shops": [
+            {
+                "id": "hob_trollandtoad",
+                "name": "Troll and Toad",
+                "type": "Online Hobby Store"
+            },
+            {
+                "id": "hob_daveadams",
+                "name": "Dave & Adam's Card World",
+                "type": "Large Volume Hobby"
+            },
+            {
+                "id": "hob_blowout",
+                "name": "Blowout Cards",
+                "type": "Large Volume Hobby"
+            },
+            {
+                "id": "hob_channelfireball",
+                "name": "ChannelFireball",
+                "type": "Online Hobby Store"
+            }
+        ],
+        "japanese_importers": [
+            {
+                "id": "imp_plazajapan",
+                "name": "Plaza Japan",
+                "focus": "Direct Import",
+                "region": "Japan -> Global"
+            },
+            {
+                "id": "imp_amiami",
+                "name": "AmiAmi",
+                "focus": "Direct Import",
+                "region": "Japan -> Global"
+            },
+            {
+                "id": "imp_meccha",
+                "name": "Meccha Japan",
+                "focus": "Direct Import",
+                "region": "Japan -> Global"
+            }
+        ]
+    }
+}

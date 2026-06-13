@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-label="PSA silver logo placement diagram">
+  <rect width="640" height="360" fill="#f8f9fa"/>
+  <text x="320" y="28" text-anchor="middle" font-family="Inter,Segoe UI,sans-serif" font-size="16" font-weight="700" fill="#202124">PSA label  silver logo placement</text>
+  <rect x="80" y="50" width="220" height="130" rx="8" fill="#fff" stroke="#c5221f" stroke-width="4"/>
+  <text x="190" y="72" text-anchor="middle" font-size="12" fill="#5f6368">Front label</text>
+  <rect x="100" y="150" width="40" height="18" fill="#9aa0a6" opacity="0.9"/>
+  <text x="120" y="178" text-anchor="middle" font-size="10" fill="#c5221f">Silver PSA  bottom center on red border</text>
+  <rect x="340" y="50" width="220" height="130" rx="8" fill="#1a73e8" stroke="#1557b0" stroke-width="3"/>
+  <text x="450" y="72" text-anchor="middle" font-size="12" fill="#fff">Back label</text>
+  <rect x="430" y="58" width="40" height="18" fill="#9aa0a6"/>
+  <text x="450" y="178" text-anchor="middle" font-size="10" fill="#5f6368">Silver PSA  top center</text>
+  <text x="320" y="220" text-anchor="middle" font-size="13" fill="#202124">Tilt slab in light to confirm Lighthouse illumination on silver logos.</text>
+</svg>

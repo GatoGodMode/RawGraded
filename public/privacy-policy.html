@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Privacy Policy — RAW ENGINE Products</title>
+  <meta name="description"
+    content="Privacy policy for RawGraded, RawGraded Studio, Raw Investor, and RawMarkets — what data each RAW ENGINE product collects, stores, and shares." />
+  <link rel="canonical" href="https://rawgraded.com/privacy-policy.html" />
+  <link rel="icon" href="/assets/logo/R Solo.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/guides/guides.css" />
+  <style>
+    .policy-table { width: 100%; border-collapse: collapse; margin: 16px 0 24px; font-size: 14px; }
+    .policy-table th, .policy-table td { border: 1px solid var(--hairline); padding: 10px 12px; text-align: left; vertical-align: top; }
+    .policy-table th { background: var(--bg-subtle); font-weight: 600; width: 28%; }
+    .policy-table td { color: var(--text); }
+    .guide-main ul { margin: 0 0 14px; padding-left: 1.25rem; }
+    .guide-main li { margin-bottom: 6px; }
+  </style>
+</head>
+<body>
+  <div class="guide-banner">
+    <span><a href="/">RAW ENGINE</a> · RawGraded</span>
+    <span>
+      <a href="/#privacy">Data-flow overview</a>
+      ·
+      <a href="/app.html">Dashboard</a>
+    </span>
+  </div>
+
+  <header class="guide-top">
+    <div class="guide-top-inner">
+      <p class="eyebrow">Legal</p>
+      <h1>Privacy Policy</h1>
+      <p class="lead" style="margin:0;">How RAW ENGINE products handle your data — RawGraded (web and Studio), Raw Investor (TCG desktop), and RawMarkets (markets terminal).</p>
+      <p style="margin:8px 0 0;font-size:14px;color:var(--text-2);">Effective date: June 8, 2026 · Publisher: <strong>RawGraded</strong></p>
+      <ul class="guide-toc">
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#rawgraded">RawGraded</a></li>
+        <li><a href="#raw-investor">Raw Investor</a></li>
+        <li><a href="#rawmarkets">RawMarkets</a></li>
+        <li><a href="#rights">Your rights</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main class="guide-main">
+
+    <section id="overview">
+      <h2>1. Overview</h2>
+      <p>
+        <strong>RawGraded</strong> (operating as <strong>RAW ENGINE</strong>) publishes several related Windows and web products for collectors and investors.
+        This policy describes what personal and usage data each product collects, where it is stored, and which third parties may receive it.
+      </p>
+      <p>Products covered:</p>
+      <ul>
+        <li><strong>RawGraded Web</strong> — cloud grading dashboard at <a href="/app.html">rawgraded.com</a></li>
+        <li><strong>RawGraded Studio</strong> — Windows desktop grading app</li>
+        <li><strong>Raw Investor</strong> — Windows TCG portfolio and market-analytics desktop app (<code>RawInvestor.exe</code>)</li>
+        <li><strong>RawMarkets</strong> — Windows AI markets terminal (<code>RawMarkets.exe</code>, UI subtitle “Markets Terminal”)</li>
+      </ul>
+      <p class="callout callout--tip">
+        <strong>Raw Investor</strong> (TCG portfolio tool) and <strong>RawMarkets</strong> (finance markets terminal) are separate Windows applications under the RAW ENGINE umbrella. Each section below applies only when you use that product.
+      </p>
+      <p>
+        <strong>No third-party analytics or advertising telemetry</strong> (such as Google Analytics, Mixpanel, or Sentry) is embedded in any RAW ENGINE build described here.
+        The marketing landing page may show a newsletter form; that form does not currently send email to our servers — it displays a thank-you message only.
+      </p>
+    </section>
+
+    <section id="rawgraded">
+      <h2>2. RawGraded (Web and Studio)</h2>
+
+      <h3 id="rawgraded-web">2.1 RawGraded Web (cloud service)</h3>
+      <p>
+        When you use the web dashboard at rawgraded.com, account and grading data are processed on our servers (PHP/MySQL API).
+        This section applies to browser access and any feature that uploads certificates to your online collection.
+      </p>
+
+      <table class="policy-table">
+        <tbody>
+          <tr>
+            <th>Account data</th>
+            <td>Username, email address, and password (stored hashed on the server). Optional Google Sign-In provides a Google user ID (<code>sub</code>), email, display name, and profile picture. Optional X (Twitter) username. Invite codes at signup. Membership application answers if you apply before creating an account.</td>
+          </tr>
+          <tr>
+            <th>Authentication &amp; security</th>
+            <td>PHP session cookies to keep you logged in. Two-factor authentication (TOTP) with optional “remember this device” cookies (<code>rg_totp</code>, <code>rg_totp_rm</code>). Browser <code>localStorage</code> may cache your profile and 2FA tokens for convenience.</td>
+          </tr>
+          <tr>
+            <th>Grading &amp; certificate data</th>
+            <td>Card images (front, back, thumbnails), grades, defect analysis, metadata (name, set, year, edition, artist, rarity, etc.), user notes, estimated value, and optional acquisition details (price, tax, shipping, date, source, location, tracking number, order ID) uploaded to our database when you save a certificate.</td>
+          </tr>
+          <tr>
+            <th>AI processing</th>
+            <td>Card images and prompts may be sent to <strong>Google Gemini</strong> for grading and analysis via our server queue. You may alternatively supply your own Gemini API key (bring-your-own-key); in that case requests go directly from your client to Google under your key.</td>
+          </tr>
+          <tr>
+            <th>Payments</th>
+            <td>Subscriptions and credit purchases are processed by <strong>Stripe</strong>. We store Stripe customer and subscription identifiers — not full payment card numbers. Card data is handled by Stripe under <a href="https://stripe.com/privacy" target="_blank" rel="noopener noreferrer">Stripe’s privacy policy</a>.</td>
+          </tr>
+          <tr>
+            <th>Public display</th>
+            <td>Population statistics and public archive features may show certificate data you choose to make visible. Per-certificate hide controls and a global public/private mode are available in your vault settings.</td>
+          </tr>
+          <tr>
+            <th>Client cache</th>
+            <td>IndexedDB (<code>RawGradedVault</code>) may cache certificate images locally in your browser for faster loading.</td>
+          </tr>
+          <tr>
+            <th>Third-party services</th>
+            <td>Google OAuth and Gemini; Stripe; TCGDex and Pokémon TCG API for card identity; api.qrserver.com for QR code generation on certificates and 2FA setup. Google Sign-In is subject to <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google’s Privacy Policy</a>.</td>
+          </tr>
+          <tr>
+            <th>Technical data</th>
+            <td>IP address, browser type, and request metadata in standard server logs for security and operation of the service.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 id="rawgraded-studio">2.2 RawGraded Studio (Windows desktop)</h3>
+      <p>
+        RawGraded Studio is a local-first Windows desktop app. Core grading and portfolio features do <strong>not</strong> require a RAW ENGINE cloud account.
+      </p>
+      <ul>
+        <li>Settings, grading history, and local portfolio data are stored under your Windows user profile (AppData) and in local SQLite.</li>
+        <li>Optional <strong>Ollama</strong> on <code>127.0.0.1:11434</code> keeps AI processing on your machine.</li>
+        <li>Optional <strong>Google Gemini</strong> using an API key you provide sends images/prompts to Google only when you enable cloud AI.</li>
+        <li>Optional desktop market lookups (PriceCharting, eBay, TCGPlayer) occur only when you initiate them.</li>
+        <li>Certificates and exports you save remain where you choose on your PC.</li>
+      </ul>
+      <p>
+        If you also use RawGraded Web and sign in, the web service section above applies to data you upload to the cloud — not to local Studio-only workflows.
+      </p>
+    </section>
+
+    <section id="raw-investor">
+      <h2>3. Raw Investor (TCG desktop)</h2>
+      <p>
+        <strong>Raw Investor</strong> (<code>RawInvestor.exe</code>) is a desktop-first TCG portfolio and market-analytics application published by RawGraded.
+        By default, portfolio and capture data stay on the local machine.
+      </p>
+
+      <table class="policy-table">
+        <tbody>
+          <tr>
+            <th>Local storage</th>
+            <td>SQLite portfolio database, scraped card images, extension capture records, and runtime data under the app’s Windows application data folder (<code>%AppData%</code> or portable <code>pcgr-runtime-data</code> beside the executable). Browser <code>localStorage</code> mirrors portfolio preferences, PSA token, collections, filters, and related UI state.</td>
+          </tr>
+          <tr>
+            <th>No vendor account</th>
+            <td>Raw Investor does not require a RawGraded or Raw Investor login for core features. Local API tokens (<code>PCGR_APP_TOKEN</code>, extension tokens, etc.) secure loopback access only.</td>
+          </tr>
+          <tr>
+            <th>No cloud sync</th>
+            <td>Your local portfolio database is not intentionally synced to a RawGraded cloud service by default.</td>
+          </tr>
+          <tr>
+            <th>Browser &amp; marketplace sessions</th>
+            <td>If you log into third-party sites (eBay, TCGplayer, PriceCharting) inside the embedded browser, that session belongs to you and is stored in the app profile. Optional cookie import from Edge/Chrome copies HTTP cookies for those domains only — browser password databases are not copied.</td>
+          </tr>
+          <tr>
+            <th>Browser extension</th>
+            <td>An optional MV3 extension you load yourself posts tab captures to the local API at <code>http://127.0.0.1:3001</code> — not to RawGraded servers.</td>
+          </tr>
+          <tr>
+            <th>Your API keys</th>
+            <td>PSA public API token, eBay OAuth client credentials, and optional programmable web search keys (if configured) are stored in local portfolio metadata and/or <code>localStorage</code>.</td>
+          </tr>
+          <tr>
+            <th>Third-party requests</th>
+            <td>When you trigger lookups, the app may contact PriceCharting, TCGplayer, eBay, PSA, GemRate, and other market data sources via automated page retrieval on your PC. Requests originate from your machine.</td>
+          </tr>
+          <tr>
+            <th>Updates</th>
+            <td>If <code>RAWENGINE_UPDATE_URL</code> is configured, the app may contact that update host to check for or download releases.</td>
+          </tr>
+          <tr>
+            <th>Diagnostics</th>
+            <td>Local capture and boot logs (e.g. <code>rawengine-capture.log</code>) under your app data folder for troubleshooting.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p><strong>Your responsibility:</strong> secure the device where the app runs, control filesystem access to local app data, and comply with third-party marketplace terms when viewing or capturing data.</p>
+    </section>
+
+    <section id="rawmarkets">
+      <h2>4. RawMarkets (markets terminal)</h2>
+      <p>
+        <strong>RawMarkets</strong> (<code>RawMarkets.exe</code>, branded in-app as <strong>Raw Investor — Markets Terminal</strong>) is a separate Windows desktop application for metals, equities, portfolio research, and news signals.
+        It is local-first with no user accounts.
+      </p>
+
+      <table class="policy-table">
+        <tbody>
+          <tr>
+            <th>Local storage</th>
+            <td>SQLite database (<code>rawmarkets.db</code>) including portfolio holdings and transactions, investor journal entries, news article cache, dashboard layout, engine settings, and cached API responses. Packaged builds store data under your Windows application data folder.</td>
+          </tr>
+          <tr>
+            <th>No accounts</th>
+            <td>No login or user registration. Admin API routes require localhost access or an optional <code>ADMIN_TOKEN</code> header — not end-user identity.</td>
+          </tr>
+          <tr>
+            <th>Browser storage</th>
+            <td><code>localStorage</code> for pinned market symbols only. The app does not set analytics or session cookies.</td>
+          </tr>
+          <tr>
+            <th>Your API keys</th>
+            <td>When you configure them, optional cloud AI, SerpApi, Alpha Vantage, and MetalPriceAPI keys are stored in the local SQLite <code>api_keys</code> table.</td>
+          </tr>
+          <tr>
+            <th>Third-party requests</th>
+            <td>Background market readers may fetch Kitco, Yahoo Finance, Google Finance, and Coinbase for quotes. News and RSS feeds (SEC EDGAR, Reuters, Yahoo RSS, Stocktwits, Reddit, and others) are fetched when you use those features. SerpApi is used when enabled. Optional cloud AI analysis sends market context you select when you provide an API key. <strong>Local Copilot</strong> sends prompts to local AI on your machine when enabled.</td>
+          </tr>
+          <tr>
+            <th>Imports</th>
+            <td>Statement CSV and Cash App CSV files you import are parsed and stored locally in portfolio tables.</td>
+          </tr>
+          <tr>
+            <th>Rate limiting</th>
+            <td>Local AI chat may track your client IP in server memory briefly to throttle requests — not persisted to disk.</td>
+          </tr>
+          <tr>
+            <th>Payments</th>
+            <td>RawMarkets has no Stripe, subscription, or in-app payment integration.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="rights">
+      <h2>5. How we use data, retention, and your rights</h2>
+      <h3>Web service (RawGraded Web)</h3>
+      <p>We use account and grading data to provide the service, process payments, secure accounts, and comply with law. We retain data while your account is active and as required by applicable law.</p>
+      <p>Under applicable data-protection laws you may have rights to access, correct, erase, restrict, or port your personal data, and to object to certain processing. Contact us using the details below to exercise these rights.</p>
+
+      <h3>Desktop apps (Studio, Raw Investor, RawMarkets)</h3>
+      <p>Data in desktop apps is primarily under your control on your device. Uninstalling or deleting app data folders removes local storage. Export features in Raw Investor let you copy portfolio data at your discretion.</p>
+
+      <h3>Security</h3>
+      <p>We use technical and organizational measures appropriate to each product. For the web service, access to personal data is limited to what is needed to operate the platform. For desktop apps, you are responsible for securing your PC and backups.</p>
+
+      <h3>Policy updates</h3>
+      <p>We may update this policy. Material changes will be reflected in the effective date above. Continued use after an update constitutes acceptance of the revised policy where permitted by law.</p>
+
+      <h3>Governing law</h3>
+      <p>This policy is governed by the laws of the State of Delaware, United States, without regard to conflict-of-law provisions, consistent with our Terms of Service.</p>
+    </section>
+
+    <section id="contact">
+      <h2>6. Contact</h2>
+      <p>Questions about this privacy policy or requests regarding your personal data:</p>
+      <ul>
+        <li>Email: <a href="mailto:support@rawgraded.com">support@rawgraded.com</a></li>
+        <li>X: <a href="https://x.com/GatoGodMode" target="_blank" rel="noopener noreferrer">@GatoGodMode</a></li>
+        <li>Instagram: <a href="https://www.instagram.com/gatogodmode/" target="_blank" rel="noopener noreferrer">@gatogodmode</a></li>
+      </ul>
+      <p>For product-specific data-flow diagrams (not legal terms), see the <a href="/#privacy">landing page privacy overview</a>.</p>
+    </section>
+
+  </main>
+
+  <footer class="guide-footer">
+    <p>RAW ENGINE © 2026 · RawGraded</p>
+    <p>
+      <a href="/">Home</a>
+      · <a href="/download/">Download Studio</a>
+      · <a href="/download/investor/">Raw Investor</a>
+      · <a href="/app.html">Dashboard</a>
+      · <a href="/guides/identify-fake-slabs.html">Fake slab guide</a>
+    </p>
+  </footer>
+</body>
+</html>

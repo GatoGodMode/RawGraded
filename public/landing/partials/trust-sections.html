@@ -1,0 +1,248 @@
+<section class="re-mkt__section re-mkt__section--why" id="why">
+  <h2>Built for collectors who want AI without the signup</h2>
+  <p class="re-mkt__section-lead">
+    Use local tools on your PC — grade with stills and guided video, track a portfolio, and see how something might score. No RAW ENGINE account required for the desktop apps.
+  </p>
+  <ul class="re-mkt__cards re-mkt__cards--three">
+    <li class="re-mkt__card">
+      <h3>No account for desktop AI</h3>
+      <p>
+        <strong>RawGraded Studio</strong>, <strong>Raw Investor</strong>, and <strong>RawMarkets</strong> run on Windows. Install, configure AI or capture on your terms, and work offline-first where the app allows — without creating a RAW ENGINE login.
+      </p>
+    </li>
+    <li class="re-mkt__card">
+      <h3>Your collection stays on your PC</h3>
+      <p>
+        Studio keeps settings and grading history under your Windows user profile. Investor stores portfolio data in local SQLite. You choose when — or if — anything leaves your machine.
+      </p>
+    </li>
+    <li class="re-mkt__card">
+      <h3>Skeptical? Good.</h3>
+      <p>
+        We explain every connection below — what each installer does, what is optional, and what is <em>not</em> bundled. See <a href="#architecture">how the parts fit</a> and <a href="#license">license terms</a>.
+      </p>
+    </li>
+  </ul>
+</section>
+
+<section class="re-mkt__section re-mkt__section--why" id="capabilities">
+  <h2>RawGraded Studio capabilities</h2>
+  <p class="re-mkt__section-lead">
+    Still capture plus guided video forensics and a local portfolio — all on your PC, with a vision model that is still being refined.
+  </p>
+  <ul class="re-mkt__cards re-mkt__cards--three">
+    <li class="re-mkt__card">
+      <h3>Guided video analysis</h3>
+      <p>
+        A 5-stage scan walks you through front hold, left/right tilt, up/down tilt, macro close-up, and back scan.
+        Forensic frames under tilted light feed edge and surface review — evidence appears on your certificate.
+      </p>
+    </li>
+    <li class="re-mkt__card">
+      <h3>Local portfolio</h3>
+      <p>
+        Save graded cards to SQLite on your PC. Search, sort, and archive your collection; attach provenance; refresh
+        TCG and PriceCharting market snapshots per card. Nothing is hosted in a RAW ENGINE cloud portfolio.
+      </p>
+    </li>
+    <li class="re-mkt__card">
+      <h3>Model in training</h3>
+      <p>
+        The vision grading model is under active refinement. Stills and video frames help improve detection over time.
+        Treat every grade and TCG condition label as a research estimate — not a slab submission.
+      </p>
+    </li>
+  </ul>
+</section>
+
+<section class="re-mkt__section re-mkt__section--privacy" id="privacy">
+  <h2>Privacy: no connections you did not choose</h2>
+  <p class="re-mkt__section-lead">
+    Both apps are designed so you can see every path data might take. Nothing phones home to RAW ENGINE by default for grading or portfolio storage.
+  </p>
+  <div class="re-mkt__diagram-grid">
+    <article class="re-mkt__diagram-col">
+      <h3>RawGraded Studio</h3>
+      <p class="re-mkt__diagram-intro">Unsigned Windows installer · Windows desktop app · local-first</p>
+      <div class="re-mkt__flow re-mkt__flow--vertical" role="img" aria-label="RawGraded Studio data flow: you, local app, optional Ollama or Gemini only if enabled">
+        <span class="re-mkt__flow-node re-mkt__flow-node--you">You on Windows</span>
+        <span class="re-mkt__flow-arrow" aria-hidden="true">↓</span>
+        <span class="re-mkt__flow-node">RawGraded Studio.exe</span>
+        <span class="re-mkt__flow-arrow" aria-hidden="true">↓</span>
+        <span class="re-mkt__flow-node re-mkt__flow-node--local">Local data — settings &amp; history in AppData</span>
+        <span class="re-mkt__flow-branch" aria-hidden="true">optional, only if you enable</span>
+        <span class="re-mkt__flow-node re-mkt__flow-node--optional">Ollama on 127.0.0.1:11434 (local AI)</span>
+        <span class="re-mkt__flow-node re-mkt__flow-node--optional">Google Gemini API (your API key only)</span>
+      </div>
+      <ul class="re-mkt__diagram-notes">
+        <li><strong>No RAW ENGINE cloud account</strong> for Studio.</li>
+        <li>Certificates and images you export stay where you save them.</li>
+        <li>Cloud grading only happens if you paste a Gemini key or choose cloud in setup.</li>
+      </ul>
+    </article>
+    <article class="re-mkt__diagram-col">
+      <h3>Raw Investor</h3>
+      <p class="re-mkt__diagram-intro">Microsoft Store or direct download · local API · optional browser extension</p>
+      <div class="re-mkt__flow re-mkt__flow--vertical" role="img" aria-label="Raw Investor data flow: you, local app and SQLite, loopback API, optional extension to market sites when you capture">
+        <span class="re-mkt__flow-node re-mkt__flow-node--you">You on Windows</span>
+        <span class="re-mkt__flow-arrow" aria-hidden="true">↓</span>
+        <span class="re-mkt__flow-node">RawInvestor.exe</span>
+        <span class="re-mkt__flow-arrow" aria-hidden="true">↓</span>
+        <span class="re-mkt__flow-node re-mkt__flow-node--local">Local SQLite portfolio</span>
+        <span class="re-mkt__flow-arrow" aria-hidden="true">↓</span>
+        <span class="re-mkt__flow-node re-mkt__flow-node--local">Loopback API — 127.0.0.1:3001 (your PC only)</span>
+        <span class="re-mkt__flow-branch" aria-hidden="true">optional — you load &amp; configure</span>
+        <span class="re-mkt__flow-node re-mkt__flow-node--optional">Edge/Chrome MV3 extension (unpacked, you choose folder)</span>
+        <span class="re-mkt__flow-arrow" aria-hidden="true">↓</span>
+        <span class="re-mkt__flow-node re-mkt__flow-node--optional">Market sites — only when you browse &amp; capture</span>
+      </div>
+      <ul class="re-mkt__diagram-notes">
+        <li>Extension is <strong>not</strong> from a browser store — you load <code>resources\browser-extension-edge</code> yourself.</li>
+        <li>You set <strong>Server base</strong> to <code>http://127.0.0.1:3001</code> in the extension popup.</li>
+        <li>Captures post to <code>POST /api/ext/capture</code> on your machine — not to our servers.</li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<section class="re-mkt__section re-mkt__section--architecture" id="architecture">
+  <h2>How the parts fit</h2>
+  <p class="re-mkt__section-lead">
+    RAW ENGINE ships separate Windows desktop apps — grading, TCG analytics, and a markets terminal. Raw Investor may include an optional Edge/Chrome helper you install yourself.
+  </p>
+  <div class="re-mkt__parts-table-wrap">
+    <table class="re-mkt__parts-table">
+      <thead>
+        <tr>
+          <th scope="col">Piece</th>
+          <th scope="col">What it is</th>
+          <th scope="col">What it is not</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">RawGraded Studio</th>
+          <td>Windows desktop grader with optional Ollama bootstrap; guided video forensics + local portfolio (SQLite)</td>
+          <td>Not a store account · not a required web login</td>
+        </tr>
+        <tr>
+          <th scope="row">Raw Investor</th>
+          <td>Windows desktop workspace + local API — available on the <a href="https://apps.microsoft.com/detail/9PGX48NMDWQT" target="_blank" rel="noopener noreferrer">Microsoft Store</a> or via direct download from this site</td>
+          <td>Not a hosted portfolio in our cloud</td>
+        </tr>
+        <tr>
+          <th scope="row">RawMarkets</th>
+          <td>Windows markets terminal — local SQLite, scrapers, optional local AI</td>
+          <td>Not a hosted brokerage · not financial advice</td>
+        </tr>
+        <tr>
+          <th scope="row">Browser extension</th>
+          <td>Optional tab capture → loopback API on your PC (Investor)</td>
+          <td>Not bundled inside Studio · not auto-installed from a store</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="re-mkt__trust-panel">
+    <h3>Distribution: Store and direct download</h3>
+    <p>
+      <strong>Raw Investor</strong> is listed on the <a href="https://apps.microsoft.com/detail/9PGX48NMDWQT" target="_blank" rel="noopener noreferrer">Microsoft Store</a> — RAW ENGINE&rsquo;s first official store release. <strong>RawGraded Studio</strong> and <strong>RawMarkets</strong> remain direct-download from this site until their store listings ship.
+    </p>
+    <p>
+      Direct-download builds for Studio and Investor are <strong>not code-signed</strong> with an extended-validation certificate. Windows SmartScreen may warn on first run — that is expected for independent desktop software.
+      Download direct builds <strong>only</strong> from <a href="https://rawgraded.com/">rawgraded.com</a> and the official paths linked on this site. Do not trust copies from GitHub, SourceForge, or paid “Pro” repacks.
+    </p>
+    <p>
+      <a href="/download/investor/#download">Raw Investor</a> publishes a VirusTotal report for its installer when available — use it as one signal, not a substitute for downloading from the official host.
+    </p>
+  </div>
+</section>
+
+<section class="re-mkt__section re-mkt__section--trust" id="trust">
+  <h2>Official distribution only</h2>
+  <p class="re-mkt__section-lead">
+    Official channels: Microsoft Store for Raw Investor; direct downloads from this site for all RAW ENGINE desktop apps. One optional browser extension for Raw Investor. Nothing else is part of the authorized bundle.
+  </p>
+  <ul class="re-mkt__trust-list">
+    <li>Get <strong>Raw Investor</strong> from the <a href="https://apps.microsoft.com/detail/9PGX48NMDWQT" target="_blank" rel="noopener noreferrer">Microsoft Store</a> or from links on this website.</li>
+    <li>Get <strong>RawGraded Studio</strong> and <strong>RawMarkets</strong> from links on this website.</li>
+    <li>No third party is licensed to sell, wrap, or redistribute these installers commercially.</li>
+    <li>Authorized builds do <strong>not</strong> include banner ads, in-app advertising, or paid upgrade prompts to RAW ENGINE.</li>
+  </ul>
+  <div class="re-mkt__callout re-mkt__callout--warn">
+    <p>
+      <strong>If someone offers a paid version of this software, or you see advertisements or banner ads inside the app, uninstall immediately.</strong>
+      That is not how RAW ENGINE software is distributed. Report unofficial copies via the contact links in the footer.
+    </p>
+  </div>
+</section>
+
+<section class="re-mkt__section re-mkt__section--license" id="license">
+  <h2>Free — and closed source</h2>
+  <p class="re-mkt__section-lead">
+    Personal use at no charge from RAW ENGINE. Source code is not published, by design.
+  </p>
+  <div class="re-mkt__license-grid">
+    <div class="re-mkt__trust-panel">
+      <h3>Free for you</h3>
+      <p>
+        RAW ENGINE desktop tools are offered without a purchase price from the creator. If you want to beat what is free, you have to try very hard — on features, trust, and upkeep — not by reselling our installers.
+      </p>
+    </div>
+    <div class="re-mkt__trust-panel">
+      <h3>Why closed source?</h3>
+      <p>
+        Free removes price friction so collectors can use AI locally. Closed source reduces copy-paste clones sold under another name. You still get transparency here: what connects, what stays local, and what you must opt into.
+      </p>
+    </div>
+    <div class="re-mkt__trust-panel">
+      <h3>No commercial reproduction</h3>
+      <p>
+        You may not redistribute installers, sell this software, modify and republish builds for sale, or bundle it with ads or paid tiers. See installer and portable license text inside Raw Investor for full terms.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="re-mkt__section re-mkt__section--monetization" id="monetization">
+  <h2>How does RAW ENGINE make money?</h2>
+  <div class="re-mkt__money-panel">
+    <p class="re-mkt__money-lead"><strong>It doesn&rsquo;t.</strong></p>
+    <p>
+      RAW ENGINE makes no money for the creator. This marketing site does not pay you to visit. The authorized desktop distribution includes no ads and no paid RAW ENGINE tier inside these installers.
+    </p>
+    <p class="re-mkt__money-note">
+      The optional <a href="/app.html">web dashboard</a> is a separate hosted product with its own access model — not required to use Studio or Raw Investor on your PC.
+    </p>
+  </div>
+</section>
+
+<section class="re-mkt__section re-mkt__section--responsibility" id="responsibility">
+  <h2>Your research, your decisions</h2>
+  <p class="re-mkt__section-lead">
+    Like most tools that manage and monitor markets, always do your own research. We offer the tools — you decide your future.
+  </p>
+  <div class="re-mkt__responsibility-body">
+    <p>
+      RawGraded Studio&rsquo;s vision model is <strong>currently in training</strong>. Still and video analysis may miss
+      or misread edge wear, whitening, and surface defects until the model matures. Like most tools that manage and
+      monitor markets, always do your own research. We offer the tools — you decide your future.
+    </p>
+    <p>
+      AI can speed up everything, including the ability to be wrong. Grades, market bias, and trend signals are informational — not guarantees from PSA, BGS, CGC, or any third-party grader or marketplace.
+      Do your due diligence and follow best practices. Consult the <strong>Bible of Wealth</strong> for general wealth guidance.
+    </p>
+    <p>
+      Nothing in these applications is meant to replace a financial advisor, tax professional, or attorney. Past performance and estimates are not promises of future results.
+    </p>
+    <div class="re-mkt__callout re-mkt__callout--help">
+      <p>
+        <strong>Problem gambling?</strong> If trading or collecting feels out of control, contact the
+        <strong>National Council on Problem Gambling</strong> helpline:
+        <a href="tel:18005224700">1-800-522-4700</a> (24/7),
+        chat at <a href="https://www.ncpgambling.org/chat/" target="_blank" rel="noopener noreferrer">ncpgambling.org/chat</a>,
+        or text <strong>233424</strong>.
+      </p>
+    </div>
+  </div>
+</section>

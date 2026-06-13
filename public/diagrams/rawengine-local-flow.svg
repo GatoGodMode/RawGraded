@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 1560" role="img" aria-labelledby="title desc">
+  <title id="title">RawEngine-Local AI Process Flow</title>
+  <desc id="desc">Studio desktop pipeline: Ollama vision catalogs defects and identity; deterministic math engine computes all grades from defects and ruler centering.</desc>
+
+  <defs>
+    <linearGradient id="headerGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0f2744"/>
+      <stop offset="100%" stop-color="#1a3a5c"/>
+    </linearGradient>
+    <linearGradient id="aiGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2d4a7a"/>
+      <stop offset="100%" stop-color="#1e3558"/>
+    </linearGradient>
+    <linearGradient id="mathGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3d6b4f"/>
+      <stop offset="100%" stop-color="#2a4d38"/>
+    </linearGradient>
+    <linearGradient id="stateGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#5c4a1f"/>
+      <stop offset="100%" stop-color="#3d3215"/>
+    </linearGradient>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#8899aa"/>
+    </marker>
+    <filter id="shadow" x="-4%" y="-4%" width="108%" height="112%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+
+  <rect width="920" height="1560" fill="#eef1f6"/>
+
+  <rect x="24" y="20" width="872" height="72" rx="10" fill="url(#headerGrad)" filter="url(#shadow)"/>
+  <text x="460" y="52" text-anchor="middle" fill="#f4d03f" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="700">RawEngine-Local AI</text>
+  <text x="460" y="76" text-anchor="middle" fill="#c8d4e0" font-family="Segoe UI, Arial, sans-serif" font-size="13">Ollama vision catalogs evidence | Math engine computes every grade</text>
+
+  <g transform="translate(40, 108)">
+    <rect x="0" y="0" width="840" height="44" rx="8" fill="#fff" stroke="#cfd8e3"/>
+    <rect x="16" y="14" width="18" height="16" rx="3" fill="url(#aiGrad)"/>
+    <text x="42" y="26" fill="#334" font-family="Segoe UI, Arial, sans-serif" font-size="12">Ollama vision (1 image / call)</text>
+    <rect x="220" y="14" width="18" height="16" rx="3" fill="url(#stateGrad)"/>
+    <text x="246" y="26" fill="#334" font-family="Segoe UI, Arial, sans-serif" font-size="12">CardAnalysisWorkVector</text>
+    <rect x="430" y="14" width="18" height="16" rx="3" fill="url(#mathGrad)"/>
+    <text x="456" y="26" fill="#334" font-family="Segoe UI, Arial, sans-serif" font-size="12">Deterministic math (no AI numbers)</text>
+    <rect x="660" y="14" width="18" height="16" rx="3" fill="#6b7280"/>
+    <text x="686" y="26" fill="#334" font-family="Segoe UI, Arial, sans-serif" font-size="12">Inputs / outputs</text>
+  </g>
+
+  <text x="36" y="188" fill="#556" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="600">ENTRY</text>
+  <text x="200" y="188" fill="#556" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="600">OLLAMA / rawgraded-local</text>
+  <text x="520" y="188" fill="#556" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="600">WORK VECTOR</text>
+  <text x="700" y="188" fill="#556" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="600">MATH + OUT</text>
+
+  <line x1="170" y1="200" x2="170" y2="1500" stroke="#d0d8e0" stroke-width="1" stroke-dasharray="4 6"/>
+  <line x1="490" y1="200" x2="490" y2="1500" stroke="#d0d8e0" stroke-width="1" stroke-dasharray="4 6"/>
+  <line x1="670" y1="200" x2="670" y2="1500" stroke="#d0d8e0" stroke-width="1" stroke-dasharray="4 6"/>
+
+  <g filter="url(#shadow)">
+    <rect x="36" y="210" width="120" height="56" rx="8" fill="#6b7280"/>
+    <text x="96" y="234" text-anchor="middle" fill="#fff" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="600">StudioApp</text>
+    <text x="96" y="252" text-anchor="middle" fill="#e5e7eb" font-family="Segoe UI, Arial, sans-serif" font-size="10">runStudioGrading</text>
+  </g>
+  <line x1="96" y1="266" x2="96" y2="286" stroke="#8899aa" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <g filter="url(#shadow)">
+    <rect x="24" y="288" width="144" height="64" rx="8" fill="#6b7280"/>
+    <text x="96" y="312" text-anchor="middle" fill="#fff" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="600">Captures</text>
+    <text x="96" y="328" text-anchor="middle" fill="#e5e7eb" font-family="Segoe UI, Arial, sans-serif" font-size="9">front | back | video frames</text>
+    <text x="96" y="342" text-anchor="middle" fill="#f4d03f" font-family="Segoe UI, Arial, sans-serif" font-size="9">ruler (optional)</text>
+  </g>
+  <line x1="96" y1="352" x2="96" y2="372" stroke="#8899aa" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="96" y1="372" x2="250" y2="372" stroke="#8899aa" stroke-width="2"/>
+  <line x1="250" y1="372" x2="250" y2="392" stroke="#8899aa" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <g filter="url(#shadow)">
+    <rect x="180" y="392" width="280" height="52" rx="8" fill="url(#aiGrad)"/>
+    <text x="320" y="414" text-anchor="middle" fill="#fff" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="600">ollamaProvider.runFullGrading</text>
+    <text x="320" y="430" text-anchor="middle" fill="#c8d8f0" font-family="Segoe UI, Arial, sans-serif" font-size="9">Settings: localAnalysisDepth standard | deep</text>
+  </g>
+  <line x1="320" y1="444" x2="320" y2="464" stroke="#8899aa" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <g filter="url(#shadow)">
+    <rect x="500" y="452" width="150" height="44" rx="8" fill="url(#stateGrad)"/>
+    <text x="575" y="472" text-anchor="middle" fill="#fff" font-family="Segoe UI, Arial, sans-serif" font-size="10" font-weight="600">new WorkVector</text>
+    <text x="575" y="486" text-anchor="middle" fill="#f0e6c8" font-family="Segoe UI, Arial, sans-serif" font-size="9">in-memory session state</text>
+  </g>
+  <line x1="460" y1="416" x2="500" y2="474" stroke="#8899aa" stroke-width="1.5" stroke-dasharray="4 3"/>
+
+  <g filter="url(#shadow)">
+    <rect x="180" y="464" width="280" height="44" rx="8" fill="url(#aiGrad)"/>
+    <text x="320" y="484" text-anchor="middle" fill="#fff" font-family="Segoe UI, Arial, sans-serif" font-size="10" font-weight="600">prepLocalImage / prepLocalImages</text>
+    <text x="320" y="498" text-anchor="middle" fill="#c8d8f0" font-family="Segoe UI, Arial, sans-serif" font-size="9">2048px @ 0.92 (full detail default)</text>
+  </g>
+  <line x1="320" y1="508" x2="320" y2="528" stroke="#8899aa" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <g filter="url(#shadow)">
+    <rect x="180" y="528" width="280" height="56" rx="8" fill="url(#aiGrad)"/>
+    <text x="320" y="550" text-anchor="middle" fill="#fff" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="600">Step 1: OCR extract (front)</text>
+    <text x="320" y="566" text-anchor="middle" fill="#c8d8f0" font-family="Segoe UI, Arial, sans-serif" font-size="9">Standard: name + number | Deep: full card text</text>
+  </g>
+  <line x1="460" y1="556" x2="500" y2="556" stroke="#8899aa" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <g filter="url(#shadow)">
+    <rect x="500" y="536" width="150" height="40" rx="6" fill="url(#stateGrad)"/>
+    <text x="575" y="560" text-anchor="middle" fill="#f0e6c8" font-family="Segoe UI, Arial, sans-serif" font-size="9">ocrFields</text>
+  </g>
+  <line x1="320" y1="584" x2="320" y2="604" stroke="#8899aa" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <g filter="url(#shadow)">
+    <rect x="180" y="604" width="280" height="48" rx="8" fill="#4a5568"/>
+    <text x="320" y="624" text-anchor="middle" fill="#fff" font-family="Segoe UI, Arial, sans-serif" font-size="10" font-weight="600">TCGdex GraphQL lookup</text>
+    <text x="320" y="640" text-anchor="middle" fill="#d1d5db" font-family="Segoe UI, Arial, sans-serif" font-size="9">identityConfidence: high | medium | low</text>
+  </g>
+  <line x1="460" y1="628" x2="500" y2="628" stroke="#8899aa" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <g filter="url(#shadow)">
+    <rect x="500" y="612" width="150" height="32" rx="6" fill="url(#stateGrad)"/>
+    <text x="575" y="632" text-anchor="middle" fill="#f0e6c8" font-family="Segoe UI, Arial, sans-serif" font-size="9">tcgCandidates</text>
+  </g>
+  <line x1="320" y1="652" x2="320" y2="672" stroke="#8899aa" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <g filter="url(#shadow)">
+    <rect x="180" y="672" width="280" height="52" rx="8" fill="url(#aiGrad)"/>
+    <text x="320" y="694" text-anchor="middle" fill="#fff" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="600">Step 2: Identity (Phase 1 front)</text>
+    <text x="320" y="710" text-anchor="middle" fill="#c8d8f0" font-family="Segoe UI, Arial, sans-serif" font-size="9">Name | set | holo | NO numeric grades</text>
+  </g>
+  <line x1="460" y1="698" x2="500" y2="698" stroke="#8899aa" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <g filter="url(#shadow)">
+    <rect x="500" y="680" width="150" height="36" rx="6" fill="url(#stateGrad)"/>
+    <text x="575" y="702" text-anchor="middle" fill="#f0e6c8" font-family="Segoe UI, Arial, sans-serif" font-size="9">identity</text>
+  </g>
+  <line x1="320" y1="724" x2="320" y2="744" stroke="#8899aa" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <g filter="url(#shadow)">
+    <rect x="180" y="744" width="280" height="44" rx="8" fill="url(#aiGrad)" stroke="#f4d03f" stroke-width="1.5" stroke-dasharray="6 3"/>
+    <text x="320" y="764" text-anchor="middle" fill="#fff" font-family="Segoe UI, Arial, sans-serif" font-size="10" font-weight="600">Step 2b: Back identity (Deep only)</text>
+    <text x="320" y="778" text-anchor="middle" fill="#f4d03f" font-family="Segoe UI, Arial, sans-serif" font-size="9">set symbol | edition stamp</text>
+  </g>
+  <line x1="320" y1="788" x2="320" y2="808" stroke="#8899aa" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <g filter="url(#shadow)">
+    <rect x="180" y="808" width="280" height="52" rx="8" fill="url(#aiGrad)"/>
+    <text x="320" y="830" text-anchor="middle" fill="#fff" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="600">Step 3: Centering notes (front + back)</text>
+    <text x="320" y="846" text-anchor="middle" fill="#c8d8f0" font-family="Segoe UI, Arial, sans-serif" font-size="9">Qualitative only - numbers from ruler</text>
+  </g>
+  <line x1="460" y1="834" x2="500" y2="834" stroke="#8899aa" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <g filter="url(#shadow)">
+    <rect x="500" y="816" width="150" height="36" rx="6" fill="url(#stateGrad)"/>
+    <text x="575" y="838" text-anchor="middle" fill="#f0e6c8" font-family="Segoe UI, Arial, sans-serif" font-size="9">centeringNotes</text>
+  </g>
+  <line x1="320" y1="860" x2="320" y2="880" stroke="#8899aa" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <g filter="url(#shadow)">
+    <rect x="180" y="880" width="280" height="72" rx="8" fill="url(#aiGrad)"/>
+    <text x="320" y="902" text-anchor="middle" fill="#fff" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="600">Step 4: Defect catalog (front + back)</text>
+    <text x="320" y="918" text-anchor="middle" fill="#c8d8f0" font-family="Segoe UI, Arial, sans-serif" font-size="9">Standard: forensic pass per side</text>
+    <text x="320" y="932" text-anchor="middle" fill="#c8d8f0" font-family="Segoe UI, Arial, sans-serif" font-size="9">Deep: dedicated defect scan per side</text>
+    <text x="320" y="944" text-anchor="middle" fill="#f4d03f" font-family="Segoe UI, Arial, sans-serif" font-size="8">Output: defects + riskFactors + reasoning</text>
+  </g>
+  <line x1="460" y1="916" x2="500" y2="916" stroke="#8899aa" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <g filter="url(#shadow)">
+    <rect x="500" y="896" width="150" height="40" rx="6" fill="url(#stateGrad)"/>
+    <text x="575" y="916" text-anchor="middle" fill="#f0e6c8" font-family="Segoe UI, Arial, sans-serif" font-size="9">frontDefects</text>
+    <text x="575" y="928" text-anchor="middle" fill="#f0e6c8" font-family="Segoe UI, Arial, sans-serif" font-size="9">backDefects</text>
+  </g>
+  <line x1="320" y1="952" x2="320" y2="972" stroke="#8899aa" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <g filter="url(#shadow)">
+    <rect x="180" y="972" width="280" height="52" rx="8" fill="url(#aiGrad)"/>
+    <text x="320" y="994" text-anchor="middle" fill="#fff" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="600">Step 5: Frame forensics (if video)</text>
+    <text x="320" y="1010" text-anchor="middle" fill="#c8d8f0" font-family="Segoe UI, Arial, sans-serif" font-size="9">back tilt | back macro - defects only</text>
+  </g>
+  <line x1="460" y1="998" x2="500" y2="998" stroke="#8899aa" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <g filter="url(#shadow)">
+    <rect x="500" y="980" width="150" height="36" rx="6" fill="url(#stateGrad)"/>
+    <text x="575" y="1002" text-anchor="middle" fill="#f0e6c8" font-family="Segoe UI, Arial, sans-serif" font-size="9">frameDefects</text>
+  </g>
+  <line x1="320" y1="1024" x2="320" y2="1044" stroke="#8899aa" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <g filter="url(#shadow)">
+    <rect x="500" y="1032" width="150" height="44" rx="8" fill="url(#stateGrad)"/>
+    <text x="575" y="1052" text-anchor="middle" fill="#fff" font-family="Segoe UI, Arial, sans-serif" font-size="10" font-weight="600">compileEvidence()</text>
+    <text x="575" y="1066" text-anchor="middle" fill="#f0e6c8" font-family="Segoe UI, Arial, sans-serif" font-size="8">dedupe | filter frames</text>
+  </g>
+  <line x1="460" y1="1054" x2="500" y2="1054" stroke="#8899aa" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="320" y1="1024" x2="460" y2="1054" stroke="#8899aa" stroke-width="1.5"/>
+  <line x1="320" y1="1024" x2="320" y2="1096" stroke="#8899aa" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <g filter="url(#shadow)">
+    <rect x="180" y="1096" width="280" height="48" rx="8" fill="url(#aiGrad)" stroke="#f4d03f" stroke-width="1.5" stroke-dasharray="6 3"/>
+    <text x="320" y="1118" text-anchor="middle" fill="#fff" font-family="Segoe UI, Arial, sans-serif" font-size="10" font-weight="600">Step 6: Synthesis (Deep only)</text>
+    <text x="320" y="1134" text-anchor="middle" fill="#f4d03f" font-family="Segoe UI, Arial, sans-serif" font-size="9">text-only narrative - no grades</text>
+  </g>
+  <line x1="460" y1="1120" x2="500" y2="1120" stroke="#8899aa" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <g filter="url(#shadow)">
+    <rect x="500" y="1104" width="150" height="32" rx="6" fill="url(#stateGrad)"/>
+    <text x="575" y="1124" text-anchor="middle" fill="#f0e6c8" font-family="Segoe UI, Arial, sans-serif" font-size="9">reasoningLog</text>
+  </g>
+  <line x1="575" y1="1136" x2="575" y2="1160" stroke="#8899aa" stroke-width="2"/>
+  <line x1="575" y1="1160" x2="740" y2="1160" stroke="#8899aa" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <g filter="url(#shadow)">
+    <rect x="680" y="1140" width="200" height="80" rx="8" fill="url(#mathGrad)"/>
+    <text x="780" y="1162" text-anchor="middle" fill="#fff" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="600">gradingMathEngine</text>
+    <text x="780" y="1178" text-anchor="middle" fill="#c8e6d4" font-family="Segoe UI, Arial, sans-serif" font-size="9">computeGradesFromEvidence</text>
+    <text x="780" y="1192" text-anchor="middle" fill="#c8e6d4" font-family="Segoe UI, Arial, sans-serif" font-size="8">centering from ruler (else 8)</text>
+    <text x="780" y="1204" text-anchor="middle" fill="#c8e6d4" font-family="Segoe UI, Arial, sans-serif" font-size="8">wear subs from defect rules</text>
+    <text x="780" y="1216" text-anchor="middle" fill="#c8e6d4" font-family="Segoe UI, Arial, sans-serif" font-size="8">PSA/BGS/CGC = min(subs)</text>
+  </g>
+  <line x1="320" y1="1144" x2="680" y2="1180" stroke="#8899aa" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <text x="500" y="1174" text-anchor="middle" fill="#667" font-family="Segoe UI, Arial, sans-serif" font-size="9">toGradingResult()</text>
+
+  <line x1="780" y1="1220" x2="780" y2="1240" stroke="#8899aa" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <g filter="url(#shadow)">
+    <rect x="680" y="1240" width="200" height="88" rx="8" fill="url(#mathGrad)"/>
+    <text x="780" y="1262" text-anchor="middle" fill="#fff" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="600">surgicalVerification</text>
+    <text x="780" y="1278" text-anchor="middle" fill="#c8e6d4" font-family="Segoe UI, Arial, sans-serif" font-size="8">1. defectConsistency</text>
+    <text x="780" y="1290" text-anchor="middle" fill="#c8e6d4" font-family="Segoe UI, Arial, sans-serif" font-size="8">2. computeGradesFromEvidence</text>
+    <text x="780" y="1302" text-anchor="middle" fill="#c8e6d4" font-family="Segoe UI, Arial, sans-serif" font-size="8">3. deriveTcgFloor | reconcile</text>
+    <text x="780" y="1318" text-anchor="middle" fill="#f4d03f" font-family="Segoe UI, Arial, sans-serif" font-size="8">mathTrace in reasoning</text>
+  </g>
+  <line x1="780" y1="1328" x2="780" y2="1348" stroke="#8899aa" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <g filter="url(#shadow)">
+    <rect x="680" y="1348" width="200" height="64" rx="8" fill="#0f2744"/>
+    <text x="780" y="1372" text-anchor="middle" fill="#f4d03f" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="600">GradingResult</text>
+    <text x="780" y="1388" text-anchor="middle" fill="#c8d4e0" font-family="Segoe UI, Arial, sans-serif" font-size="9">subgrades | PSA/BGS/CGC | defects</text>
+    <text x="780" y="1402" text-anchor="middle" fill="#c8d4e0" font-family="Segoe UI, Arial, sans-serif" font-size="9">-&gt; StudioCertificate export</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="36" y="1348" width="200" height="64" rx="8" fill="#fff" stroke="#cfd8e3"/>
+    <text x="136" y="1370" text-anchor="middle" fill="#556" font-family="Segoe UI, Arial, sans-serif" font-size="10" font-weight="600">Post-grade (not in pipeline)</text>
+    <text x="136" y="1388" text-anchor="middle" fill="#778" font-family="Segoe UI, Arial, sans-serif" font-size="9">PriceCharting lookup</text>
+    <text x="136" y="1402" text-anchor="middle" fill="#778" font-family="Segoe UI, Arial, sans-serif" font-size="9">Certificate | Portfolio pricing</text>
+  </g>
+  <line x1="236" y1="1380" x2="680" y2="1380" stroke="#cfd8e3" stroke-width="1.5" stroke-dasharray="6 4" marker-end="url(#arrow)"/>
+
+  <rect x="24" y="1440" width="872" height="100" rx="10" fill="#fff" stroke="#cfd8e3"/>
+  <text x="44" y="1464" fill="#334" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">Key modules</text>
+  <text x="44" y="1486" fill="#556" font-family="Consolas, monospace" font-size="10">services/llm/ollamaProvider.ts</text>
+  <text x="44" y="1502" fill="#556" font-family="Consolas, monospace" font-size="10">services/grading/cardAnalysisWorkVector.ts</text>
+  <text x="44" y="1518" fill="#556" font-family="Consolas, monospace" font-size="10">services/grading/gradingMathEngine.ts</text>
+  <text x="460" y="1486" fill="#556" font-family="Consolas, monospace" font-size="10">services/llm/ollamaForensicPrompts.ts</text>
+  <text x="460" y="1502" fill="#556" font-family="Consolas, monospace" font-size="10">services/geminiService.ts - surgicalVerification</text>
+  <text x="460" y="1518" fill="#556" font-family="Consolas, monospace" font-size="10">models/rawgraded-local/Modelfile - Ollama rawgraded-local</text>
+</svg>

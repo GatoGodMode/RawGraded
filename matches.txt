@@ -1,0 +1,60 @@
+﻿  { icon: 'fa-ruler-combined', iconColor: 'text-poke-blue', title: 'Pre-Audit Risk Mitigation', copy: 'Centering, corners, edges, and surface audited to PSA/BGS-calibrated institutional standards. No eyeballing. No conjecture.' },
+  { icon: 'fa-video', iconColor: 'text-[#990000]', title: 'High-Resolution Surface Analysis', copy: 'Optional loupe-grade video evidence employs directional illumination to map surface condition and wear. Micro-defect identification at a level no static capture protocol can achieve.' },
+  { icon: 'fa-fingerprint', iconColor: 'text-poke-gold', title: 'One Audit. One Immutable Record.', copy: 'Archive your asset to The Secure Digital Vault or Public Ledger. Track acquisition cost, receipts, and provenance lineage over time.' },
+  { icon: 'fa-store', iconColor: 'text-poke-gold', title: 'For Institutional Dealers', copy: "Forensic evidence-capture for grader-level inspection. In-trade condition review and 'Audited by RawGraded' provenance on listings — the standard that builds counterparty trust." },
+  { icon: 'fa-handshake', iconColor: 'text-poke-blue', title: 'Aligned with the Grading Houses', copy: 'RawGraded is a pre-submission intelligence layer. We eliminate conjecture so you commit capital only to what warrants the grading fee. Secure disclosure controls on every asset.' },
+  { icon: 'fa-microchip', iconColor: 'text-poke-blue', title: 'Institutional-Grade Vision Analysis', copy: 'Grading runs on institutional-grade vision AI — not budget pipelines. Consistent, exacting scores. Lighter protocol tasks use faster pipelines; your grade gets the architecture built for precision.' },
+      case AppStep.CERTIFICATE: return 'Audit Complete';
+    const auditSteps = [AppStep.UPLOAD, AppStep.CROP_FRONT, AppStep.CROP_BACK, AppStep.VIDEO_CAPTURE, AppStep.ANALYSIS, AppStep.CERTIFICATE];
+    if (!auditSteps.includes(step)) return null;
+              <p className="text-[10px] font-bold uppercase tracking-[0.35em] mb-3" style={{ color: '#D4AF37' }}>Protocol Initiation</p>
+                Standardized Capture Protocol.
+                Submit topographic specimen data. Establish the baseline for your asset's Certified Record.
+                  <p className="text-teal-700 text-xs mt-0.5">This audit will be linked to your previous certificate. Capture the same card to add a new audit to the chain.</p>
+            {/* Main tool: category + Front/Back + Initialize Audit */}
+              <span className="drop-shadow-sm">Execute Diagnostic Audit</span> <i className="fas fa-arrow-right drop-shadow-sm"></i>
+                    label: 'Provenance Dossier',
+                    label: 'Chain of Custody Protocol',
+                    copy: 'One audit governs every downstream decision — submission, private sale, or secure digital vault transfer.'
+                      <p className="text-[10px] font-mono" style={{ color: '#718096' }}>Audit #{heroFeatured.id}</p>
+                label: 'Live audited assets',
+                copy: 'Real certificate records and featured audits on the platform.'
+                  Audit Your Collection.
+                  Upload front and back images, choose the category, and begin a condition audit built for pre-submission review, resale prep, and documentation.
+                      <p className="text-teal-700 text-xs mt-0.5">This audit will be linked to your previous certificate. Capture the same card to add a new audit to the chain.</p>
+                {/* Main tool: category + Front/Back + Initialize Audit */}
+                  <span className="drop-shadow-sm">Initialize Audit</span> <i className="fas fa-arrow-right drop-shadow-sm"></i>
+                Every Unverified Asset in your portfolio deserves the pre-audit rigor applied to a Sotheby's consignment. Our three-pillar protocol is the institutional standard.
+                  title: 'Pre-Audit Risk Mitigation',
+                  body: 'A transferable provenance dossier — condition subgrades, defect documentation, grader projections, and acquisition lineage — for every asset that merits stewardship.'
+            <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-center mb-3" style={{ color: '#a0aec0' }}>The Protocol</p>
+              Three Stages. One Standard. The Refinery.
+                { n: '01', h: 'Asset Submission.', b: 'Standardized Capture Protocol. Front and reverse imagery submitted under controlled conditions. High-resolution surface analysis available for assets of consequence.' },
+                    { icon: 'fa-vault', text: 'Deeper valuation intelligence is unlocked from the Secure Digital Vault on Pro Credit Protocol. One engagement. Full market depth.' },
+                    Audit ID &middot; Subgrades &middot; Grader-Band Projections &middot; Provenance Chain
+                        <p className="text-[10px] font-bold uppercase tracking-[0.22em]" style={{ color: '#5b5b5b' }}>Audit ID</p>
+              <p className="text-[10px] font-bold uppercase tracking-[0.35em] mb-3" style={{ color: '#D4AF37' }}>Indemnity-Ready Auditing</p>
+                Our Indemnity-Ready Audit exports carry the full spectrum of data required by underwriters: verified asset identity, condition basis, ownership provenance, and current market valuation — in one portfolio-grade document.
+                          <td className="py-2 text-right font-black">Ledger / dossier / notes</td>
+                    body: 'Link the official PSA certification back to the pre-submission RawGraded audit. The complete chain of custody — from Raw Card to Graded Asset — archived in perpetuity.'
+                  'Valuation outputs are indexed to comp depth and Standardized Capture compliance. The Capture protocol is the variable the collector controls.',
+                  q: 'Why is the Protocol superior to informal assessment?',
+                  a: 'No. RawGraded is the pre-submission intelligence layer. The grading houses retain their authority. We govern the decision before the fee is committed.'
+                  a: 'Calibrated to PSA/BGS institutional benchmarks. Never presented as a guaranteed third-party grading match. Standardized Capture Protocol compliance is the variable the registrant controls.'
+            <p className="text-[10px] font-bold uppercase tracking-[0.4em] text-center mb-6" style={{ color: '#a0aec0' }}>Onboarding Protocol</p>
+                <p className="text-sm mb-6" style={{ color: '#718096' }}>Core audits and certificate creation without a subscription.</p>
+                  Snap envelope or receipt. Auto-fill price, source, and tracking while the audit runs, then keep the record inside your collection workflow.
+            <p className="text-[9px] font-bold uppercase tracking-[0.38em] mb-4" style={{ color: '#D4AF37' }}>The Refinery Awaits</p>
+              The Refinery accepts new submissions. Onboard your portfolio into the most authoritative Asset Intelligence Platform for TCG assets. No subscriptions. No speculation. Pure institutional standard.
+                        <p className="text-[8px] font-black uppercase" style={{ color: '#718096' }}>Deep-Pixel Audit</p>
+                      Run a Deep-Pixel Audit
+                          <span className="text-xs font-bold uppercase tracking-widest" style={{ color: '#718096' }}>Assets Audited</span>
+                  Don&apos;t ever overpay at a card show again. Dealers will try to fleece you. Use our Deep-Pixel Audit to know the exact, true value of a card before you hand over your hard-earned cash.
+                    <p className="text-sm mb-6" style={{ color: '#718096' }}>A taste of the intelligence. Start auditing today.</p>
+                    { n: '01', h: 'Audit, not guess.', b: 'Pick category. Upload front & back. We ID set, year, edition. Optional video for forensic surface analysis.' },
+                    { icon: 'fa-vault', tc: '#990000', bg: 'rgba(153,0,0,0.08)', h: 'Vault & Collection', b: 'Every audit in one place. Acquisition data, receipts, and cost tracking. No spreadsheets.', tag: 'Free & Pro' },
+                    { icon: 'fa-globe', tc: '#C5A059', bg: 'rgba(197,160,89,0.06)', h: 'Global Authentication Network', b: 'Browse the public registry or add yours. Public audits in the archive; Private on your terms.', tag: 'Free & Pro' },
+                        ? 'Specimen acquisition'
+          Start New Audit
+              AI Audit Methodology & Limitation of Liability
+              Our protocol employs pro-level AI models that, while significantly more accurate than human estimation, are not perfect.

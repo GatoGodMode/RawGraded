@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SysMap project="RawGraded" updated="2026-06-10">
+  <Structure>
+    <File path="README.md" role="Showcase README with redaction notice"/>
+    <File path="Launch-RawGraded.ps1" role="Dev launcher"/>
+    <File path="package.json" role="rawgraded npm package"/>
+    <Folder path="electron" role="Desktop shell IPC and main process"/>
+    <Folder path="components" role="React UI"/>
+    <Folder path="services" role="Grading AI gemini ollama math pricing"/>
+    <Folder path="public/api" role="Optional hosted PHP vault API">
+      <File path="public/api/config.example.php" role="Operator config template"/>
+      <File path="public/api/db.php" role="MySQL connection and openMarketplaceConnection"/>
+    </Folder>
+    <Folder path="scripts" role="Build AI worker preflight">
+      <File path="scripts/publish-preflight.cjs" role="Secret scan before git push"/>
+    </Folder>
+    <Folder path="mobile" role="Capacitor mobile app"/>
+    <Folder path="landing" role="RAW ENGINE marketing assets"/>
+    <Folder path="training" role="SFT dataset examples only"/>
+    <Folder path="EnVars" role="Structural and variable maps only"/>
+  </Structure>
+</SysMap>

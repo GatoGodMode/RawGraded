@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Home (RawEngine landing) -->
+  <url>
+    <loc>https://rawgraded.com/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- RawGraded platform app -->
+  <url>
+    <loc>https://rawgraded.com/app.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+  <!-- Public Archive / Vault -->
+  <url>
+    <loc>https://rawgraded.com/archive</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- AI Grading -->
+  <url>
+    <loc>https://rawgraded.com/graded</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Fake slab identification guide -->
+  <url>
+    <loc>https://rawgraded.com/guides/identify-fake-slabs.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+
+  <!-- Privacy policy -->
+  <url>
+    <loc>https://rawgraded.com/privacy-policy.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+</urlset>

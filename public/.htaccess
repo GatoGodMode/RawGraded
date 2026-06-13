@@ -1,0 +1,165 @@
+# ============================================================
+# RawGraded.com — Security & Routing
+# Last updated: 2026-05-28
+# ============================================================
+
+# ─── Rewrite Engine (SPA fallback) ──────────────────────────
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+
+    # Force HTTPS
+    RewriteCond %{HTTPS} off
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+    # Deep links at root → React app (cert QR, vault, 3D, Stripe)
+    RewriteCond %{QUERY_STRING} (^|&)(cert|vault|card3d|session_id|slabcheck)= [NC,OR]
+    RewriteCond %{QUERY_STRING} (^|&)(payment|subscription)= [NC]
+    RewriteRule ^$ app.html [QSA,L]
+
+    # Legacy marketing paths → React app
+    RewriteRule ^(archive|graded)(/.*)?$ app.html [QSA,L]
+
+    # Let real files and directories pass through
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+
+    # SPA fallback → React app (landing is static index.html at /)
+    RewriteRule ^ app.html [QSA,L]
+</IfModule>
+
+# ─── Security Headers ────────────────────────────────────────
+<IfModule mod_headers.c>
+
+    # ── Content Security Policy ─────────────────────────────
+    # Carefully audited against index.html external resources:
+    #   Tailwind CDN, cdnjs (Font Awesome, html2canvas, jsPDF),
+    #   Google Fonts, esm.sh (React, Gemini SDK),
+    #   Gemini API, Google Auth (accounts.google.com, googleapis.com)
+    Header always set Content-Security-Policy "\
+default-src 'self'; \
+script-src 'self' 'unsafe-inline' 'unsafe-eval' \
+    https://cdn.tailwindcss.com \
+    https://cdnjs.cloudflare.com \
+    https://esm.sh \
+    https://accounts.google.com \
+    https://apis.google.com; \
+style-src 'self' 'unsafe-inline' \
+    https://cdnjs.cloudflare.com \
+    https://fonts.googleapis.com \
+    https://accounts.google.com; \
+font-src 'self' \
+    https://fonts.gstatic.com \
+    https://cdnjs.cloudflare.com; \
+img-src 'self' data: blob: \
+    https://*.rawgraded.com \
+    https://assets.rawgraded.com \
+    https://api.qrserver.com \
+    https://lh3.googleusercontent.com; \
+connect-src 'self' \
+    https://esm.sh \
+    https://generativelanguage.googleapis.com \
+    https://accounts.google.com \
+    https://oauth2.googleapis.com \
+    https://api.pokemontcg.io \
+    https://api.tcgdex.net; \
+worker-src 'self' blob:; \
+frame-src \
+    https://accounts.google.com; \
+base-uri 'self'; \
+object-src 'none'; \
+form-action 'self' https://accounts.google.com; \
+upgrade-insecure-requests;"
+
+    # ── Anti-clickjacking ────────────────────────────────────
+    Header always set X-Frame-Options "SAMEORIGIN"
+
+    # ── MIME sniffing prevention ─────────────────────────────
+    Header always set X-Content-Type-Options "nosniff"
+
+    # ── Legacy XSS protection ────────────────────────────────
+    Header always set X-XSS-Protection "1; mode=block"
+
+    # ── Referrer Policy ─────────────────────────────────────
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+    # ── Permissions Policy ───────────────────────────────────
+    Header always set Permissions-Policy "camera=(self), microphone=(self), geolocation=(), payment=(), usb=(), fullscreen=(self)"
+
+    # ── HSTS (1 year) ────────────────────────────────────────
+    Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+
+    # ── Strip server fingerprinting ──────────────────────────
+    Header always unset X-Powered-By
+    Header always unset Server
+
+</IfModule>
+
+# ─── Allow robots.txt and sitemap.xml publicly ───────────────
+<Files "robots.txt">
+    <IfModule mod_authz_core.c>
+        Require all granted
+    </IfModule>
+</Files>
+<Files "sitemap.xml">
+    <IfModule mod_authz_core.c>
+        Require all granted
+    </IfModule>
+</Files>
+
+# ─── Block sensitive files from direct browser access ───────
+# Note: .json is NOT blocked globally — public guide data lives at /guides/*.json
+<FilesMatch "\.(env|log|sql|bak|sh|git|md|lock)$">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order deny,allow
+        Deny from all
+    </IfModule>
+</FilesMatch>
+
+# Block internal/debug JSON only (public guide + download manifest JSON are allowed)
+<FilesMatch "(^|/)probe\.json$">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order deny,allow
+        Deny from all
+    </IfModule>
+</FilesMatch>
+
+# ─── Block directory listings ────────────────────────────────
+Options -Indexes
+
+# ─── Cache static assets ─────────────────────────────────────
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType image/webp        "access plus 1 year"
+    ExpiresByType image/png         "access plus 1 year"
+    ExpiresByType image/jpeg        "access plus 1 year"
+    ExpiresByType image/svg+xml     "access plus 1 year"
+    ExpiresByType text/css          "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    ExpiresByType application/json  "access plus 0 seconds"
+    ExpiresByType text/html         "access plus 0 seconds"
+</IfModule>
+
+# ─── Large binaries: no transform/compress (AV + gzip can break NSIS CRC) ─
+<FilesMatch "\.(exe|msi|zip|7z)$">
+    <IfModule mod_headers.c>
+        Header set Content-Type "application/octet-stream"
+        Header set Content-Disposition "attachment"
+        Header set Cache-Control "no-transform, private, max-age=0"
+        Header unset Content-Encoding
+    </IfModule>
+</FilesMatch>
+<IfModule mod_setenvif.c>
+    SetEnvIfNoCase Request_URI \.(exe|msi|zip|7z)$ no-gzip dont-vary
+</IfModule>
+
+# ─── Compression ─────────────────────────────────────────────
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json text/plain text/xml
+</IfModule>

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 280" role="img" aria-label="PSA cert number format diagram">
+  <rect width="640" height="280" fill="#f8f9fa"/>
+  <text x="320" y="32" text-anchor="middle" font-family="Inter,Segoe UI,sans-serif" font-size="16" font-weight="700" fill="#202124">PSA cert number (78 digits)</text>
+  <rect x="120" y="60" width="400" height="100" rx="8" fill="#fff" stroke="#c5221f" stroke-width="4"/>
+  <text x="320" y="118" text-anchor="middle" font-family="ui-monospace,monospace" font-size="28" font-weight="700" fill="#202124">8 245 1037</text>
+  <rect x="380" y="95" width="120" height="36" rx="4" fill="#e8f0fe" stroke="#1a73e8"/>
+  <text x="440" y="118" text-anchor="middle" font-size="11" fill="#1a73e8">Cert # here</text>
+  <text x="320" y="200" text-anchor="middle" font-size="13" fill="#5f6368">Verify at psacard.com/cert  match grade, card name, and SecureScan images.</text>
+  <text x="320" y="228" text-anchor="middle" font-size="12" fill="#c5221f">A valid cert on a fake label is a known scam pattern.</text>
+</svg>

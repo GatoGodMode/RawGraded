@@ -1,0 +1,963 @@
+{
+  "updated": "2026-05-30",
+  "thresholds": {
+    "passMin": 60,
+    "likelyAuthentic": 75,
+    "likelyFakeBelow": 50,
+    "inconclusiveMin": 50,
+    "inconclusiveMax": 74
+  },
+  "disclaimer": "Certification database lookup confirms a number exists and may show grading images — it does not by itself prove the physical slab in your hand is genuine. Counterfeiters sometimes reuse real cert numbers on fake holders.",
+  "houses": {
+    "PSA": {
+      "checks": [
+        {
+          "id": "LABEL_TYPOGRAPHY",
+          "title": "Label typography",
+          "description": "Font weight, kerning, and capitalization on the front label. PSA uses a specific proprietary font. Suspect if characters look thin, oddly spaced, or pixelated.",
+          "referenceImages": [
+            {
+              "id": "PSA-LABEL_TYPOGRAPHY-authentic",
+              "variant": "authentic",
+              "src": "/guides/ref/PSA/psa-label-typography-authentic.jpg",
+              "alt": "PSA slab with sharp label typography",
+              "caption": "Authentic PSA label type is crisp, evenly kerned, and uses the correct proprietary weight.",
+              "sourceTitle": "WikiHow — Fake PSA Slabs",
+              "sourceUrl": "https://www.wikihow.com/Fake-Psa-Slabs",
+              "citeLabel": "Social Evidence"
+            },
+            {
+              "id": "PSA-LABEL_TYPOGRAPHY-suspect",
+              "variant": "suspect",
+              "src": "/guides/ref/PSA/psa-label-typography-suspect.jpg",
+              "alt": "Suspect PSA label called out in hobby authentication guide",
+              "caption": "Counterfeits often fail on font weight, digit shapes (0/8), and GEM MT red shade.",
+              "sourceTitle": "PokéSats — fake PSA slab guide",
+              "sourceUrl": "https://pokesats.com/newsroom/how-to-spot-a-fake-psa-slab/",
+              "citeLabel": "Social Evidence"
+            }
+          ]
+        },
+        {
+          "id": "SILVER_LOGO_PLACEMENT",
+          "title": "Silver logo placement",
+          "description": "Front label has a silver PSA logo at bottom center connecting to the red border. Back label has silver PSA logo at top center. Check positions are correct.",
+          "referenceImages": [
+            {
+              "id": "PSA-SILVER_LOGO_PLACEMENT-authentic",
+              "variant": "authentic",
+              "src": "/guides/ref/PSA/psa-silver-logo-placement-authentic.jpg",
+              "alt": "PSA label showing silver logo position on front label",
+              "caption": "Verify logo sits at the correct border junction—not floating or off-center.",
+              "sourceTitle": "WikiHow — Fake PSA Slabs (Step 1)",
+              "sourceUrl": "https://www.wikihow.com/Fake-Psa-Slabs",
+              "citeLabel": "Social Evidence"
+            },
+            {
+              "id": "PSA-SILVER_LOGO_PLACEMENT-diagram",
+              "variant": "diagram",
+              "src": "/guides/ref/diagrams/psa-silver-logo-placement.svg",
+              "alt": "Diagram of PSA silver logo placement on front and back labels",
+              "caption": "Front: silver PSA logo bottom-center on red border. Back: silver PSA logo top-center.",
+              "sourceTitle": "RawGraded diagram (aligned with detection rules)",
+              "sourceUrl": "/guides/identify-fake-slabs.html#psa",
+              "citeLabel": "Reference Photo"
+            }
+          ]
+        },
+        {
+          "id": "SILVER_LOGO_ILLUMINATION",
+          "title": "Silver logo illumination",
+          "description": "Real silver PSA logos have an \"on/off\" reflective illumination effect — one side is lighter, the other darker depending on angle. In video, note if this shifting is present or absent.",
+          "referenceImages": [
+            {
+              "id": "PSA-SILVER_LOGO_ILLUMINATION-authentic",
+              "variant": "authentic",
+              "src": "/guides/ref/PSA/psa-lighthouse-illumination-authentic.jpg",
+              "alt": "PSA Lighthouse logo illumination under tilted light",
+              "caption": "Real Lighthouse logos shift light/dark (on/off) as you change viewing angle.",
+              "sourceTitle": "WikiHow — Fake PSA Slabs (Step 2)",
+              "sourceUrl": "https://www.wikihow.com/Fake-Psa-Slabs",
+              "citeLabel": "Social Evidence"
+            },
+            {
+              "id": "PSA-SILVER_LOGO_ILLUMINATION-suspect",
+              "variant": "suspect",
+              "src": "/guides/ref/PSA/psa-lighthouse-illumination-suspect.jpg",
+              "alt": "Example of flat or incorrect PSA logo reflectivity on suspect slab",
+              "caption": "Fakes may look uniformly shiny without the true on/off illumination effect.",
+              "sourceTitle": "WikiHow — Fake PSA Slabs (Step 3)",
+              "sourceUrl": "https://www.wikihow.com/Fake-Psa-Slabs",
+              "citeLabel": "Social Evidence"
+            }
+          ]
+        },
+        {
+          "id": "RAISED_PLASTIC_LOGO",
+          "title": "Raised plastic logo",
+          "description": "Real PSA slabs have a tactile raised \"PSA\" embossed in the bottom right corner of the plastic on both front and back. Check for its presence and correct position.",
+          "referenceImages": [
+            {
+              "id": "PSA-RAISED_PLASTIC_LOGO-authentic",
+              "variant": "authentic",
+              "src": "/guides/ref/PSA/psa-raised-logo-authentic.jpg",
+              "alt": "Embossed PSA logo on case plastic corner",
+              "caption": "Community check: tactile raised PSA on bottom-right case plastic (front and back). Not listed on PSA’s current security summary page.",
+              "sourceTitle": "PokéSats — embossed logo reference",
+              "sourceUrl": "https://pokesats.com/newsroom/how-to-spot-a-fake-psa-slab/",
+              "citeLabel": "Social Evidence"
+            },
+            {
+              "id": "PSA-RAISED_PLASTIC_LOGO-suspect",
+              "variant": "suspect",
+              "src": "/guides/ref/PSA/psa-raised-logo-suspect.jpg",
+              "alt": "Suspect slab missing or incorrect raised PSA on case",
+              "caption": "Missing, shallow, or mis-placed embossed PSA on the holder is a common fake tell.",
+              "sourceTitle": "WikiHow — Fake PSA Slabs (Step 4)",
+              "sourceUrl": "https://www.wikihow.com/Fake-Psa-Slabs",
+              "citeLabel": "Social Evidence"
+            }
+          ]
+        },
+        {
+          "id": "FUGITIVE_INK",
+          "title": "Fugitive ink watermark",
+          "description": "PSA labels contain a subtle blue \"fugitive ink\" watermark of the PSA logo on the white portions of both front and back labels. Look for a faint bluish tint or PSA outline in white label areas.",
+          "referenceImages": [
+            {
+              "id": "PSA-FUGITIVE_INK-authentic",
+              "variant": "authentic",
+              "src": "/guides/ref/PSA/psa-fugitive-ink-authentic.png",
+              "alt": "Magnified authentic PSA label showing uniform fugitive ink pattern",
+              "caption": "Authentic labels show subtle, even fugitive-ink / watermark pattern in white areas.",
+              "sourceTitle": "LegitApp — authenticate PSA Pokémon case",
+              "sourceUrl": "https://legitapp.com/blog/real-vs-fake-how-to-authenticate-a-psa-graded-pokemon-card",
+              "citeLabel": "Social Evidence"
+            },
+            {
+              "id": "PSA-FUGITIVE_INK-suspect",
+              "variant": "suspect",
+              "src": "/guides/ref/PSA/psa-fugitive-ink-suspect.png",
+              "alt": "Suspect PSA label with blotchy or intrusive watermark printing",
+              "caption": "Counterfeit labels may show bold, irregular dots or an overly obvious PSA watermark.",
+              "sourceTitle": "LegitApp — authenticate PSA Pokémon case",
+              "sourceUrl": "https://legitapp.com/blog/real-vs-fake-how-to-authenticate-a-psa-graded-pokemon-card",
+              "citeLabel": "Social Evidence"
+            }
+          ]
+        },
+        {
+          "id": "PLASTIC_CLARITY",
+          "title": "Plastic clarity & weld",
+          "description": "Real PSA plastic is optically clear and smooth, with no clouding, frosting, or cracking especially along the sonic weld seam. Frosting or cracks near the edges strongly indicate tampering or a fake.",
+          "referenceImages": [
+            {
+              "id": "PSA-PLASTIC_CLARITY-authentic",
+              "variant": "authentic",
+              "src": "/guides/ref/PSA/psa-plastic-clear-authentic.jpg",
+              "alt": "Clear PSA case plastic without clouding",
+              "caption": "Authentic PSA plastic is optically clear with a smooth sonic weld.",
+              "sourceTitle": "WikiHow — Fake PSA Slabs (Step 5)",
+              "sourceUrl": "https://www.wikihow.com/Fake-Psa-Slabs",
+              "citeLabel": "Social Evidence"
+            },
+            {
+              "id": "PSA-PLASTIC_CLARITY-suspect",
+              "variant": "suspect",
+              "src": "/guides/ref/PSA/psa-plastic-weld-suspect.gif",
+              "alt": "Frosting or fractures along PSA sonic weld seam",
+              "caption": "Frosting, clouding, or cracks near the weld strongly suggest tampering or a fake holder.",
+              "sourceTitle": "Ball Card Genius — PSA weld reference",
+              "sourceUrl": "https://ballcardgenius.com/blog/fake-psa-slabs-holders-exist-sadly/",
+              "citeLabel": "Social Evidence"
+            }
+          ]
+        },
+        {
+          "id": "SERIAL_FORMAT",
+          "title": "Serial / cert format",
+          "description": "PSA cert numbers are 7–8 digits. Note the serial visible on the label and verify it against PSA’s database.",
+          "referenceImages": [
+            {
+              "id": "PSA-SERIAL_FORMAT-diagram",
+              "variant": "diagram",
+              "src": "/guides/ref/diagrams/psa-serial-format.svg",
+              "alt": "Diagram showing 7–8 digit PSA cert number location on label",
+              "caption": "PSA cert numbers are 7–8 digits on the label. Always verify at psacard.com/cert and compare on-file images.",
+              "sourceTitle": "RawGraded diagram",
+              "sourceUrl": "https://www.psacard.com/cert",
+              "citeLabel": "Reference Photo"
+            },
+            {
+              "id": "PSA-SERIAL_FORMAT-suspect",
+              "variant": "suspect",
+              "src": "/guides/ref/PSA/psa-serial-mismatch-suspect.jpg",
+              "alt": "Example of verifying PSA cert data against the physical card",
+              "caption": "A valid cert number on a fake label is common—match grade, card identity, and SecureScan images.",
+              "sourceTitle": "Ball Card Genius — fake PSA slabs",
+              "sourceUrl": "https://ballcardgenius.com/blog/fake-psa-slabs-holders-exist-sadly/",
+              "citeLabel": "Social Evidence"
+            }
+          ]
+        },
+        {
+          "id": "CARD_SLAB_FIT",
+          "title": "Card-to-slab fit",
+          "description": "The card inside should fit snugly with uniform, minimal gap all around — not floating loosely.",
+          "referenceImages": [
+            {
+              "id": "PSA-CARD_SLAB_FIT-authentic",
+              "variant": "authentic",
+              "src": "/guides/ref/PSA/psa-card-fit-authentic.jpg",
+              "alt": "Card seated snugly inside PSA slab",
+              "caption": "The card should have uniform, minimal gap—not floating or rattling.",
+              "sourceTitle": "WikiHow — Fake PSA Slabs (Step 6)",
+              "sourceUrl": "https://www.wikihow.com/Fake-Psa-Slabs",
+              "citeLabel": "Social Evidence"
+            },
+            {
+              "id": "PSA-CARD_SLAB_FIT-suspect",
+              "variant": "suspect",
+              "src": "/guides/ref/PSA/psa-card-fit-suspect.jpg",
+              "alt": "Loose or poorly seated card inside suspect holder",
+              "caption": "Excessive gap or misalignment can indicate reholdering or counterfeit cases.",
+              "sourceTitle": "WikiHow — Fake PSA Slabs (Step 7)",
+              "sourceUrl": "https://www.wikihow.com/Fake-Psa-Slabs",
+              "citeLabel": "Social Evidence"
+            }
+          ]
+        },
+        {
+          "id": "LABEL_COLOR_QUALITY",
+          "title": "Label color quality",
+          "description": "The red border on PSA labels should be a deep red, not pink or brown. Label background should be bright white, not off-yellow.",
+          "referenceImages": [
+            {
+              "id": "PSA-LABEL_COLOR_QUALITY-authentic",
+              "variant": "authentic",
+              "src": "/guides/ref/PSA/psa-label-color-authentic.jpg",
+              "alt": "Deep red PSA border and bright white label background",
+              "caption": "Brick-red border and clean white label stock—not pink, brown, or yellowed.",
+              "sourceTitle": "WikiHow — Fake PSA Slabs (Step 8)",
+              "sourceUrl": "https://www.wikihow.com/Fake-Psa-Slabs",
+              "citeLabel": "Social Evidence"
+            },
+            {
+              "id": "PSA-LABEL_COLOR_QUALITY-suspect",
+              "variant": "suspect",
+              "src": "/guides/ref/PSA/psa-label-color-suspect.jpg",
+              "alt": "Suspect PSA label color and print quality",
+              "caption": "Off-color red bars and washed label backgrounds are frequent counterfeit tells.",
+              "sourceTitle": "Ball Card Genius — fake PSA label header",
+              "sourceUrl": "https://ballcardgenius.com/blog/fake-psa-slabs-holders-exist-sadly/",
+              "citeLabel": "Social Evidence"
+            }
+          ]
+        }
+      ],
+      "certLinks": [
+        {
+          "house": "PSA",
+          "title": "PSA Cert Verification",
+          "url": "https://www.psacard.com/cert",
+          "note": "Verify cert number; compare card image and grade to the slab in hand."
+        },
+        {
+          "house": "PSA",
+          "title": "PSA Security: A Buyer’s Guide",
+          "url": "https://www.psacard.com/services/psasecurityabuyersguide",
+          "note": "Label light test, database limits, and buying from authorized dealers."
+        },
+        {
+          "house": "PSA",
+          "title": "PSA — counterfeiting & reporting",
+          "url": "https://www.psacard.com/communication",
+          "note": "Official stance on counterfeit slabs and item verification requests."
+        }
+      ],
+      "checkRefs": {
+        "LABEL_TYPOGRAPHY": [
+          {
+            "kind": "company",
+            "citeLabel": "Company Guide",
+            "title": "PSA Security: A Buyer’s Guide",
+            "url": "https://www.psacard.com/services/psasecurityabuyersguide",
+            "note": "Label typography, alignment, and counterfeit risk when buying online."
+          },
+          {
+            "kind": "social",
+            "citeLabel": "Social Evidence",
+            "title": "PokéSats — fake PSA slab typography",
+            "url": "https://pokesats.com/newsroom/how-to-spot-a-fake-psa-slab/",
+            "note": "Community guide on font weight, kerning, and brick-red GEM MT bar."
+          }
+        ],
+        "SILVER_LOGO_PLACEMENT": [
+          {
+            "kind": "social",
+            "citeLabel": "Social Evidence",
+            "title": "WikiHow — PSA slab visual verification",
+            "url": "https://www.wikihow.com/Fake-Psa-Slabs",
+            "note": "Silver PSA logo placement on front and back labels."
+          }
+        ],
+        "SILVER_LOGO_ILLUMINATION": [
+          {
+            "kind": "social",
+            "citeLabel": "Social Evidence",
+            "title": "WikiHow — illumination effect on silver logos",
+            "url": "https://www.wikihow.com/Fake-Psa-Slabs",
+            "note": "Real logos shift light/dark by angle; fakes often look flat or uniformly holographic."
+          },
+          {
+            "kind": "social",
+            "citeLabel": "Social Evidence",
+            "title": "r/PokeInvesting — spotting fake slabs",
+            "url": "https://www.reddit.com/r/PokeInvesting/comments/1ap6y8z/how_to_spot_fake_psa_slabs/",
+            "note": "Collector discussion on reflective logo and case tells."
+          }
+        ],
+        "RAISED_PLASTIC_LOGO": [
+          {
+            "kind": "social",
+            "citeLabel": "Social Evidence",
+            "title": "WikiHow — raised PSA on case plastic",
+            "url": "https://www.wikihow.com/Fake-Psa-Slabs",
+            "note": "Embossed PSA in bottom-right of front and back plastic."
+          },
+          {
+            "kind": "social",
+            "citeLabel": "Social Evidence",
+            "title": "Gentlemen’s Vault — embossed logo check",
+            "url": "https://gentlemenvault.com/seller-caught-selling-fake-pokemon-slabs-on-ebay-is-there-a-way-to-authenticate-graded-slabs/",
+            "note": "Hobby write-up: missing embossed logo is a common fake tell."
+          }
+        ],
+        "FUGITIVE_INK": [
+          {
+            "kind": "social",
+            "citeLabel": "Social Evidence",
+            "title": "Gentlemen’s Vault — fugitive ink pattern",
+            "url": "https://gentlemenvault.com/seller-caught-selling-fake-pokemon-slabs-on-ebay-is-there-a-way-to-authenticate-graded-slabs/",
+            "note": "Faint PSA graphic in white label areas."
+          },
+          {
+            "kind": "social",
+            "citeLabel": "Social Evidence",
+            "title": "LegitApp — label magnification (watermark dots)",
+            "url": "https://legitapp.com/blog/real-vs-fake-how-to-authenticate-a-psa-graded-pokemon-card",
+            "note": "Faint blue PSA watermark vs blotchy counterfeit printing."
+          }
+        ],
+        "PLASTIC_CLARITY": [
+          {
+            "kind": "company",
+            "citeLabel": "Company Guide",
+            "title": "PSA Security: A Buyer’s Guide",
+            "url": "https://www.psacard.com/services/psasecurityabuyersguide",
+            "note": "Case quality, sonic seal, and tamper signs."
+          },
+          {
+            "kind": "social",
+            "citeLabel": "Social Evidence",
+            "title": "Poke Master Center — slab legit-check",
+            "url": "https://www.pokemastercenter.com/how-to-legit-check-pokemon-cards-and-graded-slabs/",
+            "note": "Sonic weld seam, frosting, and clarity checks across graders."
+          }
+        ],
+        "SERIAL_FORMAT": [
+          {
+            "kind": "company",
+            "citeLabel": "Company Guide",
+            "title": "PSA Cert Verification",
+            "url": "https://www.psacard.com/cert",
+            "note": "Official database lookup — cert alone does not guarantee the physical slab is genuine."
+          },
+          {
+            "kind": "social",
+            "citeLabel": "Social Evidence",
+            "title": "PokéSats — cert number vs card image",
+            "url": "https://pokesats.com/newsroom/how-to-spot-a-fake-psa-slab/",
+            "note": "Stolen cert numbers on fake labels; compare PSA on-file image to the card in hand."
+          }
+        ],
+        "CARD_SLAB_FIT": [
+          {
+            "kind": "social",
+            "citeLabel": "Social Evidence",
+            "title": "Poke Master Center — fit and tampering",
+            "url": "https://www.pokemastercenter.com/how-to-legit-check-pokemon-cards-and-graded-slabs/",
+            "note": "Snug fit and reholder/tamper context."
+          }
+        ],
+        "LABEL_COLOR_QUALITY": [
+          {
+            "kind": "social",
+            "citeLabel": "Social Evidence",
+            "title": "PokéSats — red shade on GEM MT bar",
+            "url": "https://pokesats.com/newsroom/how-to-spot-a-fake-psa-slab/",
+            "note": "Brick-red vs orange/pink counterfeit labels."
+          },
+          {
+            "kind": "company",
+            "citeLabel": "Company Guide",
+            "title": "PSA Security: A Buyer’s Guide (label light test)",
+            "url": "https://www.psacard.com/services/psasecurityabuyersguide",
+            "note": "Hold label to strong light — authentic labels allow faint see-through; stacked fake labels do not."
+          }
+        ]
+      }
+    },
+    "BGS": {
+      "checks": [
+        {
+          "id": "TRADEMARK_SYMBOL",
+          "title": "Beckett ® trademark",
+          "description": "\"BECKETT\" on the case must have a registered trademark symbol ® (not ©, not missing). The ® should be small, raised, and match the font weight.",
+          "referenceImages": [
+            {
+              "id": "BGS-TRADEMARK_SYMBOL-authentic",
+              "variant": "authentic",
+              "src": "/guides/ref/BGS/bgs-beckett-trademark-authentic.png",
+              "alt": "Beckett holder showing embedded security and branding",
+              "caption": "Look for the registered ® on BECKETT branding on the case—not © or a missing symbol.",
+              "sourceTitle": "Beckett — ticket/slab security",
+              "sourceUrl": "https://www.beckett.com/ticket-grading",
+              "citeLabel": "Company Guide"
+            }
+          ]
+        },
+        {
+          "id": "LABEL_COLOR_SIZE",
+          "title": "Label color & size",
+          "description": "BGS labels are gold-colored with specific proportions. The label should not be washed out, too small, or the wrong shade of gold.",
+          "referenceImages": [
+            {
+              "id": "BGS-LABEL_COLOR_SIZE-authentic",
+              "variant": "authentic",
+              "src": "/guides/ref/BGS/bgs-gold-label-authentic.jpg",
+              "alt": "BGS gold label proportions on graded slab",
+              "caption": "Gold label should be correct shade and proportion—not washed out or undersized.",
+              "sourceTitle": "Beckett — BGS process",
+              "sourceUrl": "https://www.beckett.com/news/walking-bgs-process/",
+              "citeLabel": "Company Guide"
+            }
+          ]
+        },
+        {
+          "id": "SUBGRADE_LAYOUT",
+          "title": "Subgrade layout",
+          "description": "BGS labels show 4 subgrades (Centering, Corners, Edges, Surface) in specific positions with their values — check that layout matches official BGS format with correct labels.",
+          "referenceImages": [
+            {
+              "id": "BGS-SUBGRADE_LAYOUT-diagram",
+              "variant": "diagram",
+              "src": "/guides/ref/diagrams/bgs-subgrade-layout.svg",
+              "alt": "Diagram of BGS subgrade grid layout",
+              "caption": "Four subgrades (Centering, Corners, Edges, Surface) must match official BGS positions.",
+              "sourceTitle": "RawGraded diagram",
+              "sourceUrl": "https://www.beckett.com/grading/card-lookup",
+              "citeLabel": "Reference Photo"
+            }
+          ]
+        },
+        {
+          "id": "INNER_SLEEVE",
+          "title": "Inner sleeve",
+          "description": "BGS cards are housed inside a thin inner sleeve within the plastic case. Visible gap or direct card-to-plastic contact is suspicious.",
+          "referenceImages": [
+            {
+              "id": "BGS-INNER_SLEEVE-authentic",
+              "variant": "authentic",
+              "src": "/guides/ref/BGS/bgs-inner-sleeve-authentic.png",
+              "alt": "Beckett slab diagram showing archival inner sleeve",
+              "caption": "Official Beckett slabs use an inner sleeve to limit card movement.",
+              "sourceTitle": "Beckett — Built to last slab diagram",
+              "sourceUrl": "https://www.beckett.com/ticket-grading",
+              "citeLabel": "Company Guide"
+            },
+            {
+              "id": "BGS-INNER_SLEEVE-diagram",
+              "variant": "diagram",
+              "src": "/guides/ref/diagrams/bgs-inner-sleeve.svg",
+              "alt": "Cross-section diagram of BGS inner sleeve inside ultrasonic weld case",
+              "caption": "BGS cards sit in a thin inner sleeve before welding—direct card-to-plastic contact is suspicious.",
+              "sourceTitle": "RawGraded diagram (Beckett process)",
+              "sourceUrl": "https://www.beckett.com/news/walking-bgs-process/",
+              "citeLabel": "Reference Photo"
+            }
+          ]
+        },
+        {
+          "id": "CERT_FORMAT",
+          "title": "Cert number format",
+          "description": "BGS cert numbers are 10 digits, zero-padded (e.g. 0015876182). Verify format if visible.",
+          "referenceImages": [
+            {
+              "id": "BGS-CERT_FORMAT-diagram",
+              "variant": "diagram",
+              "src": "/guides/ref/diagrams/bgs-cert-format.svg",
+              "alt": "Diagram of 10-digit zero-padded BGS cert number format",
+              "caption": "BGS cert numbers are 10 digits, zero-padded (e.g. 0015876182). Verify at Beckett card lookup.",
+              "sourceTitle": "RawGraded diagram",
+              "sourceUrl": "https://www.beckett.com/grading/card-lookup",
+              "citeLabel": "Reference Photo"
+            }
+          ]
+        },
+        {
+          "id": "PLASTIC_CLARITY",
+          "title": "Plastic clarity",
+          "description": "BGS cases are clear with no frosting or cracks.",
+          "referenceImages": [
+            {
+              "id": "BGS-PLASTIC_CLARITY-authentic",
+              "variant": "authentic",
+              "src": "/guides/ref/BGS/bgs-plastic-clarity-authentic.png",
+              "alt": "Clear Beckett sonic-welded holder",
+              "caption": "Case should be crystal clear without frosting or cracks along the weld.",
+              "sourceTitle": "Beckett — slab holder",
+              "sourceUrl": "https://www.beckett.com/ticket-grading",
+              "citeLabel": "Company Guide"
+            }
+          ]
+        },
+        {
+          "id": "CARD_SLAB_FIT",
+          "title": "Card-to-slab fit",
+          "description": "Card should fit snugly, not floating.",
+          "referenceImages": [
+            {
+              "id": "BGS-CARD_SLAB_FIT-suspect",
+              "variant": "suspect",
+              "src": "/guides/ref/BGS/bgs-card-fit-suspect.jpg",
+              "alt": "Grader inspecting BGS slab fit and alignment",
+              "caption": "Loose labels or shifting cards inside the holder are red flags—BGS labels should not float.",
+              "sourceTitle": "Beckett — walking BGS process",
+              "sourceUrl": "https://www.beckett.com/news/walking-bgs-process/",
+              "citeLabel": "Company Guide"
+            }
+          ]
+        }
+      ],
+      "certLinks": [
+        {
+          "house": "BGS",
+          "title": "Beckett Graded Card Lookup",
+          "url": "https://www.beckett.com/grading/card-lookup",
+          "note": "Instant cert verification for BGS, BVG, and BCCG."
+        }
+      ],
+      "checkRefs": {
+        "TRADEMARK_SYMBOL": [
+          {
+            "kind": "social",
+            "citeLabel": "Social Evidence",
+            "title": "Poke Master Center — BGS holder notes",
+            "url": "https://www.pokemastercenter.com/how-to-legit-check-pokemon-cards-and-graded-slabs/",
+            "note": "Beckett case markings and label expectations."
+          }
+        ],
+        "LABEL_COLOR_SIZE": [
+          {
+            "kind": "company",
+            "citeLabel": "Company Guide",
+            "title": "Beckett — walking through the BGS process",
+            "url": "https://www.beckett.com/news/walking-bgs-process/",
+            "note": "Official label creation and gold label standards."
+          }
+        ],
+        "SUBGRADE_LAYOUT": [
+          {
+            "kind": "company",
+            "citeLabel": "Company Guide",
+            "title": "Beckett Graded Card Lookup",
+            "url": "https://www.beckett.com/grading/card-lookup",
+            "note": "Verify subgrades and card details match the database entry."
+          }
+        ],
+        "INNER_SLEEVE": [
+          {
+            "kind": "company",
+            "citeLabel": "Company Guide",
+            "title": "Beckett — BGS slabbing (inner sleeve)",
+            "url": "https://www.beckett.com/news/walking-bgs-process/",
+            "note": "Archival inner sleeve before ultrasonic weld — direct card-to-plastic contact is suspicious."
+          }
+        ],
+        "CERT_FORMAT": [
+          {
+            "kind": "company",
+            "citeLabel": "Company Guide",
+            "title": "Beckett Cert Lookup",
+            "url": "https://www.beckett.com/grading/card-lookup",
+            "note": "10-digit zero-padded serial on label; confirm online."
+          }
+        ],
+        "PLASTIC_CLARITY": [
+          {
+            "kind": "company",
+            "citeLabel": "Company Guide",
+            "title": "Beckett — sonic weld sealing",
+            "url": "https://www.beckett.com/news/walking-bgs-process/",
+            "note": "Crystal-clear shell, ultrasonic weld, tamper-resistant seal."
+          }
+        ],
+        "CARD_SLAB_FIT": [
+          {
+            "kind": "company",
+            "citeLabel": "Company Guide",
+            "title": "Beckett ticket/slab diagram (inner sleeve)",
+            "url": "https://www.beckett.com/ticket-grading",
+            "note": "Inner sleeve prevents internal movement; snug overall fit."
+          }
+        ]
+      }
+    },
+    "CGC": {
+      "checks": [
+        {
+          "id": "LABEL_TYPOGRAPHY",
+          "title": "Label typography",
+          "description": "Font quality, spacing, and professional print quality.",
+          "referenceImages": [
+            {
+              "id": "CGC-LABEL_TYPOGRAPHY-authentic",
+              "variant": "authentic",
+              "src": "/guides/ref/CGC/cgc-label-authentic.png",
+              "alt": "CGC certification label with crisp typography",
+              "caption": "CGC labels should have clean, sharp text without pixilation.",
+              "sourceTitle": "CGC — Holder & Label",
+              "sourceUrl": "https://www.cgccards.com/card-grading/holder-label/",
+              "citeLabel": "Company Guide"
+            },
+            {
+              "id": "CGC-LABEL_TYPOGRAPHY-suspect",
+              "variant": "suspect",
+              "src": "/guides/ref/CGC/cgc-counterfeit-print-suspect.png",
+              "alt": "CGC official comparison of counterfeit vs authentic print on Jordan rookie",
+              "caption": "CGC’s counterfeit alert shows pixilated name plates and print flaws on fakes.",
+              "sourceTitle": "CGC — Counterfeit Alert (Jordan rookie)",
+              "sourceUrl": "https://www.cgccards.com/news/article/14799/counterfeit-alert-fleer-michael-jordan/",
+              "citeLabel": "Company Guide"
+            }
+          ]
+        },
+        {
+          "id": "PLASTIC_CLARITY",
+          "title": "Plastic clarity",
+          "description": "Clear plastic with no frosting, warping, or cracks.",
+          "referenceImages": [
+            {
+              "id": "CGC-PLASTIC_CLARITY-authentic",
+              "variant": "authentic",
+              "src": "/guides/ref/CGC/cgc-holder-clarity-authentic.png",
+              "alt": "Clear CGC holder showing card detail",
+              "caption": "CGC holders are ultrasonically welded and optically clear when authentic.",
+              "sourceTitle": "CGC — Holder & Label",
+              "sourceUrl": "https://www.cgccards.com/card-grading/holder-label/",
+              "citeLabel": "Company Guide"
+            }
+          ]
+        },
+        {
+          "id": "CARD_SLAB_FIT",
+          "title": "Card-to-slab fit",
+          "description": "Card fits snugly, not floating loosely.",
+          "referenceImages": [
+            {
+              "id": "CGC-CARD_SLAB_FIT-authentic",
+              "variant": "authentic",
+              "src": "/guides/ref/CGC/cgc-fit-authentic.png",
+              "alt": "CGC stackable holders with uniform fit",
+              "caption": "Cards should be snug with intact weld—no gaps suggesting reopening.",
+              "sourceTitle": "CGC — Holder & Label",
+              "sourceUrl": "https://www.cgccards.com/card-grading/holder-label/",
+              "citeLabel": "Company Guide"
+            }
+          ]
+        },
+        {
+          "id": "SERIAL_FORMAT",
+          "title": "Serial / cert format",
+          "description": "Cert number is clearly printed and legible.",
+          "referenceImages": [
+            {
+              "id": "CGC-SERIAL_FORMAT-authentic",
+              "variant": "authentic",
+              "src": "/guides/ref/CGC/cgc-cert-number-authentic.png",
+              "alt": "CGC unique certification number on label",
+              "caption": "Enter cert number or scan QR at cgccards.com/certlookup.",
+              "sourceTitle": "CGC — Holder & Label",
+              "sourceUrl": "https://www.cgccards.com/certlookup/",
+              "citeLabel": "Company Guide"
+            }
+          ]
+        },
+        {
+          "id": "SEAL_INTEGRITY",
+          "title": "Seal integrity",
+          "description": "Case weld/seal appears intact with no signs of opening.",
+          "referenceImages": [
+            {
+              "id": "CGC-SEAL_INTEGRITY-suspect",
+              "variant": "suspect",
+              "src": "/guides/ref/CGC/cgc-seal-compare-suspect.png",
+              "alt": "CGC graded Jordan rookie used in official authentication article",
+              "caption": "Compare holder, label, and on-file images—tampered welds or swapped cards fail cert alignment.",
+              "sourceTitle": "CGC — Counterfeit Alert (Jordan rookie)",
+              "sourceUrl": "https://www.cgccards.com/news/article/14799/counterfeit-alert-fleer-michael-jordan/",
+              "citeLabel": "Company Guide"
+            }
+          ]
+        }
+      ],
+      "certLinks": [
+        {
+          "house": "CGC",
+          "title": "CGC Cert Lookup",
+          "url": "https://www.cgccards.com/certlookup/",
+          "note": "Cert number or QR scan; view holder images from grading."
+        }
+      ],
+      "checkRefs": {
+        "LABEL_TYPOGRAPHY": [
+          {
+            "kind": "company",
+            "citeLabel": "Company Guide",
+            "title": "CGC Counterfeit Alert (print quality)",
+            "url": "https://www.cgccards.com/news/article/14799/counterfeit-alert-fleer-michael-jordan/",
+            "note": "Official example of typography and print pixilation on fakes."
+          }
+        ],
+        "PLASTIC_CLARITY": [
+          {
+            "kind": "company",
+            "citeLabel": "Company Guide",
+            "title": "CGC Cert Verification",
+            "url": "https://www.cgccards.com/certlookup/",
+            "note": "Confirms holder is genuine and has not been tampered with."
+          }
+        ],
+        "CARD_SLAB_FIT": [
+          {
+            "kind": "company",
+            "citeLabel": "Company Guide",
+            "title": "CGC holder security features",
+            "url": "https://www.cgccards.com/",
+            "note": "State-of-the-art holder optics and security features."
+          }
+        ],
+        "SERIAL_FORMAT": [
+          {
+            "kind": "company",
+            "citeLabel": "Company Guide",
+            "title": "CGC Cert Lookup",
+            "url": "https://www.cgccards.com/certlookup/",
+            "note": "Enter cert number or scan QR on label back."
+          }
+        ],
+        "SEAL_INTEGRITY": [
+          {
+            "kind": "company",
+            "citeLabel": "Company Guide",
+            "title": "CGC Cert Verification (tamper check)",
+            "url": "https://www.cgccards.com/certlookup/",
+            "note": "Database + holder images help detect swapped or reopened cases."
+          },
+          {
+            "kind": "social",
+            "citeLabel": "Social Evidence",
+            "title": "Poke Master Center — CGC holo & seal notes",
+            "url": "https://www.pokemastercenter.com/how-to-legit-check-pokemon-cards-and-graded-slabs/",
+            "note": "Community cross-grader seal and hologram checks."
+          }
+        ]
+      }
+    },
+    "Other": {
+      "checks": [
+        {
+          "id": "LABEL_TYPOGRAPHY",
+          "title": "Label typography",
+          "description": "Font quality, spacing, and professional print quality.",
+          "referenceImages": [
+            {
+              "id": "Other-LABEL_TYPOGRAPHY-authentic",
+              "variant": "authentic",
+              "src": "/guides/ref/Other/other-generic-label-authentic.png",
+              "alt": "Example of professional graded label typography",
+              "caption": "For non-PSA/BGS/CGC slabs, apply the same typography and print-quality scrutiny.",
+              "sourceTitle": "CGC — Holder reference (generic)",
+              "sourceUrl": "https://www.cgccards.com/card-grading/holder-label/",
+              "citeLabel": "Company Guide"
+            }
+          ]
+        },
+        {
+          "id": "PLASTIC_CLARITY",
+          "title": "Plastic clarity",
+          "description": "Clear plastic with no frosting, warping, or cracks.",
+          "referenceImages": [
+            {
+              "id": "Other-PLASTIC_CLARITY-authentic",
+              "variant": "authentic",
+              "src": "/guides/ref/Other/other-plastic-clarity-authentic.png",
+              "alt": "Clear graded holder plastic",
+              "caption": "No frosting, warping, or edge cracks along the sonic weld.",
+              "sourceTitle": "CGC — Holder reference",
+              "sourceUrl": "https://www.cgccards.com/card-grading/holder-label/",
+              "citeLabel": "Company Guide"
+            }
+          ]
+        },
+        {
+          "id": "CARD_SLAB_FIT",
+          "title": "Card-to-slab fit",
+          "description": "Card fits snugly, not floating loosely."
+        },
+        {
+          "id": "SERIAL_FORMAT",
+          "title": "Serial / cert format",
+          "description": "Cert number is clearly printed and legible."
+        },
+        {
+          "id": "SEAL_INTEGRITY",
+          "title": "Seal integrity",
+          "description": "Case weld/seal appears intact with no signs of opening.",
+          "referenceImages": [
+            {
+              "id": "Other-SEAL_INTEGRITY-suspect",
+              "variant": "suspect",
+              "src": "/guides/ref/Other/other-seal-suspect.png",
+              "alt": "Reverse of graded slab in CGC authentication article",
+              "caption": "Inspect weld and label back for reopen signs; verify cert + QR when present.",
+              "sourceTitle": "CGC — Counterfeit Alert",
+              "sourceUrl": "https://www.cgccards.com/news/article/14799/counterfeit-alert-fleer-michael-jordan/",
+              "citeLabel": "Company Guide"
+            }
+          ]
+        }
+      ],
+      "certLinks": [
+        {
+          "house": "Other",
+          "title": "Use the grader’s official cert tool",
+          "note": "Always look up the serial on the grading company’s website before relying on visual checks alone.",
+          "url": "https://www.psacard.com/cert"
+        }
+      ],
+      "checkRefs": {
+        "LABEL_TYPOGRAPHY": [
+          {
+            "kind": "social",
+            "citeLabel": "Social Evidence",
+            "title": "Poke Master Center — graded slab overview",
+            "url": "https://www.pokemastercenter.com/how-to-legit-check-pokemon-cards-and-graded-slabs/",
+            "note": "General label and cert checks for non-PSA slabs."
+          }
+        ],
+        "PLASTIC_CLARITY": [
+          {
+            "kind": "social",
+            "citeLabel": "Social Evidence",
+            "title": "Poke Master Center — case clarity",
+            "url": "https://www.pokemastercenter.com/how-to-legit-check-pokemon-cards-and-graded-slabs/",
+            "note": "Frosting, weld, and holder quality across brands."
+          }
+        ],
+        "SERIAL_FORMAT": [
+          {
+            "kind": "social",
+            "citeLabel": "Social Evidence",
+            "title": "r/pokemoncards — PSA cert lookup PSA megathread",
+            "url": "https://www.reddit.com/r/pokemoncards/comments/1bqj8wq/psa_certification_lookup_megathread/",
+            "note": "Community resource for cert verification workflow (apply same discipline to any grader)."
+          }
+        ],
+        "SEAL_INTEGRITY": [
+          {
+            "kind": "social",
+            "citeLabel": "Social Evidence",
+            "title": "Poke Master Center — seal integrity",
+            "url": "https://www.pokemastercenter.com/how-to-legit-check-pokemon-cards-and-graded-slabs/",
+            "note": "Weld and reopen signs for generic slabs."
+          }
+        ]
+      }
+    }
+  },
+  "houseHeroes": [
+    {
+      "house": "PSA",
+      "src": "/guides/ref/PSA/psa-hero-authentic.jpg",
+      "alt": "PSA graded slab overview for visual authentication",
+      "caption": "Use multiple label and case checks together—no single tell is enough.",
+      "sourceTitle": "WikiHow — Fake PSA Slabs",
+      "sourceUrl": "https://www.wikihow.com/Fake-Psa-Slabs",
+      "citeLabel": "Social Evidence"
+    },
+    {
+      "house": "BGS",
+      "src": "/guides/ref/BGS/bgs-hero-authentic.jpg",
+      "alt": "Beckett grader handling a slab during the BGS process",
+      "caption": "Official Beckett slabbing uses inner sleeves and ultrasonic welding.",
+      "sourceTitle": "Beckett — Walking Through the BGS Process",
+      "sourceUrl": "https://www.beckett.com/news/walking-bgs-process/",
+      "citeLabel": "Company Guide"
+    },
+    {
+      "house": "CGC",
+      "src": "/guides/ref/CGC/cgc-hero-holder.png",
+      "alt": "CGC Cards holder with certification label",
+      "caption": "CGC holders emphasize clear optics, weld integrity, and label security features.",
+      "sourceTitle": "CGC — Holder & Label",
+      "sourceUrl": "https://www.cgccards.com/card-grading/holder-label/",
+      "citeLabel": "Company Guide"
+    }
+  ],
+  "certVerifyImages": [
+    {
+      "id": "cert-match",
+      "variant": "authentic",
+      "src": "/guides/ref/shared/cert-securescan-match.jpg",
+      "alt": "PSA label held to light showing see-through text on authentic label",
+      "caption": "Authentic PSA labels allow faint see-through of reverse text under strong light (PSA buyer’s guide). Compare database scans when available.",
+      "sourceTitle": "Ball Card Genius — fake PSA slabs (PSA light-test reference)",
+      "sourceUrl": "https://ballcardgenius.com/blog/fake-psa-slabs-holders-exist-sadly/",
+      "citeLabel": "Social Evidence"
+    },
+    {
+      "id": "cert-mismatch",
+      "variant": "suspect",
+      "src": "/guides/ref/shared/cert-card-mismatch.jpg",
+      "alt": "Example PSA slab used in hobby guide on cert and typography checks",
+      "caption": "If the cert number is valid but the card image, centering, or print marks do not match PSA’s on-file scan, treat the slab as suspect.",
+      "sourceTitle": "PokéSats — fake PSA slab guide",
+      "sourceUrl": "https://pokesats.com/newsroom/how-to-spot-a-fake-psa-slab/",
+      "citeLabel": "Social Evidence"
+    }
+  ],
+  "sgcCertOnly": {
+    "house": "SGC",
+    "title": "SGC Cert Code Lookup",
+    "url": "https://www.gosgc.com/cert-code-lookup",
+    "note": "RawGraded does not run SGC-specific visual checks yet — verify the cert code (7 or 11 characters) and QR first."
+  },
+  "resources": [
+    {
+      "kind": "social",
+      "citeLabel": "Social Evidence",
+      "title": "r/psagrading",
+      "url": "https://www.reddit.com/r/psagrading/",
+      "note": "Community focused on PSA grading and slab authentication questions."
+    },
+    {
+      "kind": "company",
+      "citeLabel": "Company Guide",
+      "title": "PSA Authorized Dealers",
+      "url": "https://www.psacard.com/dealers",
+      "note": "PSA encourages buying verified items from authorized dealers when possible."
+    }
+  ]
+}

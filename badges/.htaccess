@@ -1,0 +1,15 @@
+# Allow image access
+<FilesMatch "\.(jpg|jpeg|png|gif|svg|webp)$">
+    Order Allow,Deny
+    Allow from all
+</FilesMatch>
+
+# Prevent directory browsing
+Options -Indexes
+
+# Set MIME types
+AddType image/jpeg .jpg .jpeg
+AddType image/png .png
+AddType image/gif .gif
+AddType image/svg+xml .svg
+AddType image/webp .webp

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 260" role="img" aria-label="BGS cert number format">
+  <rect width="640" height="260" fill="#f8f9fa"/>
+  <text x="320" y="32" text-anchor="middle" font-family="Inter,Segoe UI,sans-serif" font-size="16" font-weight="700" fill="#202124">BGS cert  10 digits, zero-padded</text>
+  <text x="320" y="120" text-anchor="middle" font-family="ui-monospace,monospace" font-size="32" font-weight="700" fill="#202124">0015876182</text>
+  <text x="320" y="180" text-anchor="middle" font-size="13" fill="#5f6368">Verify at beckett.com/grading/card-lookup</text>
+</svg>
