@@ -10,7 +10,7 @@
 [![Capacitor](https://img.shields.io/badge/Capacitor-8-119EFF?logo=capacitor&logoColor=white)](https://capacitorjs.com/)
 [![Author](https://img.shields.io/badge/GitHub-GatoGodMode-181717?logo=github)](https://github.com/GatoGodMode)
 
-[rawgraded.com](https://rawgraded.com) · **Redacted public showcase** — full source, no databases, credentials, or operator keys
+[rawgraded.com](https://rawgraded.com) · **Read-only source showcase** — architecture reference only; no build toolchain, databases, credentials, or deploy artifacts
 
 </div>
 
@@ -20,7 +20,7 @@
 
 Submitting a card to PSA/BGS/CGC costs real money with weeks of turnaround. RawGraded Studio lets collectors **pre-grade on their own machine** — guided capture, PSA-style centering, optional multi-stage video forensics, local or BYOK cloud AI, and deterministic grade math before paying submission fees.
 
-This repository is a **curated, redacted release** of the production monorepo: desktop Electron app, Capacitor mobile companion, RAW ENGINE marketing site, and optional hosted PHP vault API. **MySQL dumps, Stripe keys, Gemini keys, signing certs, and production config are not included.**
+This repository is a **curated, read-only release** of the production monorepo for review and diligence: React/Electron grading UI, optional hosted PHP vault API patterns, and RAW ENGINE marketing assets. **Build configs, `package.json`, env templates, Android/Capacitor shells, and installer tooling are not included** — use [rawgraded.com](https://rawgraded.com) for production software. MySQL dumps, Stripe keys, Gemini keys, signing certs, and production config are not shipped.
 
 **Created by:** [Joseph Edwards (@GatoGodMode)](https://github.com/GatoGodMode) · MIT licensed
 
@@ -32,7 +32,7 @@ This repository is a **curated, redacted release** of the production monorepo: d
 |---|---|
 | **Desktop Studio** | Electron + React grading workflow: crop, centering, forensics video, AI passes, certificates, portfolio |
 | **Mobile companion** | Capacitor Android capture app synced to desktop workflow |
-| **Local AI** | Ollama worker scripts + optional Gemini BYOK (`GEMINI_API_KEY` in `.env.local`) |
+| **Local AI** | Ollama integration + optional Gemini BYOK (operator-supplied keys in production) |
 | **Grade math** | Deterministic engine — evidence → computed grades, not LLM-only guesses |
 | **Hosted vault (optional)** | PHP API: auth, membership, archive, plugins, Stripe hooks — operator self-hosts MySQL |
 | **Landing / downloads** | RAW ENGINE marketing site, studio download pages, legal/privacy |
@@ -135,7 +135,7 @@ Security is layered: **local privacy by default**, **operator-supplied secrets**
 | Control | Implementation |
 |---|---|
 | **Data residency** | Card images and portfolio DB stay on-device; Ollama runs loopback-only |
-| **BYOK cloud AI** | Gemini key from `.env.local` or in-app settings — never bundled in Vite `define` |
+| **BYOK cloud AI** | Gemini key from in-app settings in production builds — never bundled in source |
 | **IPC boundary** | Electron preload exposes scoped APIs; main process owns filesystem and SQLite |
 | **Publish guard** | [`scripts/publish-preflight.cjs`](scripts/publish-preflight.cjs) blocks credentials, `.pfx`, DB dumps, and production hostnames before git push |
 
@@ -223,39 +223,21 @@ flowchart TB
 
 ---
 
-## Quick start — desktop dev
+## Showcase notice
 
-**Requirements:** Node.js 18+, Windows recommended for Electron desktop path
+This repo is **not a deployable distribution**. The following are intentionally omitted:
 
-```powershell
-git clone https://github.com/GatoGodMode/RawGraded.git
-cd RawGraded
-copy .env.example .env.local
-# Set GEMINI_API_KEY and VITE_GOOGLE_CLIENT_ID in .env.local (optional for local-only)
-.\Launch-RawGraded.ps1
-```
+- `package.json`, lockfiles, Vite/Electron/Capacitor build configs, env templates, launch scripts
+- Android project, mobile shell entrypoints, installer/signing assets, and build automation scripts
+- Production `config.php`, databases, signing certs, and operator keys
 
-Or manually:
-
-```bash
-npm install
-npm run dev:desktop
-```
-
-Open the Electron window when Vite is ready on `http://127.0.0.1:3000/app-desktop.html`.
-
-**Build electron shell only:** `npm run build:electron-ts`  
-**Vite web build:** `npm run build:vite-only`  
-**Full signed installer:** requires code-signing certs (not in repo) — `npm run build:desktop`
+Shipped builds and hosted vault run from **rawgraded.com** and private release pipelines — not from `git clone` + `npm install`.
 
 ---
 
-## Optional PHP API self-host
+## Optional PHP API (reference only)
 
-1. Copy `public/api/config.example.php` → `public/api/config.php`
-2. Fill in MySQL credentials, marketplace DB (if used), and `GOOGLE_CLIENT_ID`
-3. Run migrations via `public/api/sync_db.php` on your server
-4. Third-party API keys (PSA, PokemonPriceTracker, PokéWallet, Gemini, remove.bg, Stripe) are stored in the **settings table at runtime** via Admin — never hardcoded in source. If this repo was ever public with embedded keys, **rotate them at the vendor** before deploy.
+The [`public/api/`](public/api/) tree documents the hosted vault architecture (auth, certificates, credits, Stripe, plugins). **`config.example.php` is a structural reference** — this showcase is not packaged for self-host deploy. Operators running production use private release artifacts.
 
 ### Operator settings keys (hosted mode)
 
@@ -277,6 +259,7 @@ Configure via Admin → Settings or `sync_db.php`:
 
 This showcase excludes:
 
+- Build/deploy toolchain (`package.json`, lockfiles, Vite config, Electron/Capacitor configs, launch scripts, Android project, installer assets)
 - Production `config.php`, `.env*`, signing certs (`.pfx`), SQLite/MySQL dumps
 - Build artifacts (`dist/`, `release-build/`, `node_modules/`)
 - Dev/diag scripts (`debug_*.php`, `diag_*.php`, `test_*.php`, `verify_*.php`, `check_*.php`)
@@ -289,14 +272,14 @@ This showcase excludes:
 Run before every publish:
 
 ```bash
-npm run preflight
+node scripts/publish-preflight.cjs
 ```
 
 ---
 
 ## Related RAW ENGINE products
 
-Build scripts reference **Raw Investor** and **RawMarkets** sibling repos — those products build from separate codebases (`PriceChartingGradeRisk` locally). This repo ships RawGraded Studio source in full.
+**Raw Investor** and **RawMarkets** are separate products with their own release pipelines. This repo documents RawGraded Studio source patterns only.
 
 ---
 

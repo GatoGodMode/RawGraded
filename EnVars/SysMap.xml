@@ -1,20 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SysMap project="RawGraded" updated="2026-06-10">
   <Structure>
-    <File path="README.md" role="Showcase README: structure, data model, security, grading pipeline, redaction notice"/>
-    <File path="Launch-RawGraded.ps1" role="Dev launcher"/>
-    <File path="package.json" role="rawgraded npm package"/>
-    <Folder path="electron" role="Desktop shell IPC and main process"/>
+    <File path="README.md" role="Showcase README: structure, data model, security, grading pipeline, no-deploy notice"/>
+    <Folder path="electron" role="Desktop shell IPC and main process source"/>
     <Folder path="components" role="React UI"/>
     <Folder path="services" role="Grading AI gemini ollama math pricing"/>
-    <Folder path="public/api" role="Optional hosted PHP vault API">
-      <File path="public/api/config.example.php" role="Operator config template"/>
+    <Folder path="public/api" role="Optional hosted PHP vault API reference">
+      <File path="public/api/config.example.php" role="Config shape reference only"/>
       <File path="public/api/db.php" role="MySQL connection and openMarketplaceConnection"/>
     </Folder>
-    <Folder path="scripts" role="Build AI worker preflight">
-      <File path="scripts/publish-preflight.cjs" role="Secret scan before git push"/>
+    <Folder path="scripts" role="OpSec preflight only">
+      <File path="scripts/publish-preflight.cjs" role="Secret and deploy-artifact scan before git push"/>
+      <File path="scripts/scan-win-unpacked-secrets.cjs" role="Release bundle secret scan"/>
     </Folder>
-    <Folder path="mobile" role="Capacitor mobile app"/>
     <Folder path="landing" role="RAW ENGINE marketing assets"/>
     <Folder path="EnVars" role="Structural and variable maps only"/>
   </Structure>

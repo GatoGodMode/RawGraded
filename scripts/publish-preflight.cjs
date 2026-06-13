@@ -51,12 +51,32 @@ const forbiddenNamePatterns = [
   /-eval\.json$/i,
   /patent-whitepaper\.md$/i,
   /local-ai-model-roadmap\.md$/i,
+  /^package\.json$/i,
+  /^package-lock\.json$/i,
+  /^vite\.config\.(ts|js|mts|mjs)$/i,
+  /^vite-env\.d\.ts$/i,
+  /^capacitor\.config\.(ts|js)$/i,
+  /^electron-builder(\.msix)?\.yml$/i,
+  /^Launch-RawGraded\.(ps1|bat)$/i,
+  /^tsconfig\.json$/i,
+  /^app(-desktop|-mobile)?\.html$/i,
+  /^\.env\.example$/i,
+  /^\.env\.desktop\.example$/i,
 ];
 
 const forbiddenPathPrefixes = [
   'MapRG/',
   'training/',
+  'android/',
+  'build/',
+  'mobile/',
 ];
+
+const forbiddenExactPaths = new Set([
+  'electron/tsconfig.json',
+  'index.html',
+  'index.app.html',
+]);
 
 const forbiddenContentPatterns = [
   /PokeMarket/i,
@@ -100,6 +120,9 @@ function walk(dir) {
         break;
       }
     }
+    if (forbiddenExactPaths.has(rel)) {
+      violations.push({ rel, reason: 'forbidden deploy path' });
+    }
     if (entry.isDirectory()) {
       if (skipDirs.has(entry.name) || entry.name.startsWith('~!')) continue;
       walk(full);
@@ -109,8 +132,6 @@ function walk(dir) {
       if (pat.test(entry.name)) {
         if (
           entry.name === 'config.example.php' ||
-          entry.name === '.env.example' ||
-          entry.name === '.env.desktop.example' ||
           entry.name.endsWith('.example')
         ) {
           // allowed templates
@@ -131,9 +152,7 @@ function walk(dir) {
     if (
       rel.replace(/\\/g, '/').includes('scripts/publish-preflight.cjs') ||
       rel.includes('scripts/scan-win-unpacked-secrets.cjs') ||
-      rel.includes('config.example.php') ||
-      rel.endsWith('.env.example') ||
-      rel.endsWith('.env.desktop.example')
+      rel.includes('config.example.php')
     ) continue;
     if (content.length > 2_000_000) continue;
     for (const pat of forbiddenContentPatterns) {
