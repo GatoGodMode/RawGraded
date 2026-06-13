@@ -58,7 +58,14 @@ const TermsOfService: React.FC<TermsOfServiceProps> = ({ onBack }) => {
                     </section>
 
                     <section>
-                        <h2 className="text-2xl font-bold text-white mb-3">6. Governing Law</h2>
+                        <h2 className="text-2xl font-bold text-white mb-3">6. Third-Party Trademarks</h2>
+                        <p>
+                            RawGraded is not affiliated with or endorsed by Pokémon, Nintendo, GAMEFREAK, Creatures Inc., PSA, BGS, Beckett, CGC, TAG, eBay, TCGplayer, GemRate, Google, Stripe, or other third parties. Product and company names are used for identification only. AI grading output is not an official grade from any professional grading service.
+                        </p>
+                    </section>
+
+                    <section>
+                        <h2 className="text-2xl font-bold text-white mb-3">7. Governing Law</h2>
                         <p>
                             These Terms shall be governed and construed in accordance with the laws of the State of Delaware, United States, without regard to its conflict of law provisions. Our failure to enforce any right or provision of these Terms will not be considered a waiver of those rights.
                         </p>

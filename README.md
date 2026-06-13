@@ -157,6 +157,10 @@ Security is layered: **local privacy by default**, **operator-supplied secrets**
 
 Production MySQL dumps, live `config.php`, signing certs, hardcoded third-party API keys, or real training case JSON. Operators supply all hosted secrets at deploy time and should **rotate any keys previously exposed in git history**.
 
+### Third-party trademarks
+
+RawGraded is not affiliated with or endorsed by Pokémon, Nintendo, GAMEFREAK, Creatures Inc., PSA, BGS, Beckett, CGC, TAG, eBay, TCGplayer, GemRate, Google, Stripe, or other third parties. Names and logos are used for recognition only. Pre-grading estimates are **not** official grades from any grading company.
+
 ---
 
 ## Grading process
@@ -279,6 +283,7 @@ This showcase excludes:
 - Build/debug logs (`build_log*.txt`, `*.log`, `debug_*.log`)
 - Probe endpoints, schema dumps, and internal deploy notes (`probe.php`, `DEPLOY-FTP.txt`)
 - Hardcoded third-party API keys (PSA, PokéWallet, PokemonPriceTracker) — use settings table only
+- Legacy third-party badge CDN domain — removed; badge URLs use `/assets/badges/` on rawgraded.com only
 - Unauthenticated migration endpoints (`update_db_market.php`) and broken marketplace stub
 - Training eval JSON with local Windows paths (`*-eval.json`)
 

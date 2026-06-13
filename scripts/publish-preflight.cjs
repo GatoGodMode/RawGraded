@@ -53,7 +53,11 @@ const forbiddenNamePatterns = [
 
 const forbiddenContentPatterns = [
   /PokeMarket/i,
-  /[REDACTED]/i,
+  /grade\.[a-z0-9-]+\.com\/badges/i,
+  /foggksfx/i,
+  /hyrulecat/i,
+  /[A-Z]:\\(?:Users|SCRIPTS|PROJECTS)/i,
+  /[a-z0-9._-]+@gmail\.com/i,
   /-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----/,
   /AKIA[0-9A-Z]{16}/,
   /AIza[0-9A-Za-z\-_]{35}/,
@@ -113,9 +117,10 @@ function walk(dir) {
     }
     if (
       rel.replace(/\\/g, '/').includes('scripts/publish-preflight.cjs') ||
+      rel.includes('scripts/scan-win-unpacked-secrets.cjs') ||
       rel.includes('config.example.php') ||
       rel.endsWith('.env.example') ||
-      rel.endsWith('.env.desktop.example')
+      rel.endsWith('.env.desktop.example') ||
     ) continue;
     if (content.length > 2_000_000) continue;
     for (const pat of forbiddenContentPatterns) {

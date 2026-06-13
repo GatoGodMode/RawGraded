@@ -56,7 +56,10 @@ const forbiddenContentPatterns = [
   /xox[baprs]-[A-Za-z0-9-]{10,}/,
   /AIza[0-9A-Za-z\-_]{35}/,
   /sk_live_[0-9A-Za-z]{10,}/,
-  /sk_(?:test|live)_[0-9A-Za-z]{16,}/,
+  /pk_live_[0-9A-Za-z]{10,}/,
+  /pokeprice_(?:free_)?[0-9a-f]{20,}/i,
+  /grade\.[a-z0-9-]+\.com\/badges/i,
+  /[REDACTED]/i,
   /(?:token|secret|password)\s*[:=]\s*['"][^'"]{8,}['"]/i,
 ];
 
