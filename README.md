@@ -25,6 +25,22 @@ This repository is a **deliberately scoped public source publication**: applicat
 
 ---
 
+## For three types of readers
+
+| Reader | What this means for you | Start here |
+|---|---|---|
+| **Collectors** | Pre-grade before submission fees; permanent vault record you control; certificates and portfolio exports you can trust | [Product capabilities](#product-capabilities) · [Platform showcase](#platform-showcase) · [rawgraded.com](https://rawgraded.com) |
+| **Underwriters & partners** | Structured cost basis, provenance, receipt evidence, and exportable insurance ledger — documentation for coverage review, not a policy | [Vault records](#vault-records-provenance-capture-and-indemnity-documentation) · [PII/SPII controls](#pii-spii-and-data-leak-controls) · [Abuse modeling](#abuse-modeling-and-trust-limits) |
+| **Engineers & security reviewers** | Public assurance source: auth boundaries, SPII strip on verify, release preflight, deterministic grading math — not a deployable secret store | [Security posture](#security-posture-at-a-glance) · [Threat model](#threat-model-and-trust-boundaries) · [Release integrity](#release-integrity) · [Abuse modeling](#abuse-modeling-and-trust-limits) |
+
+- **Collectors:** Know whether a card is worth grading before PSA/BGS/CGC fees. Optional hosted vault for acquisition history and certificates — local-first grading works without an account.
+- **Underwriters & partners:** Insurance ledger PDF/print over full collections (cost basis, provenance, forensic grades). SPII stored for owner export; not published on public cert verify ([`verify.php`](public/api/verify.php)).
+- **Engineers & security reviewers:** Evaluate session auth, tenancy, server-side SPII strip, and publication boundary (`403` stubs). Review grading pipeline and vault API patterns in source — binaries and operator config are out of band.
+
+> Pick your lane above; everything below is organized for depth, not linear reading.
+
+---
+
 ## Security posture at a glance
 
 | Principle | Implementation |
@@ -39,6 +55,40 @@ This repository is a **deliberately scoped public source publication**: applicat
 ---
 
 ## Threat model and trust boundaries
+
+Production-grade trust boundaries across device, hosted vault, and isolated marketplace data — designed for reviewers who need both architecture and SPII flow in one glance.
+
+### SPII flow at a glance
+
+```mermaid
+flowchart LR
+  subgraph device [User device]
+    Desktop[Electron and local SQLite]
+  end
+  subgraph vault [Hosted vault]
+    API[PHP session API]
+    MySQL[(rawgraded MySQL)]
+  end
+  subgraph market [Marketplace DB]
+    MktDB[(marketplace MySQL)]
+  end
+  Desktop -->|"SPII allowed owner session"| API
+  API --> MySQL
+  API -->|"isolated credentials"| MktDB
+  API -->|"public verify SPII stripped"| PublicQR[QR cert lookup]
+```
+
+- **SPII allowed** — authenticated owner reads/writes acquisition, tracking, notes, receipt images via session-scoped APIs ([`collection.php`](public/api/collection.php)).
+- **SPII stripped** — public cert verify by ID returns grades and identity only; acquisition fields unset in [`verify.php`](public/api/verify.php).
+- **Isolated** — marketplace plugin uses separate DB connection ([`openMarketplaceConnection()`](public/api/db.php)); no cross-DB credential reuse in source.
+
+```
+[Device] --SPII allowed--> [Hosted vault] --SPII stripped--> [Public verify]
+                              |
+                         [Marketplace DB] (isolated)
+```
+
+### Detailed adversary model
 
 ```mermaid
 flowchart TB
@@ -75,6 +125,18 @@ flowchart TB
 
 - This tree is not a bootstrappable deployment package, migration kit, or secret store.
 - Reviewers should treat absent release tooling as an intentional publication control, not an oversight.
+
+### Abuse modeling and trust limits
+
+Adversarial scenarios are modeled explicitly — the platform combines forensic capture, similarity signals, and server-side SPII boundaries so partners can **audit** records without mistaking user-entered fields for third-party attestation.
+
+| Threat scenario | Engineering response | Reviewer takeaway |
+|---|---|---|
+| **Fabricated provenance** | Structured acquisition schema + optional receipt OCR; `name_history` audit trail | Ledger documents owner assertions — suitable for coverage **review**, not notarization |
+| **Manipulated or resubmitted imagery** | Per-scan defect evidence; `front_hash`/`back_hash` similar-scan detection ([`save.php`](public/api/save.php), [`db.php`](public/api/db.php)); slab CV authenticity scoring ([`plugin_slab_checker.php`](public/api/plugin_slab_checker.php)) | Forensic signals support diligence; pre-grades are not PSA/CGC certification |
+| **Misleading export to third parties** | Owner-initiated PDF/print; SPII strip on public verify; certificate legal attribution ([`Certificate.tsx`](components/Certificate.tsx)) | Exports are **evidence packets** — authenticity of claims remains with the asset owner and reviewing party |
+
+RawGraded optimizes for **auditability and decision quality** — pre-submission grading math, immutable-style cert references, and portfolio-grade exports ([Platform showcase](#platform-showcase)) — while keeping trust limits explicit for underwriters and security reviewers. See also [Vault records](#vault-records-provenance-capture-and-indemnity-documentation).
 
 ---
 
@@ -178,6 +240,12 @@ node scripts/publish-preflight.cjs
 
 The gate rejects credentials, private keys, environment files, database dumps, and other artifacts that violate the publication boundary defined for this repository. Treat a failing preflight as a **merge blocker**, not a warning.
 
+### Schema and migration stance
+
+**Operator-controlled schema evolution:** DDL and migrations run through private release tooling, not this public assurance tree. [`public/api/sync_db.php`](public/api/sync_db.php) and [`public/api/config.example.php`](public/api/config.example.php) return `403` by design — the same publication boundary enforced by [`publish-preflight.cjs`](scripts/publish-preflight.cjs).
+
+**Reference endpoints, current schema:** PHP in this repo documents production logic for security and architecture review; it assumes a deployed schema and is **not** a bootstrap or migration surface. This separation keeps the public repo clone-safe while production moves at operator cadence.
+
 ---
 
 ## Product capabilities
@@ -194,7 +262,9 @@ The gate rejects credentials, private keys, environment files, database dumps, a
 
 ## Vault records: provenance, capture, and indemnity documentation
 
-The **hosted vault web application** ([`App.tsx`](App.tsx) grading flow + [`components/MyCollection.tsx`](components/MyCollection.tsx) collection UI) maintains structured asset lifecycle records: cost basis, source lineage, physical evidence, and exportable statements for collectors, resale counterparties, and third-party coverage review. This is distinct from the Electron local portfolio. RawGraded is **not** an insurer or grading authority — ledger output is documentation for underwriter review, not a policy.
+The **hosted vault web application** ([`App.tsx`](App.tsx) grading flow + [`components/MyCollection.tsx`](components/MyCollection.tsx) collection UI) maintains structured asset lifecycle records: cost basis, source lineage, physical evidence, and exportable statements for collectors, resale counterparties, and third-party coverage review. This is distinct from the Electron local portfolio.
+
+RawGraded is **not** an insurer or grading authority — ledger output is documentation for underwriter review, not a policy.
 
 ```mermaid
 flowchart LR
@@ -320,6 +390,8 @@ flowchart TB
 **Reviewer note:** SPII is stored for owner documentation and export; it is not published through public verification endpoints. Insurance ledger PDFs are user-generated artifacts — treat shared exports like any exported financial document.
 
 ### Vault records — security enforcement
+
+Enforcement summary for acquisition, provenance, and export paths:
 
 | Control | Where |
 |---|---|

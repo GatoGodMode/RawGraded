@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SysMap project="RawGraded" updated="2026-06-10">
   <Structure>
-    <File path="README.md" role="Public assurance README: threat model, controls, vault records, architecture"/>
+    <File path="README.md" role="Public assurance README: three-reader routing, SPII flow diagram, abuse modeling, threat model, vault records, showcase"/>
     <Folder path="electron" role="Desktop shell IPC and main process source"/>
     <Folder path="components" role="React UI">
       <File path="components/EnvelopeScanPlugin.tsx" role="Envelope/receipt OCR plugin — opt-in ledger retention"/>
