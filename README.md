@@ -351,8 +351,26 @@ flowchart TB
 
 Production UI surfaces for reviewers — scale, data governance, and engineering depth. Screenshots are from live vault data with SPII redacted where shown.
 
-<details>
-<summary><strong>At scale</strong> — portfolio-grade PDF export over large collections</summary>
+<p align="center">
+  <img src="public/showcase/ledger-pdf-progress.png" width="200" alt="PDF export progress">
+  &nbsp;
+  <img src="public/showcase/vault-privacy-mode.png" width="200" alt="Vault privacy mode">
+  &nbsp;
+  <img src="public/showcase/3d-card-rotate.gif" width="200" alt="3D holo viewer">
+  &nbsp;
+  <img src="public/showcase/certificate-ai-reasoning.png" width="200" alt="AI certificate">
+  &nbsp;
+  <img src="public/showcase/slab-authenticity.png" width="200" alt="Slab authenticity">
+  &nbsp;
+  <img src="public/showcase/ledger-dossier-redacted.png" width="200" alt="Insurance dossier">
+  &nbsp;
+  <img src="public/showcase/acquisition-receipt.png" width="200" alt="Acquisition receipt">
+</p>
+
+<p align="center"><strong>▼ Expand any section below for full-resolution gallery + engineering notes</strong></p>
+
+<details open>
+<summary><picture><img src="https://img.shields.io/badge/%E2%96%BC%20EXPAND-At%20scale%20%C2%B7%20PDF%20export%20over%20296%20assets-1f6feb?style=for-the-badge" alt="Expand: At scale"></picture></summary>
 
 <br>
 
@@ -365,7 +383,7 @@ Production UI surfaces for reviewers — scale, data governance, and engineering
 </details>
 
 <details>
-<summary><strong>Trust by design</strong> — SPII boundaries in the product surface</summary>
+<summary><picture><img src="https://img.shields.io/badge/%E2%96%BC%20EXPAND-Trust%20by%20design%20%C2%B7%20SPII%20boundaries%20%26%20privacy%20mode-8957e5?style=for-the-badge" alt="Expand: Trust by design"></picture></summary>
 
 <br>
 
@@ -380,7 +398,7 @@ Production UI surfaces for reviewers — scale, data governance, and engineering
 </details>
 
 <details>
-<summary><strong>Engineering surface</strong> — audit trail, anti-fraud, 3D viewer</summary>
+<summary><picture><img src="https://img.shields.io/badge/%E2%96%BC%20EXPAND-Engineering%20surface%20%C2%B7%20certs%2C%20slab%20auth%2C%203D%20viewer-000000?style=for-the-badge" alt="Expand: Engineering surface"></picture></summary>
 
 <br>
 
@@ -397,7 +415,7 @@ Production UI surfaces for reviewers — scale, data governance, and engineering
 </details>
 
 <details>
-<summary><strong>Acquisition record</strong> — certificate of acquisition export</summary>
+<summary><picture><img src="https://img.shields.io/badge/%E2%96%BC%20EXPAND-Acquisition%20record%20%C2%B7%20certificate%20of%20acquisition-2ea44f?style=for-the-badge" alt="Expand: Acquisition record"></picture></summary>
 
 <br>
 
