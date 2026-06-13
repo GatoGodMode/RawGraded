@@ -342,20 +342,18 @@ try {
 
     // 3. WEBHOOK: Fulfillment
     else if ($action === 'webhook') {
+        require_once __DIR__ . '/stripe_webhook_util.php';
         $secretKey = getStripeSecretKey($conn);
         $payload = file_get_contents('php://input');
         $sig_header = $_SERVER['HTTP_STRIPE_SIGNATURE'] ?? '';
-        
-        // We fetching webhook secret from settings
+
         $stmt = $conn->prepare("SELECT `value` FROM settings WHERE `key` = 'stripe_webhook_secret'");
         $stmt->execute();
         $resW = $stmt->get_result()->fetch_assoc();
         $endpoint_secret = $resW['value'] ?? '';
 
-        // Verification logic (Simplified but secure)
-        if (!$sig_header || !$endpoint_secret) {
-             // In a real production environment, strict validation is required.
-             // We will log this and potentially allow testing if in a specific mode.
+        if (!$endpoint_secret || !verifyStripeWebhookSignature($payload, $sig_header, $endpoint_secret)) {
+            sendResponse(['error' => 'Invalid webhook signature'], 400);
         }
 
         $event = json_decode($payload, true);

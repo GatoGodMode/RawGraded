@@ -54,10 +54,13 @@ function ensureSlabsTable($conn) {
     try { $conn->query("ALTER TABLE `psa_slabs` ADD COLUMN `transfer_status` VARCHAR(50) DEFAULT NULL"); } catch (Exception $e) {}
 }
 
-// Fetch from PSA API (Hardcoded User Key)
-function fetchPsaCert($serial) {
-    $apiKey = '[REDACTED]';
-    
+// Fetch from PSA Public API (operator key in settings table)
+function fetchPsaCert($conn, $serial) {
+    require_once __DIR__ . '/settings_util.php';
+    $apiKey = readSetting($conn, 'psa_public_api_key');
+    if ($apiKey === '') {
+        return null;
+    }
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, "https://api.psacard.com/publicapi/cert/GetByCertNumber/" . urlencode($serial));
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -162,7 +165,7 @@ if ($action === 'lookup') {
     $frontImg = null;
 
     if ($grader === 'PSA') {
-        $psaRaw = fetchPsaCert($serial);
+        $psaRaw = fetchPsaCert($conn, $serial);
         if (!$psaRaw || empty($psaRaw['PSACert'])) {
             sendResponse(['error' => 'Could not fetch data for this serial from PSA API.'], 404);
         }
@@ -263,7 +266,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if ($grader === 'PSA') {
             // Native PSA lookup
-            $psaRaw = fetchPsaCert($serial);
+            $psaRaw = fetchPsaCert($conn, $serial);
             if (!$psaRaw || empty($psaRaw['PSACert'])) {
                 sendResponse(['error' => 'Could not fetch data for this serial from PSA API.'], 404);
             }

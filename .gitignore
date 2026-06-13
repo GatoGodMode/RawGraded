@@ -37,6 +37,7 @@ public/api/config.php
 *.sqlite
 *.sqlite3
 training/datasets/rawgraded-case-*.json
+training/datasets/*-eval.json
 !training/datasets/*.example.*
 *.log
 sync_error.log

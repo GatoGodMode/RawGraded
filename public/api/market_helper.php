@@ -2,49 +2,58 @@
 // market_helper.php
 // Extracted market data fetching logic for use across API endpoints
 
+require_once __DIR__ . '/settings_util.php';
+
 function fetchMarketData($conn, $cert_id, $card_name, $card_set, $overall_grade = 0) {
-    // 1. Read API key — fallback to hardcoded free key
-    $api_key = '[REDACTED]';
-    try {
-        $settingsRes = $conn->query("SELECT setting_value FROM settings WHERE setting_key = 'POKEPRICE_API_KEY'");
-        if ($settingsRes && ($kRow = $settingsRes->fetch_assoc()) && !empty($kRow['setting_value'])) {
-            $api_key = $kRow['setting_value'];
-        }
-    } catch (\Throwable $e) { /* use default */ }
+    $api_key = readSetting($conn, 'POKEPRICE_API_KEY');
+    $pokewallet_key = readSetting($conn, 'POKEWALLET_API_KEY');
 
     $search_q = urlencode(trim($card_name . ' ' . $card_set));
-    $pokewallet_key = '[REDACTED]'; // Provided by user
-
     $mh = curl_multi_init();
+    $ch1 = null;
+    $ch2 = null;
 
-    // 1. PokemonPriceTracker Request
-    $ch1 = curl_init();
-    curl_setopt_array($ch1, [
-        CURLOPT_URL            => "https://www.pokemonpricetracker.com/api/v2/cards?search={$search_q}&includeEbay=true&limit=1",
-        CURLOPT_RETURNTRANSFER => true,
-        CURLOPT_TIMEOUT        => 15,
-        CURLOPT_HTTPHEADER     => [
-            "Authorization: Bearer {$api_key}",
-            "Accept: application/json"
-        ]
-    ]);
-    curl_multi_add_handle($mh, $ch1);
+    if ($api_key !== '') {
+        $ch1 = curl_init();
+        curl_setopt_array($ch1, [
+            CURLOPT_URL            => "https://www.pokemonpricetracker.com/api/v2/cards?search={$search_q}&includeEbay=true&limit=1",
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_TIMEOUT        => 15,
+            CURLOPT_HTTPHEADER     => [
+                "Authorization: Bearer {$api_key}",
+                "Accept: application/json"
+            ]
+        ]);
+        curl_multi_add_handle($mh, $ch1);
+    }
 
-    // 2. PokéWallet Request
-    $ch2 = curl_init();
-    curl_setopt_array($ch2, [
-        CURLOPT_URL            => "https://api.pokewallet.io/search?q={$search_q}",
-        CURLOPT_RETURNTRANSFER => true,
-        CURLOPT_TIMEOUT        => 15,
-        CURLOPT_SSL_VERIFYPEER => false,
-        CURLOPT_HTTPHEADER     => [
-            "X-API-Key: {$pokewallet_key}",
-            "Accept: application/json"
-        ]
-    ]);
-    curl_multi_add_handle($mh, $ch2);
+    if ($pokewallet_key !== '') {
+        $ch2 = curl_init();
+        curl_setopt_array($ch2, [
+            CURLOPT_URL            => "https://api.pokewallet.io/search?q={$search_q}",
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_TIMEOUT        => 15,
+            CURLOPT_SSL_VERIFYPEER => true,
+            CURLOPT_HTTPHEADER     => [
+                "X-API-Key: {$pokewallet_key}",
+                "Accept: application/json"
+            ]
+        ]);
+        curl_multi_add_handle($mh, $ch2);
+    }
 
-    // Execute multiple cURL handles simultaneously
+    if ($ch1 === null && $ch2 === null) {
+        curl_multi_close($mh);
+        return json_encode([
+            'prices'       => ['low' => null, 'mid' => null, 'high' => null, 'market' => null],
+            'gradedPrices' => ['psa10' => null, 'psa9' => null, 'bgs10' => null, 'cgc10' => null],
+            'pokewallet'   => ['tcgplayer' => null, 'cardmarket' => null],
+            'last_updated' => date('c'),
+            'no_data'      => true,
+            'skipped'      => 'market_api_keys_not_configured',
+        ]);
+    }
+
     do {
         $status = curl_multi_exec($mh, $active);
         if ($active) {
@@ -52,14 +61,18 @@ function fetchMarketData($conn, $cert_id, $card_name, $card_set, $overall_grade 
         }
     } while ($active && $status == CURLM_OK);
 
-    $response1  = curl_multi_getcontent($ch1);
-    $http_code1 = curl_getinfo($ch1, CURLINFO_HTTP_CODE);
-    
-    $response2  = curl_multi_getcontent($ch2);
-    $http_code2 = curl_getinfo($ch2, CURLINFO_HTTP_CODE);
+    $response1  = $ch1 ? curl_multi_getcontent($ch1) : null;
+    $http_code1 = $ch1 ? curl_getinfo($ch1, CURLINFO_HTTP_CODE) : 0;
 
-    curl_multi_remove_handle($mh, $ch1);
-    curl_multi_remove_handle($mh, $ch2);
+    $response2  = $ch2 ? curl_multi_getcontent($ch2) : null;
+    $http_code2 = $ch2 ? curl_getinfo($ch2, CURLINFO_HTTP_CODE) : 0;
+
+    if ($ch1) {
+        curl_multi_remove_handle($mh, $ch1);
+    }
+    if ($ch2) {
+        curl_multi_remove_handle($mh, $ch2);
+    }
     curl_multi_close($mh);
 
     $market_data = [

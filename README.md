@@ -145,16 +145,17 @@ Security is layered: **local privacy by default**, **operator-supplied secrets**
 |---|---|
 | **Config isolation** | [`config.example.php`](public/api/config.example.php) only in repo; real `config.php` gitignored |
 | **Password storage** | `password_hash()` / `password_verify()` — bcrypt for users and admins ([`auth.php`](public/api/auth.php)) |
-| **Session auth** | PHP sessions + `requireAuth()` / `requireAdmin()` on every mutating endpoint ([`db.php`](public/api/db.php)) |
+| **Session auth** | PHP sessions + `requireAuth()` / `requireAdmin()` on mutating endpoints and secret reads ([`db.php`](public/api/db.php), [`settings.php`](public/api/settings.php)) |
+| **Third-party keys** | Loaded from settings table only ([`settings_util.php`](public/api/settings_util.php)) — no hardcoded fallbacks in plugin or market code |
 | **TOTP 2FA** | Optional admin/user TOTP with HMAC-signed HttpOnly cookies, remember tokens in DB, 30-day re-prompt ([`totp_helper.php`](public/api/totp_helper.php)) |
 | **CORS allowlist** | Origin restricted to rawgraded.com and localhost dev ports ([`db.php`](public/api/db.php)) |
 | **Marketplace isolation** | Second DB connection via `openMarketplaceConnection()` — no inline credentials in plugin code |
 | **Ownership checks** | Certificate mutations verify `user_id` match or admin role before list/merge/archive |
-| **Stripe webhooks** | Signature verified against `stripe_webhook_secret` from settings table |
+| **Stripe webhooks** | HMAC signature verified via [`stripe_webhook_util.php`](public/api/stripe_webhook_util.php) before fulfillment |
 
 ### What this showcase does **not** ship
 
-Production MySQL dumps, live `config.php`, signing certs, Stripe/Gemini operator keys, or real training case JSON. Operators supply all hosted secrets at deploy time.
+Production MySQL dumps, live `config.php`, signing certs, hardcoded third-party API keys, or real training case JSON. Operators supply all hosted secrets at deploy time and should **rotate any keys previously exposed in git history**.
 
 ---
 
@@ -250,7 +251,21 @@ Open the Electron window when Vite is ready on `http://127.0.0.1:3000/app-deskto
 1. Copy `public/api/config.example.php` → `public/api/config.php`
 2. Fill in MySQL credentials, marketplace DB (if used), and `GOOGLE_CLIENT_ID`
 3. Run migrations via `public/api/sync_db.php` on your server
-4. Stripe/Gemini keys are stored in the **settings table at runtime** — never committed
+4. Third-party API keys (PSA, PokemonPriceTracker, PokéWallet, Gemini, remove.bg, Stripe) are stored in the **settings table at runtime** via Admin — never hardcoded in source. If this repo was ever public with embedded keys, **rotate them at the vendor** before deploy.
+
+### Operator settings keys (hosted mode)
+
+Configure via Admin → Settings or `sync_db.php`:
+
+| Setting key | Purpose |
+|---|---|
+| `gemini_api_key` | Cloud AI (requires authenticated session to fetch) |
+| `psa_public_api_key` | PSA cert lookup (vault / slab checker) |
+| `POKEPRICE_API_KEY` | PokemonPriceTracker market data |
+| `POKEWALLET_API_KEY` | PokéWallet market data |
+| `cardhedger_api_key` | CardHedger cert lookup |
+| `REMOVEBG_API_KEY` | Background removal (admin-only fetch) |
+| `stripe_*` | Stripe checkout + webhook secret |
 
 ---
 
@@ -263,7 +278,9 @@ This showcase excludes:
 - Dev/diag scripts (`debug_*.php`, `diag_*.php`, `test_*.php`, `verify_*.php`, `check_*.php`)
 - Build/debug logs (`build_log*.txt`, `*.log`, `debug_*.log`)
 - Probe endpoints, schema dumps, and internal deploy notes (`probe.php`, `DEPLOY-FTP.txt`)
-- Backup snapshots (`*_backup_*`, `App_backup_*.tsx`)
+- Hardcoded third-party API keys (PSA, PokéWallet, PokemonPriceTracker) — use settings table only
+- Unauthenticated migration endpoints (`update_db_market.php`) and broken marketplace stub
+- Training eval JSON with local Windows paths (`*-eval.json`)
 
 Run before every publish:
 

@@ -125,8 +125,12 @@ function fetchCardHedgerCert($conn, $serial, $grader = 'PSA') {
 // ─────────────────────────────────────────────────────────
 // PSA API helper (fallback for PSA when CardHedger has no key)
 // ─────────────────────────────────────────────────────────
-function fetchPsaCertForCheck($serial) {
-    $apiKey = '[REDACTED]';
+function fetchPsaCertForCheck($conn, $serial) {
+    require_once __DIR__ . '/settings_util.php';
+    $apiKey = readSetting($conn, 'psa_public_api_key');
+    if ($apiKey === '') {
+        return null;
+    }
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, "https://api.psacard.com/publicapi/cert/GetByCertNumber/" . urlencode($serial));
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -150,7 +154,7 @@ function lookupCert($conn, $serial, $grader = 'PSA') {
 
     // PSA fallback via PSA direct API
     if (strtoupper($grader) === 'PSA') {
-        $psaData = fetchPsaCertForCheck($serial);
+        $psaData = fetchPsaCertForCheck($conn, $serial);
         if ($psaData && !empty($psaData['PSACert'])) {
             $cert = $psaData['PSACert'];
             $gd   = $cert['GradeDescription'] ?? null;

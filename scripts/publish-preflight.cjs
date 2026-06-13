@@ -47,6 +47,8 @@ const forbiddenNamePatterns = [
   /setup-pending.*\.json$/i,
   /matches.*\.txt$/i,
   /rawgraded-case-[A-F0-9]+\.json$/i,
+  /rawgraded-case-.*\.json$/i,
+  /-eval\.json$/i,
 ];
 
 const forbiddenContentPatterns = [
@@ -57,6 +59,10 @@ const forbiddenContentPatterns = [
   /AIza[0-9A-Za-z\-_]{35}/,
   /ghp_[A-Za-z0-9]{36}/,
   /sk_live_[0-9A-Za-z]{10,}/,
+  /pk_live_[0-9A-Za-z]{10,}/,
+  /pokeprice_(?:free_)?[0-9a-f]{20,}/i,
+  /Users_[a-zA-Z0-9]+_AppData/i,
+  /Authorization:\s*bearer\s+[A-Za-z0-9_\-]{80,}/i,
   /define\s*\(\s*['"]DB_PASS['"]\s*,\s*['"][^'"]{3,}['"]\s*\)/,
 ];
 

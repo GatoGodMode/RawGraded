@@ -1,6 +1,8 @@
 <?php
 require_once('db.php');
 
+requireAuth();
+
 $input = json_decode(file_get_contents('php://input'), true);
 
 if (!$input) {

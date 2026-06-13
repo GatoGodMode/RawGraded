@@ -145,8 +145,6 @@ try {
     $backCropped = $input['backCropped'] ?? '';
     $frontThumb = $input['front_thumb'] ?? null;
     $backThumb = $input['back_thumb'] ?? null;
-    // Debug: confirm whether images are present in payload (for forensics troubleshooting)
-    error_log(sprintf('[save.php] cert %s front_len=%d back_len=%d defects_len=%d', $id, strlen((string)$frontCropped), strlen((string)$backCropped), strlen((string)$defects)));
     $userTwitter = $input['userTwitter'] ?? '';
     $userNotes = $input['user_notes'] ?? '';
     $estValue = $metadata['estimated_value'] ?? 0;
