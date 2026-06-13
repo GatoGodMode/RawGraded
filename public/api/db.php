@@ -91,7 +91,7 @@ $config_path = dirname(__FILE__) . '/config.php';
 
 if (!file_exists($config_path)) {
     header('Content-Type: application/json');
-    echo json_encode(['error' => 'Missing public/api/config.php — operator credentials are not shipped in this showcase repository.']);
+    echo json_encode(['error' => 'Service configuration unavailable — this repository is a public reference build.']);
     exit;
 }
 

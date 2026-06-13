@@ -17,7 +17,7 @@ if ($action === 'get_privacy_mode') {
         $result = $stmt->get_result()->fetch_assoc();
         sendResponse(['privacy_mode' => $result['privacy_mode'] ?? 'public']);
     } catch (Exception $e) {
-        // Column may be absent in showcase / unmigrated environments — default to public
+        // Column may be absent in unmigrated environments — default to public
         sendResponse(['privacy_mode' => 'public', 'needs_sync' => true]);
     }
 
@@ -47,7 +47,7 @@ if ($action === 'get_privacy_mode') {
             sendResponse(['error' => $stmt->error], 500);
         }
     } catch (Exception $e) {
-        sendResponse(['error' => 'Privacy columns not available in showcase build.', 'details' => $e->getMessage()], 500);
+        sendResponse(['error' => 'Privacy controls unavailable in this environment.', 'details' => $e->getMessage()], 500);
     }
 
 } elseif ($action === 'toggle_hide') {

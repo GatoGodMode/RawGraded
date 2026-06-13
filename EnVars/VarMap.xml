@@ -8,4 +8,17 @@
   <Var name="DB_NAME" value="" usedIn="public/api/db.php" purpose="Primary grader database — production config.php only"/>
   <Var name="MARKETPLACE_DB_NAME" value="" usedIn="public/api/db.php" purpose="Optional marketplace plugin DB — production config.php only"/>
   <Var name="GITHUB_REPO" value="https://github.com/GatoGodMode/RawGraded" usedIn="README.md" purpose="Public repository"/>
+  <Var name="acq_price" value="" classification="owner-only-SPII" usedIn="public/api/collection.php,public/api/save.php" purpose="Purchase price — stripped from verify.php for non-owners"/>
+  <Var name="acq_tax" value="" classification="owner-only-SPII" usedIn="public/api/collection.php,public/api/save.php" purpose="Tax paid — stripped from verify.php for non-owners"/>
+  <Var name="acq_shipping" value="" classification="owner-only-SPII" usedIn="public/api/collection.php,public/api/save.php" purpose="Shipping cost — stripped from verify.php for non-owners"/>
+  <Var name="acq_date" value="" classification="owner-only-SPII" usedIn="public/api/collection.php,public/api/save.php" purpose="Acquisition date"/>
+  <Var name="acq_source" value="" classification="owner-only-SPII" usedIn="public/api/collection.php,public/api/save.php" purpose="Vendor or marketplace source"/>
+  <Var name="acq_city" value="" classification="owner-only-SPII" usedIn="public/api/collection.php,public/api/save.php" purpose="Source city from provenance or envelope OCR"/>
+  <Var name="acq_state" value="" classification="owner-only-SPII" usedIn="public/api/collection.php,public/api/save.php" purpose="Source state from provenance or envelope OCR"/>
+  <Var name="tracking_number" value="" classification="owner-only-PII" usedIn="public/api/collection.php,public/api/save.php" purpose="Shipment tracking — stripped from verify.php for non-owners"/>
+  <Var name="order_id" value="" classification="owner-only-PII" usedIn="public/api/collection.php,public/api/save.php" purpose="Order or invoice ID — stripped from verify.php for non-owners"/>
+  <Var name="user_notes" value="" classification="owner-only-PII" usedIn="public/api/collection.php,public/api/save.php" purpose="Vault notes — stripped from verify.php for non-owners"/>
+  <Var name="envelope_receipt_img" value="" classification="owner-only-PII" usedIn="public/api/collection.php,components/EnvelopeScanPlugin.tsx" purpose="Opt-in receipt image — stripped from verify.php for non-owners"/>
+  <Var name="parent_id" value="" classification="owner-only-SPII" usedIn="public/api/collection.php,public/api/plugin_get_chain.php" purpose="Provenance lineage link between vault copies"/>
+  <Var name="market_price_json" value="" classification="gated-financial-SPII" usedIn="public/api/collection.php,components/InsuranceLedger.tsx" purpose="Unlocked market data — ledger export respects unlock keys"/>
 </VarMap>

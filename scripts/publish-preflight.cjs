@@ -1,5 +1,6 @@
 /**
- * Scan repository tree before publish — fail on credentials, keys, or private artifacts.
+ * Release integrity gate — scan repository tree before publish.
+ * Fails on credentials, private keys, dumps, and publication-boundary violations.
  * Usage: node scripts/publish-preflight.cjs [rootDir]
  */
 const fs = require('fs');
@@ -163,11 +164,11 @@ function walk(dir) {
       rel.includes('scripts/scan-win-unpacked-secrets.cjs')
     ) continue;
     if (rel.replace(/\\/g, '/').endsWith('public/api/sync_db.php') && /CREATE TABLE IF NOT EXISTS/i.test(content)) {
-      violations.push({ rel, reason: 'sync_db.php must remain redacted (no schema DDL)' });
+      violations.push({ rel, reason: 'sync_db.php must not publish schema DDL' });
       continue;
     }
     if (rel.replace(/\\/g, '/').endsWith('public/api/config.example.php') && /define\s*\(\s*['"]DB_/i.test(content)) {
-      violations.push({ rel, reason: 'config.example.php must remain redacted (no DB constants)' });
+      violations.push({ rel, reason: 'config.example.php must not publish DB constants' });
       continue;
     }
     if (content.length > 2_000_000) continue;

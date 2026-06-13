@@ -1,15 +1,14 @@
 <?php
 /**
- * Redacted — production config.php is not published in this showcase repository.
+ * Public reference repository — operator configuration is out of band.
  *
- * Deployed environments load operator credentials from a private config.php
- * (MySQL, OAuth client ID, app URL, TOTP secret). That file is gitignored and
- * maintained outside public git history.
+ * Production deployments load credentials from a private config.php maintained
+ * outside this publication boundary (MySQL, OAuth, application URL, signing material).
  */
 header('Content-Type: application/json');
 http_response_code(403);
 echo json_encode([
-    'status' => 'redacted',
-    'message' => 'Configuration template removed from public showcase.',
+    'status' => 'unavailable',
+    'message' => 'Operator configuration is not published in this repository.',
 ]);
 exit;

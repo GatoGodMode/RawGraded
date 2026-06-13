@@ -1,19 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SysMap project="RawGraded" updated="2026-06-10">
   <Structure>
-    <File path="README.md" role="Showcase README: structure, data model, security, grading pipeline, no-deploy notice"/>
+    <File path="README.md" role="Public assurance README: threat model, controls, vault records, architecture"/>
     <Folder path="electron" role="Desktop shell IPC and main process source"/>
-    <Folder path="components" role="React UI"/>
-    <Folder path="services" role="Grading AI gemini ollama math pricing"/>
-    <Folder path="public/api" role="Optional hosted PHP vault API reference">
-      <File path="public/api/config.example.php" role="Redacted stub — config not published"/>
-      <File path="public/api/db.php" role="MySQL connection and openMarketplaceConnection"/>
+    <Folder path="components" role="React UI">
+      <File path="components/EnvelopeScanPlugin.tsx" role="Envelope/receipt OCR plugin — opt-in ledger retention"/>
+      <File path="components/AcquisitionWizard.tsx" role="Structured acquisition entry with presets"/>
+      <File path="components/MyCollection.tsx" role="Vault collection UI and provenance editing"/>
+      <File path="components/InsuranceLedger.tsx" role="Indemnity ledger PDF/print export"/>
+      <File path="components/Certificate.tsx" role="Per-asset internal receipt and public cert view"/>
     </Folder>
-    <Folder path="scripts" role="OpSec preflight only">
-      <File path="scripts/publish-preflight.cjs" role="Secret and deploy-artifact scan before git push"/>
+    <Folder path="services" role="Grading AI gemini ollama math pricing">
+      <File path="services/geminiService.ts" role="Isolated envelope OCR extractEnvelopeData"/>
+    </Folder>
+    <Folder path="public/api" role="Hosted vault API reference">
+      <File path="public/api/config.example.php" role="Publication boundary stub"/>
+      <File path="public/api/sync_db.php" role="Publication boundary stub"/>
+      <File path="public/api/db.php" role="MySQL connection and auth guards"/>
+      <File path="public/api/collection.php" role="Acquisition CRUD, parent linking, image serve"/>
+      <File path="public/api/verify.php" role="Public cert verify with server-side SPII strip"/>
+      <File path="public/api/plugin_get_chain.php" role="Provenance chain traversal"/>
+      <File path="public/api/privacy.php" role="Privacy mode and is_hidden controls"/>
+      <File path="public/api/plugin_psa_vault.php" role="Slab provenance and custody transfer"/>
+    </Folder>
+    <Folder path="scripts" role="Release integrity">
+      <File path="scripts/publish-preflight.cjs" role="Pre-push artifact policy gate"/>
       <File path="scripts/scan-win-unpacked-secrets.cjs" role="Release bundle secret scan"/>
     </Folder>
     <Folder path="landing" role="RAW ENGINE marketing assets"/>
+    <Folder path="public/showcase" role="README platform showcase screenshots and 3D GIF"/>
     <Folder path="EnVars" role="Structural and variable maps only"/>
   </Structure>
 </SysMap>

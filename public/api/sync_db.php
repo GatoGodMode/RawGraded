@@ -1,14 +1,13 @@
 <?php
 /**
- * Redacted — schema migration/sync is not published in this showcase repository.
+ * Public reference repository — schema migration endpoints are out of band.
  *
- * Production operators run database migrations from private release artifacts,
- * not from this public source tree.
+ * Database evolution runs through controlled release channels, not this publication.
  */
 header('Content-Type: application/json');
 http_response_code(403);
 echo json_encode([
-    'status' => 'redacted',
-    'message' => 'Database schema sync removed from public showcase.',
+    'status' => 'unavailable',
+    'message' => 'Schema migration endpoints are not published in this repository.',
 ]);
 exit;
