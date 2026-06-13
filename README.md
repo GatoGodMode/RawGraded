@@ -263,7 +263,7 @@ This showcase excludes:
 - Published schema migrations (`sync_db.php` DDL) and config templates (`config.example.php`)
 - Production `config.php`, `.env*`, signing certs (`.pfx`), SQLite/MySQL dumps
 - Build artifacts (`dist/`, `release-build/`, `node_modules/`)
-- Dev/diag scripts (`debug_*.php`, `diag_*.php`, `test_*.php`, `verify_*.php`, `check_*.php`)
+- Dev/diag/migration scripts (`debug_*.php`, `diag_*.php`, `test_*.php`, `update_db.php`, `google_setup.php`, `ping.php`, `probe.php`)
 - Build/debug logs (`build_log*.txt`, `*.log`, `debug_*.log`)
 - Probe endpoints, schema dumps, and internal deploy notes (`probe.php`, `DEPLOY-FTP.txt`)
 - Hardcoded third-party API keys (PSA, PokéWallet, PokemonPriceTracker) — use settings table only
