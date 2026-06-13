@@ -16,7 +16,6 @@
     </Folder>
     <Folder path="mobile" role="Capacitor mobile app"/>
     <Folder path="landing" role="RAW ENGINE marketing assets"/>
-    <Folder path="training" role="SFT dataset examples only"/>
     <Folder path="EnVars" role="Structural and variable maps only"/>
   </Structure>
 </SysMap>

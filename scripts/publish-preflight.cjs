@@ -49,6 +49,13 @@ const forbiddenNamePatterns = [
   /rawgraded-case-[A-F0-9]+\.json$/i,
   /rawgraded-case-.*\.json$/i,
   /-eval\.json$/i,
+  /patent-whitepaper\.md$/i,
+  /local-ai-model-roadmap\.md$/i,
+];
+
+const forbiddenPathPrefixes = [
+  'MapRG/',
+  'training/',
 ];
 
 const forbiddenContentPatterns = [
@@ -87,6 +94,12 @@ function walk(dir) {
   for (const entry of entries) {
     const full = path.join(dir, entry.name);
     const rel = path.relative(root, full).replace(/\\/g, '/');
+    for (const prefix of forbiddenPathPrefixes) {
+      if (rel === prefix.slice(0, -1) || rel.startsWith(prefix)) {
+        violations.push({ rel, reason: `forbidden path prefix: ${prefix}` });
+        break;
+      }
+    }
     if (entry.isDirectory()) {
       if (skipDirs.has(entry.name) || entry.name.startsWith('~!')) continue;
       walk(full);
@@ -120,7 +133,7 @@ function walk(dir) {
       rel.includes('scripts/scan-win-unpacked-secrets.cjs') ||
       rel.includes('config.example.php') ||
       rel.endsWith('.env.example') ||
-      rel.endsWith('.env.desktop.example') ||
+      rel.endsWith('.env.desktop.example')
     ) continue;
     if (content.length > 2_000_000) continue;
     for (const pat of forbiddenContentPatterns) {

@@ -122,7 +122,7 @@ When connected to [rawgraded.com](https://rawgraded.com) or a self-hosted copy:
 - Pro credits: bypass queue, save drafts to `scan_drafts`, up to 3 re-assessments; credit consumed on certificate issue ([`public/api/save.php`](public/api/save.php), [`public/api/ai.php`](public/api/ai.php)).
 - Stripe checkout adds paid credits via [`public/api/stripe.php`](public/api/stripe.php) webhook fulfillment.
 
-**Certificate lifecycle:** graded row in `certificates` with vault copy numbering, merge chains (`parent_id`), acquisition/valuation fields, optional public archive flag. Vault plugin endpoints live under `public/api/` (e.g. merge, chain, appraise, vault numbering).
+**Certificate lifecycle:** graded row in `certificates` with vault copy numbering, merge chains (`parent_id`), acquisition/valuation fields, optional public archive flag. Vault plugin endpoints live under [`public/api/`](public/api/) (e.g. merge, chain, appraise, vault numbering).
 
 ---
 
@@ -285,7 +285,6 @@ This showcase excludes:
 - Hardcoded third-party API keys (PSA, PokéWallet, PokemonPriceTracker) — use settings table only
 - Legacy third-party badge CDN domain — removed; badge URLs use `/assets/badges/` on rawgraded.com only
 - Unauthenticated migration endpoints (`update_db_market.php`) and broken marketplace stub
-- Training eval JSON with local Windows paths (`*-eval.json`)
 
 Run before every publish:
 
